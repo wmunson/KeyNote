@@ -27,13 +27,15 @@ class ETF(db.Model):
 	# Table Schema
 	id = db.Column(db.Integer, primary_key=True)
 	ETF_name = db.Column(db.String(40), unique=True)
+	ETF_descr = db.Column(db.String(200))
 	ETF_comp = db.Column(db.PickleType)
 	last_price = db.Column(db.Float)
 	ETF = db.relationship("Reference")
 
-	def __init__(self,ETF_name, ETF_comp,last_price):
+	def __init__(self,ETF_name, ETF_comp, ETF_descr, last_price):
 		self.ETF_name = ETF_name
 		self.ETF_comp=ETF_comp
+		self.ETF_descr = ETF_descr
 		self.last_price = last_price
 
 class Reference(db.Model):

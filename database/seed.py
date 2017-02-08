@@ -27,6 +27,7 @@ pickle = {
 
 etf_example = ETF(
 			'Techie',
+			'Technology minded stocks with the big boys!'
 			pickle,
 			35.00
 )
