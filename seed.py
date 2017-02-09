@@ -19,15 +19,13 @@ admin = User(
 pickle = {
 	'IBM':[100, 0.3],
 	'MSFT':[40, 0.3],
-	'AAPL':[80, 0.4]
-
-}
+	'AAPL':[80, 0.4]}
 
 
 
 etf_example = ETF(
 			'Techie',
-			'Technology minded stocks with the big boys!'
+			"Technology minded stocks with the big boys!",
 			pickle,
 			35.00
 )

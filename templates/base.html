@@ -9,8 +9,23 @@
 
 	<body>
 		<nav>
-			
+			<form action="/login" method='POST' id='login_fields'>
+				<input name="username" type="text" placeholder="username?" id="username_field">
+				<input name="password" type="text" placeholder="password?" id="password_field">
+				<input type="submit" value="Submit Information">
+			</form>
 		</nav>
+			<div> {{login_error_message}} </div>
+			<div>
+				<p> Welcome back, {{username}} </p>
+			</div>
+			<div>
+				<ul>
+					{% for etf in etfs%}
+					<li> {{etf.ETF_name}}  and the composition is:  {{etf.ETF_comp}}
+					{% endfor %}
+				<ul>
+
 
 	</body>
 
