@@ -3,30 +3,26 @@
 <html>
 	<head>
 		
-		<title> KeyNote Investing </title>
-		<!-- <link rel="stylesheet"	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"> -->
+		<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css"/>
+		<link rel="stylesheet"	href="../static/style.css"/>
+		<link rel="stylesheet" href="../static/c3.css" type="text/css"/>
 	</head>
 
 	<body>
-		<nav>
-			<form action="/login" method='POST' id='login_fields'>
-				<input name="username" type="text" placeholder="username?" id="username_field">
-				<input name="password" type="text" placeholder="password?" id="password_field">
-				<input type="submit" value="Submit Information">
-			</form>
-		</nav>
-			<div> {{login_error_message}} </div>
-			<div>
-				<p> Welcome back, {{username}} </p>
-			</div>
-			<div>
-				<ul>
-					{% for etf in etfs%}
-					<li> {{etf.ETF_name}}  and the composition is:  {{etf.ETF_comp}}
-					{% endfor %}
-				<ul>
+
+		
+		<div class="navigation">{% block nav %}{% endblock %}</div>
+		
+		<div class="container">{% block body %}{% endblock %}</div>
+		
 
 
+		
+	<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js"></script>
+	<script type="text/javascript" src="../static/c3.js"></script>
+	{% javascript block %}{% endblock %}
+	
 	</body>
 
 </html>
