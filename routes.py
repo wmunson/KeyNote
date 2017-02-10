@@ -1,8 +1,9 @@
-from flask import Flask, render_template, session, request
+from flask import Flask, render_template, session, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from app import *
 from flask_bcrypt import Bcrypt
-from create_db.py import User, Reference, ETF
+from create_db import *
+
 
 
 
@@ -45,6 +46,26 @@ def grab_etfs(user):
 		return etf_obj_list
 
 
+def grab_etf(key):
+	etf = ETF.query.filter_by(id=key).first()
+	if etf:
+		# ready_etf = etf_to_JSON(etf)
+		return etf
+	else:
+		return False
+
+def etf_to_JSON(etf):
+	etf_dict={
+			'id': etf.id,
+			'ETF_name': etf.ETf_name,
+			'ETF_descr': etf.ETF_descr,
+			'ETF_comp': etf.ETF_comp,
+			'last_price': etf.last_price,
+			'creation_date': etf.creation_date
+	}
+	return jsonify(etf_dict)
+
+
 
 
 # ROUTES
@@ -56,10 +77,57 @@ def homepage():
 	return render_template('base.html')
 
 
-@app.route('/login',methods=['POST'])
+@app.route('/login',methods=['GET','POST'])
 def authentication():
-	username = request.form['username']
-	password = request.form['password']
-	login_check(username,password)
+	if request.method == 'POST':
+		username = request.form['username']
+		password = request.form['password']
+		login_check(username,password)
+	else:
+		return render_template('base.html')
+
+@app.route('/create', methods=['GET','POST'])
+def create_account():
+	if request.method == 'GET':
+		return render_template('create_acct.html')
+	else:
+		session.clear()
+		new_username = request.form['username']
+		check = User.query.filter_by(username = new_username).first()
+		if check == None:
+			# GRAB FORM DATA
+			new_password = request.form['password']
+			first_name = request.form['first_name']
+			last_name = request.form['last_name']
+			email = request.form['email']
+			# GENERATE HASH PASSWORD
+			hash_password = bcrypt.generate_hash_password(new_password)
+			# BUILD NEW USER INSTANCE
+			new_user = User(new_username, hash_password, first_name,last_name, email)
+			db.session.add(new_user)
+			db.session.commit()
+			# GRAB THE USER OBJ (ID most importantly)
+			user =  User.query.filter_by(username=new_user.new_username).first
+			session_set(user)
+			return render_template('home.html')
+
+		else:
+			return render_template('create_acct.hmtl',
+								create_error_message='Sorry the username you have provided is already taken')
+
+@app.route('/example')
+def display_example():
+	example_etf = grab_etf(1)
+	return render_template('example.html',
+						example_etf = example_etf)
+
+
+
+
+
+
+
+
+
 
 

@@ -29,6 +29,7 @@ class ETF(db.Model):
 	ETF_descr = db.Column(db.String(200))
 	ETF_comp = db.Column(db.PickleType)
 	last_price = db.Column(db.Float)
+	creation_date = db.Column(db.Date, default=date.today())
 	ETF = db.relationship("Reference")
 
 	def __init__(self,ETF_name, ETF_descr, ETF_comp, last_price):
