@@ -3,16 +3,24 @@
 <html>
 	<head>
 		
-		<title> KeyNote Investing </title>
-		<link rel="stylesheet"	src="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css"/>
-		<link rel="stylesheet"	src="../static/style.css"/>
+		<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css"/>
+		<link rel="stylesheet"	href="../static/style.css"/>
+		<link rel="stylesheet" href="../static/c3.css" type="text/css"/>
 	</head>
 
 	<body>
-		{% block nav %}{% endblock %}
+		
+		<div class="navigation">{% block nav %}{% endblock %}</div>
+		
+		<div class="container">{% block body %}{% endblock %}</div>
+
 
 		
-
+	<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js"></script>
+	<script type="text/javascript" src="../static/c3.js"></script>
+	{% javascript block %}{% endblock %}
+	
 	</body>
 
 </html>
