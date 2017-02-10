@@ -1,9 +1,11 @@
-from flask import Flask, render_template, session, request, jsonify
+from flask import Flask, render_template, session, request, jsonify, Blueprint
 from flask_sqlalchemy import SQLAlchemy
-from app import *
+# from app import *
 from flask_bcrypt import Bcrypt
-from create_db import *
+from create_db import User, Reference, ETF
 
+
+account = Blueprint('account',__name__)
 
 
 
@@ -36,7 +38,7 @@ def grab_etfs(user):
 	if user.id == None:
 		pass
 	else:
-		etf_ids = Reference.query.filter_by(user_id).all()
+		etf_ids = Reference.query.filter_by(u_id=key).all()
 		etf_id_list = []
 		for reference in etf_ids:
 			etf_id_list.append(reference.etf_id)
@@ -72,12 +74,12 @@ def etf_to_JSON(etf):
 
 
 
-@app.route('/',methods=['GET'])
+@account.route('/',methods=['GET'])
 def homepage():
 	return render_template('base.html')
 
 
-@app.route('/login',methods=['GET','POST'])
+@account.route('/login',methods=['GET','POST'])
 def authentication():
 	if request.method == 'POST':
 		username = request.form['username']
@@ -86,7 +88,7 @@ def authentication():
 	else:
 		return render_template('base.html')
 
-@app.route('/create', methods=['GET','POST'])
+@account.route('/register', methods=['GET','POST'])
 def create_account():
 	if request.method == 'GET':
 		return render_template('create_acct.html')
@@ -115,7 +117,7 @@ def create_account():
 			return render_template('create_acct.hmtl',
 								create_error_message='Sorry the username you have provided is already taken')
 
-@app.route('/example')
+@account.route('/example')
 def display_example():
 	example_etf = grab_etf(1)
 	return render_template('example.html',
