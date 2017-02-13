@@ -1,9 +1,4 @@
-from create_db import *
-
-import app
-
-db = app.db
-
+from models import db, User, Reference, ETF
 
 
 admin = User(

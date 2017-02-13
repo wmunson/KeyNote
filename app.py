@@ -1,18 +1,64 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, Blueprint
 from config import DevConfig
-from flask_sqlalchemy import SQLAlchemy
-# from create_db import *
-from routes import account
+import os
+from extensions import db
 
-app= Flask(__name__)
 
-app.config.from_object("config.DevConfig")
 
-app.secret_key = "secret"
+# app= Flask(__name__)
 
-app.register_blueprint(account)
+# app.config.from_object("config.DevConfig")
 
- 
+
+
+BLUEPRINTS = (
+	account,
+
+	)
+
+
+def set_blueprints(app,blueprints):
+	for blueprint in blueprints:
+		app.register_blueprint(account)
+
+def extensions_adder(app):
+	db.init_app(app)	
+
+
+
+
+def create_app(config=None, app_name='keynote', blueprints=None):
+	app=Flask(app_name,
+		static_folder=os.path.join(os.path.dirname(__file__), 'static'),
+		template_folder="templates"
+			)
+
+	app.config.from_object("config.DevConfig")
+
+	app.secret_key = "secret"
+
+	if blueprints is None:
+		blueprints = BLUEPRINTS
+
+	else:
+		print("Tom sucks")
+
+	# SET BLUEPRINTS TO APP
+	set_blueprints(app,blueprints)
+
+	# SET EXTENSIONS TO APP
+	extensions_adder(app)
+
+	return app
+
+
+
+
+
+if __name__ == "__main__":
+	app = create_app()
+	app.run(debug=True)
+
 
 
 
@@ -81,8 +127,6 @@ app.register_blueprint(account)
 # 						username=session['username'],
 # 						etfs = info[1])
 
-if __name__ == "__main__":
-	app.run(debug=True)
 
 
 

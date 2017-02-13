@@ -1,9 +1,8 @@
 from flask import Flask, render_template, session, request, jsonify, Blueprint
 from flask_sqlalchemy import SQLAlchemy
-# from app import *
 from flask_bcrypt import Bcrypt
-from create_db import User, Reference, ETF
-
+from extensions import db
+from .models import User, Reference, ETF
 
 account = Blueprint('account',__name__)
 
@@ -76,7 +75,7 @@ def etf_to_JSON(etf):
 
 @account.route('/',methods=['GET'])
 def homepage():
-	return render_template('base.html')
+	return render_template('login.html')
 
 
 @account.route('/login',methods=['GET','POST'])
