@@ -5,37 +5,53 @@
 		
 		<title> KeyNote Investing </title>
 		<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css"/>
-		<link rel="stylesheet"	href="../static/style.css"/>
-		<link rel="stylesheet" href="../static/c3.css" type="text/css"/>
+		<link rel="stylesheet"	href="../static/login.css"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.css" type="text/css"/>
 	</head>
 
 	<body>
 		<div class = "container">
-			<div class = "welcome">
-				<div class = "message">
-					<p>Welcome to KeyNote!</p>
-					<form action = "" method = "GET">
-						<input type = "submit" value = "Explore!">
-					</form>
-				</div>	
+			<div class="subCon subDiv" >	
+				<div class = "welcome children">
+					<div class = "message">
+						<h3>Welcome to KeyNote!</h3>
+						<div class="text">
+							<p>If you would like to see what KeyNote is about, click the Explore button below. Otherwise Sign Up and get started!</p>
+						</div>
+						<form action = "/example" method = "GET">
+							<input type = "submit" value = "Explore!">
+						</form>
+					</div>	
+				</div>
+				<div class = "login children">
+					
+						<form class="loginForm" action="/home" method="GET">
+							<input name="username" class ="box user" type="text" placeholder="Username">
+							<input name="password" class ="box pass" type="text" placeholder="Password">
+							<input class="GoBut" type ="submit" value="Go!">
+						</form>
+					
+					
+						<input class="singUp" type="submit" value="Sign Up">
+					
+				</div>
 			</div>
-			<div class = "login">
-				<form action="" method="GET">
-					<input name="username" class ="box user" type="text" placeholder="Username">
-					<input name="password" class ="box pass" type="text" placeholder="Password">
-					<input type ="submit" value="Go!">
-				</form>
-				
+			<div class="lowerDiv subDiv">
+				<div class ="errorMessage">
+					{% if errorMessage %}
+					<h4>{{errorMessage}}</h4>
+					{% endif %}
+				</div>
 			</div>
 		</div>
-		
+	
 		
 
 	<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js"></script>
-	<script type="text/javascript" src="../static/c3.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.js"></script>
 
-	<script type="text/javascript" src="../static/test.js"></script>
+	<script type="text/javascript" src="../static/login.js"></script>
 	
 	</body>
 
