@@ -32,7 +32,3 @@ def make_list(ticker):
 make_list("msft")
 
 
-# @app.route("/marielys", method="GET")
-# def my_func():
-# 	return render_template("base.html")
-

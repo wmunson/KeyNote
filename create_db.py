@@ -1,8 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime, date
-from app import app
-
-db=SQLAlchemy(app)
+from app import db, bcrypt
+from flask_bcrypt import Bcrypt
 
 class User(db.Model):
 	# Table Schema
@@ -61,10 +60,11 @@ db.create_all()
 print("Database has been created!!")
 
 
+admin_password = bcrypt.generate_password_hash("admin")
 
 admin = User(
 			'admin',
-			'admin',
+			admin_password,
 			'Mister',
 			'admin',
 			'admin@bread.com'
