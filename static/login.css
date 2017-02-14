@@ -17,6 +17,7 @@ body{
 	display:flex;
 	/*border:dashed;	*/
 	width:100%;
+	height:60%;
 	/*border-color: red;*/
 	justify-content: space-around;
 	/*align-self: center;*/

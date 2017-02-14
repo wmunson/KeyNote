@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet"	href="../static/singleTheme.css"/>
+{% endblock %}
+
+{% block nav %}
+<div class="navBar">
+	<nav>
+		<ul>
+			<li class="li home">
+				<form action ="" method="GET">
+					<input type="submit" value="KeyNote">
+				</form>
+			</li>
+			<li class="li explore">
+				<form action ="" method="GET">
+					<input type="submit" value="Explore Themes">
+				</form>
+			</li>
+			<li class="li build">
+				<form action ="" method="GET">
+					<input type="submit" value="Build Theme">
+				</form>
+			</li>
+			<li class="li search">
+				<input id="homeSearch" name="mainSearch" placeholder="Search Themes">
+			</li>
+			<li class="li manageAcc">
+				<form action ="" method="GET">
+					<input type="submit" value="Manage Account">
+				</form>
+			</li>
+			<li class="li logOut">
+				<form action ="" method="GET">
+					<input type="submit" value="Log Out">
+				</form>
+			</li>
+		</ul>
+	</nav>
+</div> 
+{% endblock %}
+
+
+{% block body %}
+<div class="blockBody">
+	<div class="topRow">
+		<div class="theme">
+			<h3>{{ETF_name}}</h3>
+			<ul class="etfInfo">
+				<li>Author: {{author}}</li>
+				<li>Date Created: {{date}}</li>
+				<li>Change: {{change}}</li>
+			</ul>
+		</div>
+
+		<div class="buttons">
+			<form id="save" action="" method="POST">
+				<input type="submit" value="Save">
+			</form>
+			<form id="modify" action="" method="POST">
+				<input type="submit" value="Modify">
+			</form>
+			<form id="share" action="" method="POST">
+				<input type="submit" value="Share">
+			</form>
+		</div>		
+	</div>
+	
+	<div class="bottomRow">
+		<div class="toggleBar">
+			<ul class="toggleList">
+				<li id="overview">Overview</li>
+				<li id="performace">Performace</li>
+				<li id="news">News</li>
+				<li id="comments">Comments</li>
+			</ul>
+		</div>
+		<div class="views">
+			<div class="overviewDiv">
+				<ul></ul>
+			</div>
+			<div class="performanceDiv">
+				<ul></ul>
+			</div>
+			<div class="newsDiv">
+				<ul></ul>
+			</div>
+			<div class="commentsDiv">
+				<ul></ul>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+
+
+
+
+{% block javascript %}
+<script type="text/javascript" src="../static/singleTheme.js"></script>
+{% endblock %}

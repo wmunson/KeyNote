@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet"	href="../static/build.css"/>
+{% endblock %}
+
+{% block nav %}
+<div class="navBar">
+	<nav>
+		<ul>
+			<li class="li home">
+				<form action ="" method="GET">
+					<input type="submit" value="KeyNote">
+				</form>
+			</li>
+			<li class="li explore">
+				<form action ="" method="GET">
+					<input type="submit" value="Explore Themes">
+				</form>
+			</li>
+			<li class="li build">
+				<form action ="" method="GET">
+					<input type="submit" value="Build Theme">
+				</form>
+			</li>
+			<li class="li search">
+				<input id="homeSearch" name="mainSearch" placeholder="Search Themes">
+			</li>
+			<li class="li manageAcc">
+				<form action ="" method="GET">
+					<input type="submit" value="Manage Account">
+				</form>
+			</li>
+			<li class="li logOut">
+				<form action ="" method="GET">
+					<input type="submit" value="Log Out">
+				</form>
+			</li>
+		</ul>
+	</nav>
+</div> 
+{% endblock %}
+
+
+{% block body %}
+<div class="blockBody">
+	<div class="leftCol">	
+		<div class="inputDiv">
+			<input name="etfName" type="text" placeholder="Enter Name">
+			<input name="etfDescript" type="text" placeholder="Enter Description">
+		</div>
+
+		<div class="searchDiv">
+			<input type="text" value="Search">
+			<input type="submit" value="Submit">
+			<div class="listDiv">
+				<ul class="stockList"></ul>
+			</div>
+		</div>		
+	</div>
+	
+	<div class="RightCol">
+		<div class="pieChart">
+			
+		</div>
+		<div class="stockQueue">
+			<div class="overviewDiv">
+				<p>Stock Queue</p>
+				<ul class="queueList">
+					<li class="ticker">
+						<input type="range" id="sliderBar" min="0" max="100" step="1" value="0">
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</div>	
+			
+{% endblock %}
+
+
+
+
+
+{% block javascript %}
+<script type="text/javascript" src="../static/build.js"></script>
+{% endblock %}
