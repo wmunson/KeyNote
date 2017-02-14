@@ -3,6 +3,9 @@ from config import DevConfig
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from create_db import *
+import requests
+import tools
+
 
 app= Flask(__name__)
 
@@ -16,16 +19,17 @@ db = SQLAlchemy(app)
 
 bcrypt = Bcrypt(app)
 
-# ROUTES
+
 
 def session_set(user):
-		session['user_id'] = user.id
-		session['username'] = user.username
-		session['password'] = user.password
-		session['first_name'] = user.first_name
-		session['last_name'] = user.last_name
-		session['email'] = user.email
-		session['user_created'] = user.date_created
+	session['logged-in'] = True
+	session['user_id'] = user.id
+	session['username'] = user.username
+	session['password'] = user.password
+	session['first_name'] = user.first_name
+	session['last_name'] = user.last_name
+	session['email'] = user.email
+	session['user_created'] = user.date_created
 
 
 
@@ -33,18 +37,17 @@ def login_check(username,prov_password):
 	user = User.query.filter_by(username=username).first()
 	# Check if the password given is the password in the DB
 	if bcrypt.check_password_hash(user.password,prov_password):
-		session['logged_in'] = True
 		session_set(user)
-		etfs = grab_etfs(user)
+		etfs = grab_etfs(user.id)
 		return etfs
 	else:
 		return render_template('base.html',
 				login_error_message="Sorry, the information you provided is incorrect. Please try again."
 				)
 
-def grab_etfs(user):
-	key = user.id
-	if user.id == None:
+def grab_etfs(user_id):
+	key = user_id
+	if type(user_id) is not int:
 		pass
 	else:
 		etf_ids = Reference.query.filter_by(u_id=key).all()
@@ -98,7 +101,13 @@ def authentication():
 			first_name = session['first_name'],
 			etfs = etfs)
 	else:
-		return render_template('base.html')
+		if session['logged-in'] == True:
+			etfs = grab_etfs(session['user_id'])
+			return render_template("home.html",
+			first_name = session['first_name'],
+			etfs = etfs)
+		else:
+			return render_template('login.html')
 
 @app.route('/register', methods=['GET','POST'])
 def create_account():
@@ -133,7 +142,7 @@ def create_account():
 def display_example():
 	example_etf = grab_etf(1)
 	return render_template('example.html',
-						example_etf = example_etf)
+				example_etf = example_etf)
 	# ADD ANYTHING ELSE?
 
 @app.route('/explore', methods=['GET'])

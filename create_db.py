@@ -50,15 +50,11 @@ class Reference(db.Model):
 
 
 
-
-
+print("Database has been created!!")
 
 
 db.drop_all()
 db.create_all()
-
-print("Database has been created!!")
-
 
 admin_password = bcrypt.generate_password_hash("admin")
 
