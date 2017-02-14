@@ -1,6 +1,7 @@
 body{
 	/*background: gray;*/
 	/*background: linear-gradient(-90deg, black,white);*/
+	background-image: url("login_back.jpg")
 }
 
 .container{
