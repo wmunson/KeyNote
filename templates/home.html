@@ -4,7 +4,8 @@
 <link rel="stylesheet"	href="../static/css/home.css"/>
 {% endblock %}
 
-<!-- {% block nav %}
+<!-- Remove block nav before finale--already in base -->
+{% block nav %}
 <div class="navBar">
 	<nav class="nav">
 		<ul class="navUl">
@@ -39,8 +40,8 @@
 		</ul>
 	</nav>
 </div> 
-{% endblock %} -->
-
+{% endblock %}
+<!-- ====================================== -->
 
 {% block body %}
 <div class="blockBody">
@@ -49,8 +50,9 @@
 			<h3>Welcome Back {{first_name}}</h3>
 		</div>
 		<div class="newsDiv">
+			<p>News goes here</p>
 			<ul class="newsList">
-
+				<li>article goes here</li>
 			</ul>
 		</div>		
 	</div>
