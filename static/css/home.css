@@ -17,16 +17,21 @@ body{
 	border-color:blue;
 	margin:1%;
 	width:70%;
+	
 }
 
 .welcome{
 	border:solid;
 	border-color:red;
+	background-color: white;
+	margin:1%;
 }
 
 .newsDiv{
 	border:solid;
 	border-color:black;
+	background-color: white;
+	margin:1%;
 }
 
 
@@ -46,6 +51,7 @@ body{
 	flex-direction:column;
 	border:dashed;
 	border-color:green;
+	background-color: white;
 
 }
 
