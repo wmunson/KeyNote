@@ -1,7 +1,10 @@
 body{
-	/*background: gray;*/
-	/*background: linear-gradient(-90deg, black,white);*/
-	background-image: url("login_back.jpg")
+	/*background: #0A7774;*/
+	background: linear-gradient(-70deg, #0B55B5,black);
+	/*background-image: url("login_back.jpg")*/
+	/*background-repeat:no-repeat;*/
+	/*background-repeat-y:no-repeat;*/
+	
 }
 
 .container{
@@ -9,7 +12,7 @@ body{
 	border:dashed;
 	border-color: black;
 	height:100vh;
-	align-content: center;
+	align-items: center;
 	flex-wrap:wrap;
 }
 
@@ -42,7 +45,7 @@ body{
 	border-color: blue;
 	justify-content: center;
 	width:50%;
-
+	background-color: white;
 	/*width: 450px;*/
     margin: 0 auto 75px;
     padding: 32px;
@@ -65,7 +68,7 @@ body{
 	align-items: center;
 	justify-content: center;
 	width:30%;
-
+	background-color: white;
 	/*width: 450px;*/
     margin: 0 auto 75px;
     padding: 32px;
