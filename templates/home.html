@@ -4,7 +4,8 @@
 <link rel="stylesheet"	href="../static/css/home.css"/>
 {% endblock %}
 
-<!-- {% block nav %}
+<!-- Remove block nav before finale--already in base -->
+{% block nav %}
 <div class="navBar">
 	<nav class="nav">
 		<ul class="navUl">
@@ -39,8 +40,8 @@
 		</ul>
 	</nav>
 </div> 
-{% endblock %} -->
-
+{% endblock %}
+<!-- ====================================== -->
 
 
 
@@ -51,6 +52,7 @@
 			<h3>Welcome Back, {{first_name}}</h3>
 		</div>
 		<div class="newsDiv">
+
 			<h5 class = "titles"> News Articles </h5>
 			<ul class="newsList">
 			{% for news_article in news_articles %}
@@ -72,7 +74,8 @@
 					<p>{{etf.last_price}}</p>
 					</li>
 				{% endfor %}
-		</div>
+      </ul>
+    </div>
 	</div>
 </div>
 {% endblock %}

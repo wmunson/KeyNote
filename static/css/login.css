@@ -6,20 +6,19 @@ body{
 
 .container{
 	display:flex;
-	/*border:dashed;*/
-	/*border-color: black;*/
+	border:dashed;
+	border-color: black;
 	height:100vh;
-	
 	align-content: center;
 	flex-wrap:wrap;
 }
 
 .subCon{
 	display:flex;
-	/*border:dashed;	*/
+	border:dashed;	
 	width:100%;
 	height:60%;
-	/*border-color: red;*/
+	border-color: red;
 	justify-content: space-around;
 	/*align-self: center;*/
 	
@@ -39,8 +38,8 @@ body{
 .welcome{
 	display:flex;
 	
-	/*border:dashed;*/
-	/*border-color: blue;*/
+	border:dashed;
+	border-color: blue;
 	justify-content: center;
 	width:50%;
 
@@ -61,8 +60,8 @@ body{
 .login{
 	display:flex;
 	flex-direction:column;
-	/*border:dashed;*/
-	/*border-color: green;*/
+	border:dashed;
+	border-color: green;
 	align-items: center;
 	justify-content: center;
 	width:30%;
@@ -92,8 +91,8 @@ body{
 
 .lowerDiv{
 	display:flex;
-	/*border:solid;*/
-	/*border-color: blue;*/
+	border:solid;
+	border-color: blue;
 	width:100%;
 	justify-content: center;
 }
