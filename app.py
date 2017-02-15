@@ -1,10 +1,10 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, jsonify
 from config import DevConfig
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from create_db import *
 import requests
-import tools
+from tools import grab_articles, session_set, make_stock_list, etf_to_JSON
 
 
 app= Flask(__name__)
@@ -21,15 +21,6 @@ bcrypt = Bcrypt(app)
 
 
 
-def session_set(user):
-	session['logged-in'] = True
-	session['user_id'] = user.id
-	session['username'] = user.username
-	session['password'] = user.password
-	session['first_name'] = user.first_name
-	session['last_name'] = user.last_name
-	session['email'] = user.email
-	session['user_created'] = user.date_created
 
 
 
@@ -68,16 +59,7 @@ def grab_etf(key):
 	else:
 		return False
 
-def etf_to_JSON(etf):
-	etf_dict={
-			'id': etf.id,
-			'ETF_name': etf.ETf_name,
-			'ETF_descr': etf.ETF_descr,
-			'ETF_comp': etf.ETF_comp,
-			'last_price': etf.last_price,
-			'creation_date': etf.creation_date
-	}
-	return jsonify(etf_dict)
+
 
 
 
@@ -97,9 +79,11 @@ def authentication():
 		username = request.form['username']
 		password = request.form['password']
 		etfs = login_check(username,password)
+		news = grab_articles()
 		return render_template("home.html",
 			first_name = session['first_name'],
-			etfs = etfs)
+			etfs = etfs,
+			news_articles = news)
 	else:
 		if session['logged-in'] == True:
 			etfs = grab_etfs(session['user_id'])

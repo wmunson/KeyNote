@@ -1,3 +1,4 @@
+from flask import jsonify, session
 import pandas as pd
 import csv
 import urllib.request
@@ -56,11 +57,14 @@ def grab_articles():
 	news_url = ('https://newsapi.org/v1/articles?source=the-wall-street-journal&sortBy=top&apiKey=c4208eaed7204bc880581f157f1a3c87')
 	answer = requests.get(news_url).json()
 	news_dict= answer['articles']
-	outbound_news = {}
+	outbound_news_list = []
 	for news_article in news_dict:
-		outbound_news[news_article['title']] = news_article['url']
-	print(outbound_news)
-	return jsonify(outbound_news)
+		news_obj = []
+		news_obj.append(news_article['title'])
+		news_obj.append(news_article['url']) 
+		outbound_news_list.append(news_obj)
+	print(outbound_news_list)
+	return outbound_news_list
 
 
 def create_etf(etf_info):
