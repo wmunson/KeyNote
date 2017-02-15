@@ -1,4 +1,6 @@
-
+body{
+	background: linear-gradient(-70deg, #0B55B5,black);
+}
 /*Nave bar Styling*/
 
 .navBar{
