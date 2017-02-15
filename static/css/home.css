@@ -1,3 +1,54 @@
+.blockBody{
+	display:flex;
+	border:dashed;
+	border-color:red;
+	height:100vh;
+}
+
+
+.leftCol{
+	display:flex;
+	flex-direction:column;
+	border:dashed;
+	border-color:blue;
+	margin:1%;
+	width:70%;
+}
+
+.welcome{
+	border:solid;
+	border-color:red;
+}
+
+.newsDiv{
+	border:solid;
+	border-color:black;
+}
+
+
+
+
+.rightCol{
+	border:dashed;
+	border-color:black;
+	margin:1%;
+	width:25%;
+
+
+}
+
+.accountInfo{
+	display:flex;
+	flex-direction:column;
+	border:dashed;
+	border-color:green;
+
+}
+
+/*============================================*/
+/*Remove before Final!!*/
+/*Nave bar Styling*/
+
 .navBar{
 	display:flex;
 	/*border:dashed;*/
@@ -16,10 +67,9 @@
 	border-radius: 8px;
 	width:100%;
 
-
-	
-
 }
+
+
 .navUl{
 	display:flex;
 	
@@ -77,3 +127,5 @@
     border-radius: 4px;
     box-sizing: border-box;
 }
+
+/*End of NavBar*/
