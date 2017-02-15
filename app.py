@@ -131,9 +131,19 @@ def display_example():
 
 @app.route('/explore', methods=['GET'])
 def explore_ETFs_page():
-	etfs = etf.query.all()
+	etfs = ETF.query.all()
 	return render_template('explore.html',
 			etfs = etfs)
+
+@app.route('/sample', methods=['GET'])
+def explore_sample():
+	etf =ETF.query.first()
+	return render_template('singleTheme.html',
+					ETF_name = etf.ETF_name,
+					date = str(etf.creation_date),
+					author = "KeyNote Staff",
+					ETF_descr = etf.ETF_descr
+					)
 
 
 

@@ -38,7 +38,7 @@ def make_stock_list(ticker):
 
 		for index, row in dataframe.iterrows():
 			price_list.append(row.Close)
-		print(price_list)
+		# print(price_list)
 
 
 
@@ -63,7 +63,7 @@ def grab_articles():
 		news_obj.append(news_article['title'])
 		news_obj.append(news_article['url']) 
 		outbound_news_list.append(news_obj)
-	print(outbound_news_list)
+	# print(outbound_news_list)
 	return outbound_news_list
 
 
@@ -80,7 +80,7 @@ def create_etf(etf_info):
 # FUNCTION TESTING
 
 
-grab_articles()
+# grab_articles()
 
 
 # make_list("msft")

@@ -96,9 +96,9 @@ db.session.commit()
 
 print("Database seeded!")
 
-query = ETF.query.filter_by(ETF_name = "Techie").first()
+# query = ETF.query.filter_by(ETF_name = "Techie").first()
 
-print(query.ETF_comp)
+# print(query.ETF_comp)
 
 	
 
