@@ -4,14 +4,49 @@
 	<head>
 		
 		<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css"/>
+		<link rel="stylesheet"	href="../static/base.css"/>
 		{% block css %}{% endblock %}
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.css" type="text/css"/>
 	</head>
 
 	<body>
 
-		
-		<div class="navigation">{% block nav %}{% endblock %}</div>
+		<div class="navigation">
+			<div class="navBar">
+				<nav class="nav">
+					<ul class="navUl">
+						<li class="li home">
+							<form class="f" action ="" method="GET">
+								<input type="submit" value="KeyNote">
+							</form>
+						</li>
+						<li class="li explore">
+							<form class="f" action ="" method="GET">
+								<input type="submit" value="Explore Themes">
+							</form>
+						</li>
+						<li class="li build">
+							<form class="f" action ="" method="GET">
+								<input type="submit" value="Build Theme">
+							</form>
+						</li>
+						<li class="li search">
+							<input id="homeSearch" name="mainSearch" placeholder="Search Themes">
+						</li>
+						<li class="li manageAcc">
+							<form class="f" action ="" method="GET">
+								<input type="submit" value="Manage Account">
+							</form>
+						</li>
+						<li class="li logOut">
+							<form class="f" action ="" method="GET">
+								<input type="submit" value="Log Out">
+							</form>
+						</li>
+					</ul>
+				</nav>
+</div> 
+		</div>
 		
 		<div class="container">{% block body %}{% endblock %}</div>
 
