@@ -1,8 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime, date
-from app import app
-
-db=SQLAlchemy(app)
+from app import db, bcrypt
+from flask_bcrypt import Bcrypt
 
 class User(db.Model):
 	# Table Schema
@@ -51,20 +50,17 @@ class Reference(db.Model):
 
 
 
-
-
+print("Database has been created!!")
 
 
 db.drop_all()
 db.create_all()
 
-print("Database has been created!!")
-
-
+admin_password = bcrypt.generate_password_hash("admin")
 
 admin = User(
 			'admin',
-			'admin',
+			admin_password,
 			'Mister',
 			'admin',
 			'admin@bread.com'
@@ -100,9 +96,9 @@ db.session.commit()
 
 print("Database seeded!")
 
-query = ETF.query.filter_by(ETF_name = "Techie").first()
+# query = ETF.query.filter_by(ETF_name = "Techie").first()
 
-print(query.ETF_comp)
+# print(query.ETF_comp)
 
 	
 
