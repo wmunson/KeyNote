@@ -9,8 +9,8 @@ body{
 
 .container{
 	display:flex;
-	border:dashed;
-	border-color: black;
+	/*border:dashed;*/
+	/*border-color: black;*/
 	height:100vh;
 	align-items: center;
 	flex-wrap:wrap;

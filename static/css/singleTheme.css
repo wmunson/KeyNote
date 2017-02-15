@@ -1,6 +1,6 @@
-body{
+/*body{
 	background: linear-gradient(-70deg, #0B55B5,black);
-}
+}*/
 
 .blockBody{
 	display:flex;
@@ -18,7 +18,7 @@ body{
 	height:16rem;
 	justify-content:space-between;
 	
-	border:dashed;
+	/*border:dashed;*/
 	border-color:blue;
 }
 
@@ -28,11 +28,16 @@ body{
 
 	border:dashed;
 	border-color:gray;
+	background-color: white;
 }
 
 .buttons{
-	align-self: center
-
+	display:flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-self: center;
+	height:60%;
+	
 }
 
 
@@ -44,6 +49,7 @@ body{
 
 	border:dashed;
 	border-color:red;
+	background-color: white;
 }
 
 .toggleBar{
