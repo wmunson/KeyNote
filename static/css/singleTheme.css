@@ -59,11 +59,53 @@
 .toggleList{
 	display:flex;
 	justify-content: space-around;
+	height:100%;
+	padding:0;
+	margin:0;
+
+	flex-direction: row;
+	align-items: center;
+	background-color: gray;
+	border:solid;
+	border-color:gray;
+	border-radius: 8px;
+	
 }
+
 
 .toggleList li{
 	list-style: none;
 }
+
+.tab{
+	
+	display:flex;
+	flex-direction: column;
+	/*height:100%;*/
+	align-self: stretch;
+	margin:0;
+	padding:auto;
+	background-color: white;
+	cursor:pointer;
+	height: 100%;
+	padding:1em;
+	margin:0;
+	border-color: black;
+	border-radius: 8px
+}
+
+.tab:hover{
+	text-decoration:underline;
+}
+
+.activeTab{
+	border-bottom-right-radius:0;
+	border-bottom-left-radius:0;
+	border-bottom: solid;
+	border-color: white;
+	margin-bottom: -5px;
+}
+
 
 .views{
 	display:flex;
@@ -73,26 +115,26 @@
 
 .overviewDiv{
 	order: 0;
-	border:dotted;
-	border-color: green
+	/*border:dotted;*/
+	/*border-color: green*/
 }
 
 .performanceDiv{
 	order: -1;
-	border:dotted;
-	border-color: brown;
+	/*border:dotted;*/
+	/*border-color: brown;*/
 }
 
 .newsDiv{
 	order: -1;
-	border:dotted;
-	border-color: blue;
+	/*border:dotted;*/
+	/*border-color: blue;*/
 }
 
 .commentsDiv{
 	order: -1;
-	border:dotted;
-	border-color: red;
+	/*border:dotted;*/
+	/*border-color: red;*/
 }
 
 .view{
