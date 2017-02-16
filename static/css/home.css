@@ -1,3 +1,64 @@
+/*body{
+	background: linear-gradient(-70deg, #0B55B5,black);*/
+}
+
+.blockBody{
+	display:flex;
+	border:dashed;
+	border-color:red;
+	height:100vh;
+}
+
+
+.leftCol{
+	display:flex;
+	flex-direction:column;
+	border:dashed;
+	border-color:blue;
+	margin:1%;
+	width:70%;
+	
+}
+
+.welcome{
+	border:solid;
+	border-color:red;
+	background-color: white;
+	margin:1%;
+}
+
+.newsDiv{
+	border:solid;
+	border-color:black;
+	background-color: white;
+	margin:1%;
+}
+
+
+
+
+.rightCol{
+	border:dashed;
+	border-color:black;
+	margin:1%;
+	width:25%;
+
+
+}
+
+.accountInfo{
+	display:flex;
+	flex-direction:column;
+	border:dashed;
+	border-color:green;
+	background-color: white;
+
+}
+
+/*============================================*/
+/*Remove before Final!!*/
+/*Nave bar Styling*/
+
 .navBar{
 	display:flex;
 	/*border:dashed;*/
@@ -16,10 +77,9 @@
 	border-radius: 8px;
 	width:100%;
 
-
-	
-
 }
+
+
 .navUl{
 	display:flex;
 	
@@ -77,3 +137,5 @@
     border-radius: 4px;
     box-sizing: border-box;
 }
+
+/*End of NavBar*/

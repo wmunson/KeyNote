@@ -126,7 +126,7 @@ def create_account():
 @app.route('/example')
 def display_example():
 	example_etf = grab_etf(1)
-	return render_template('example.html',
+	return render_template('build.html',
 				example_etf = example_etf)
 	# ADD ANYTHING ELSE?
 

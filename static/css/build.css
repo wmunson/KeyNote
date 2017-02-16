@@ -1,0 +1,123 @@
+
+.blockBody{
+	display:flex;
+	justify-content: space-between;
+	border:solid;
+	height:100vh;
+
+}
+
+.leftCol{
+	display:flex;
+	flex-direction:column;
+	width:70%;
+	margin:1%;
+	border:dashed;
+	border-color: red;
+	/*align-items: center*/
+	/*justify-content: space-between;*/
+
+}
+
+.inputDiv{
+	display:flex;
+	flex-direction:column;
+	width:70%;
+	margin:1%;
+	margin:1%;
+
+
+	border:dashed;
+	border-color: green;
+
+}
+
+.inputDiv input{
+	width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    /*display: inline-block;*/
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.searchDiv{
+	display:flex;
+	flex-direction:column;
+	margin:1%;
+	width:90%;
+	align-self: center;
+
+	border:dashed;
+	border-color: gray;	
+}
+
+#search{
+	/*width: 100%;*/
+    padding: 12px 20px;
+    margin: 8px 0;
+    /*display: inline-block;*/
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+
+.listDiv{
+	border:solid;
+}
+
+
+.rightCol{
+	display:flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	margin:1%;
+	width:25%;
+
+	border:dashed;
+	border-color: blue;
+}
+
+.pieChart{
+	height:20%;
+	margin:1%;
+
+	border:dashed;
+	border-color:red;
+}
+
+.stockQueue{
+	display:flex;
+	flex-direction:column;
+	margin:1%;
+
+	border:dashed;
+	border-color:green;
+}
+
+.submitDiv{
+	display:flex;
+	/*align-self:stretch;*/
+	/*justify-content: flex-end;*/
+	margin:1%;
+
+	border:dashed;
+	border-color: gray;
+}
+
+#submit{
+	width: 20%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    /*display: inline-block;*/
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+

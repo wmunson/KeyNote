@@ -4,22 +4,23 @@
 <link rel="stylesheet"	href="../static/css/singleTheme.css"/>
 {% endblock %}
 
+<!-- Remove block nav before finale-already in base -->
 <!-- {% block nav %}
 <div class="navBar">
-	<nav>
-		<ul>
+	<nav class="nav">
+		<ul class="navUl">
 			<li class="li home">
-				<form action ="" method="GET">
+				<form class="f" action ="" method="GET">
 					<input type="submit" value="KeyNote">
 				</form>
 			</li>
 			<li class="li explore">
-				<form action ="" method="GET">
+				<form class="f" action ="" method="GET">
 					<input type="submit" value="Explore Themes">
 				</form>
 			</li>
 			<li class="li build">
-				<form action ="" method="GET">
+				<form class="f" action ="" method="GET">
 					<input type="submit" value="Build Theme">
 				</form>
 			</li>
@@ -27,19 +28,20 @@
 				<input id="homeSearch" name="mainSearch" placeholder="Search Themes">
 			</li>
 			<li class="li manageAcc">
-				<form action ="" method="GET">
+				<form class="f" action ="" method="GET">
 					<input type="submit" value="Manage Account">
 				</form>
 			</li>
 			<li class="li logOut">
-				<form action ="" method="GET">
+				<form class="f" action ="" method="GET">
 					<input type="submit" value="Log Out">
 				</form>
 			</li>
 		</ul>
 	</nav>
 </div> 
-{% endblock %} -->
+{% endblock %}
+ --><!-- ====================================== -->
 
 
 {% block body %}
@@ -70,29 +72,31 @@
 	<div class="bottomRow">
 		<div class="toggleBar">
 			<ul class="toggleList">
-				<li id="overview">Overview</li>
-				<li id="performace">Performace</li>
-				<li id="news">News</li>
-				<li id="comments">Comments</li>
+				<li id="overview" class="tab activeTab">Overview</li>
+				<li id="performace" class="tab">Performace</li>
+				<li id="news" class="tab">News</li>
+				<li id="comments" class="tab">Comments</li>
 			</ul>
 		</div>
 		<div class="views">
-			<div class="overviewDiv">
-				<ul>
+      
+			<div class="overviewDiv view activeBox">
+				<ul>overview screen
 					<li>{{ETF_descr}}</li>
 				</ul>
+
 			</div>
 			
-			<div class="performanceDiv">
-				<ul></ul>
+			<div class="performanceDiv view">
+				<ul>perform screen</ul>
 			</div>
 			
-			<div class="newsDiv">
-				<ul></ul>
+			<div class="newsDiv view">
+				<ul>news screen</ul>
 			</div>
 			
-			<div class="commentsDiv">
-				<ul></ul>
+			<div class="commentsDiv view">
+				<ul>comments screen</ul>
 			</div>
 		
 		</div>
