@@ -57,7 +57,7 @@
 			<ul class="newsList">
 			{% for news_article in news_articles %}
 				<li> 
-					<a href="{{news_article[1]}}">{{news_article[0]}}</a>  
+					<a target="_blank" href="{{news_article[1]}}">{{news_article[0]}}</a>  
 				</li>
 			{% endfor %}
 			</ul>
@@ -70,7 +70,7 @@
 			<ul class="etfList">
 				{% for etf in etfs %}
 					<li class="etf">
-					<a href="https://www.google.com/">{{etf.ETF_name}}</a>
+					<a href="/sample">{{etf.ETF_name}}</a>
 					<p>{{etf.last_price}}</p>
 					</li>
 				{% endfor %}
