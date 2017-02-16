@@ -25,6 +25,7 @@ bcrypt = Bcrypt(app)
 
 
 def login_check(username,prov_password):
+	print(username)
 	user = User.query.filter_by(username=username).first()
 	# Check if the password given is the password in the DB
 	if bcrypt.check_password_hash(user.password,prov_password):
@@ -97,7 +98,7 @@ def authentication():
 @app.route('/register', methods=['GET','POST'])
 def create_account():
 	if request.method == 'GET':
-		return render_template('create_acct.html')
+		return render_template('login.html')
 	else:
 		session.clear()
 		new_username = request.form['usernameSignUp']
@@ -109,18 +110,18 @@ def create_account():
 			last_name = request.form['lastname']
 			email = request.form['email']
 			# GENERATE HASH PASSWORD
-			hash_password = bcrypt.generate_hash_password(new_password)
+			hash_password = bcrypt.generate_password_hash(new_password)
 			# BUILD NEW USER INSTANCE
 			new_user = User(new_username, hash_password, first_name,last_name, email)
 			db.session.add(new_user)
 			db.session.commit()
 			# GRAB THE USER OBJ (ID most importantly)
-			user =  User.query.filter_by(username=new_user.new_username).first
-			session_set(user)
+			# user =  User.query.filter_by(username=new_user.username).first
+			# session_set(user)
 			return render_template('login.html')
 
 		else:
-			return render_template('login.hmtl',
+			return render_template('login.html',
 								error_message='Sorry the username you have provided is already taken')
 
 @app.route('/example')
