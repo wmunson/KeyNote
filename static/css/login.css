@@ -1,7 +1,7 @@
 body{
 	/*background: #0A7774;*/
 	background: linear-gradient(-70deg, #0B55B5,black);
-	/*background-image: url("login_back.jpg")*/
+	/*background-image: url("/images/login_back.jpg");*/
 	/*background-repeat:no-repeat;*/
 	/*background-repeat-y:no-repeat;*/
 	
@@ -18,10 +18,10 @@ body{
 
 .subCon{
 	display:flex;
-	border:dashed;	
+	/*border:dashed;	*/
 	width:100%;
 	height:60%;
-	border-color: red;
+	/*border-color: red;*/
 	justify-content: space-around;
 	/*align-self: center;*/
 	
@@ -41,8 +41,8 @@ body{
 .welcome{
 	display:flex;
 	
-	border:dashed;
-	border-color: blue;
+	/*border:dashed;*/
+	/*border-color: blue;*/
 	justify-content: center;
 	width:50%;
 	background-color: white;
@@ -60,13 +60,18 @@ body{
 
 }
 
-.login{
+.exploreBut{
+	
+}
+
+.changeCon{
 	display:flex;
-	flex-direction:column;
-	border:dashed;
-	border-color: green;
-	align-items: center;
-	justify-content: center;
+	/*flex-direction:column;*/
+	position:relative;
+	/*border:dashed;*/
+	/*border-color: green;*/
+	/*align-items: center;*/
+	/*justify-content: space-between;*/
 	width:30%;
 	background-color: white;
 	/*width: 450px;*/
@@ -75,6 +80,20 @@ body{
     border: 1px solid #d8e0e5;
     border-radius: 8px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+.loginDiv{
+	display:flex;
+	flex-direction:column;
+	
+	align-items: center;
+	justify-content: space-between;
+	
+	align-self: center;
+	background-color: white;
+
+    /*border:dashed;*/
+	/*border-color: green;*/
 
 }
 
@@ -82,15 +101,70 @@ body{
 	display: flex;
 	flex-direction:column;
 	width:50%;
+	margin-top:14%;
 }
 
 .signUp{
 	align-self: flex-start;
+	
 }
 
 .goBut{
 	width:50%;
+	
+
 }
+
+.botton:hover {
+  	background: #3cb0fd;
+  	cursor: pointer;
+ }
+
+.signUpDiv{
+	display:flex;
+	flex-direction:column;
+	
+	align-items: center;
+	justify-content: space-between;
+	/*width:90%;*/
+	/*height:110%;*/
+	/*z-index: 1;*/
+	align-self: center;
+	background-color: white;
+	
+    /*margin: 0 auto 75px;*/
+    /*padding: 32px;*/
+    /*border: 1px solid #d8e0e5;*/
+    /*border-radius: 8px;*/
+    /*box-shadow: 0 1px 2px rgba(0,0,0,0.15);*/
+
+    /*border:dashed;*/
+	/*border-color: blue;*/
+}
+
+
+.signupForm{
+	display: flex;
+	flex-direction:column;
+	width:50%;
+	margin-top:10%;
+}
+
+
+.box{
+	position:absolute;
+	/*z-index: -1*/
+	/*height:0%;*/
+	/*width:0%;*/
+	
+}
+
+.active{
+	z-index: 1;
+	height:90%;
+	width:90%;
+}
+
 
 .lowerDiv{
 	display:flex;
@@ -99,6 +173,7 @@ body{
 	width:100%;
 	justify-content: center;
 }
-}
+
 .errorMessage{
 	/*border:solid;*/
+}
