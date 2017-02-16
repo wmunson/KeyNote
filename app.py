@@ -100,13 +100,13 @@ def create_account():
 		return render_template('create_acct.html')
 	else:
 		session.clear()
-		new_username = request.form['username']
+		new_username = request.form['usernameSignUp']
 		check = User.query.filter_by(username = new_username).first()
 		if check == None:
 			# GRAB FORM DATA
-			new_password = request.form['password']
-			first_name = request.form['first_name']
-			last_name = request.form['last_name']
+			new_password = request.form['passwordSignUp']
+			first_name = request.form['firstname']
+			last_name = request.form['lastname']
 			email = request.form['email']
 			# GENERATE HASH PASSWORD
 			hash_password = bcrypt.generate_hash_password(new_password)
@@ -117,11 +117,11 @@ def create_account():
 			# GRAB THE USER OBJ (ID most importantly)
 			user =  User.query.filter_by(username=new_user.new_username).first
 			session_set(user)
-			return render_template('home.html')
+			return render_template('login.html')
 
 		else:
-			return render_template('create_acct.hmtl',
-								create_error_message='Sorry the username you have provided is already taken')
+			return render_template('login.hmtl',
+								error_message='Sorry the username you have provided is already taken')
 
 @app.route('/example')
 def display_example():
@@ -151,10 +151,18 @@ def explore_sample():
 def show_build_page():
 	return render_template('build.html')
 
-@app.route('/digdeeper/<key>')
+@app.route('/customize/<key>')
 def grab_the_ETF():
-	ETF.query.filter_by(id=key).first()
-	pass
+	chosen_etf = ETF.query.filter_by(id=key).first()
+	return render_template('build.html',
+			etf = chosen_etf)
+
+@app.route('/logout')
+def log_out():
+	session.clear()
+	return render_template('login.html')
+
+
 if __name__ == "__main__":
 	app.run(debug=True)
 
