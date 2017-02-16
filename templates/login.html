@@ -12,28 +12,43 @@
 	<body>
 		<div class = "container">
 			<div class="subCon subDiv" >	
-				<div class = "welcome children">
+				<div class = "welcome">
 					<div class = "message">
 						<h3>Welcome to KeyNote!</h3>
 						<div class="text">
 							<p>If you would like to see what KeyNote is about, click the Explore button below. Otherwise Sign Up and get started!</p>
 						</div>
 						<form action = "/sample" method = "GET">
-							<input type = "submit" value = "Explore!">
+							<input class="exploreBut botton"  type = "submit" value = "Explore!">
 						</form>
 					</div>	
 				</div>
-				<div class = "login children">
-					
-						<form class="loginForm" action="/login" method="POST">
-							<input name="username" class ="box user" type="text" placeholder="Username">
-							<input name="password" class ="box pass" type="text" placeholder="Password">
-							<input class="GoBut" type ="submit" value="Go!">
-						</form>
-					
-					
-						<input class="signUp" type="submit" value="Sign Up">
-					
+				<div class="changeCon">	
+					<div id="changer1" class = "loginDiv box active">
+						
+							<form class="loginForm" action="/login" method="POST">
+								<input name="username" class ="user" type="text" placeholder="Username">
+								<input name="password" class ="pass" type="password" placeholder="Password">
+								<input class="goBut botton" type ="submit" value="Go!">
+							</form>
+						
+						
+							<input id="signUp" class="signUp botton" type="submit" value="Sign Up"/>
+						
+					</div>
+					<div id="changer2" class ="signUpDiv box">
+						
+							<form class="signupForm" action="/register" method="POST">
+								<input name="usernameSignUp" class ="user" type="text" placeholder="Username">
+								<input name="password" class ="pass" type="text" placeholder="Password">
+								<input name="firstname" class ="pass" type="text" placeholder="First Name">
+								<input name="lastname" class ="pass" type="text" placeholder="Last Name">
+								<input name="email" class ="pass" type="text" placeholder="Email">
+								<input class="GoBut botton" type ="submit" value="Go!">
+							</form>
+							<input id="loginUp" class="signUp botton" type="submit" value="Login"/>
+
+					</div>
 				</div>
 			</div>
 		</div>
