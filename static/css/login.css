@@ -175,5 +175,7 @@ body{
 }
 
 .errorMessage{
-	border:solid;
+	text-decoration:underline;
+	color:red;
+	font-size:1.2rem;
 }
