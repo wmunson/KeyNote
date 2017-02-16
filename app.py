@@ -149,8 +149,12 @@ def explore_sample():
 
 @app.route('/build')
 def show_build_page():
-	pass
+	return render_template('build.html')
 
+@app.route('/digdeeper/<key>')
+def grab_the_ETF():
+	ETF.query.filter_by(id=key).first()
+	pass
 if __name__ == "__main__":
 	app.run(debug=True)
 
