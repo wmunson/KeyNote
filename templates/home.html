@@ -50,6 +50,9 @@
 	<div class="leftCol">
 		<div class="welcome">
 			<h3>Welcome Back, {{first_name}}</h3>
+			<div class=""
+
+
 		</div>
 		<div class="newsDiv">
 			<h5 class = "titles"> News Articles </h5>
@@ -70,8 +73,10 @@
 			<ul class="etfList">
 				{% for etf in etfs %}
 					<li class="etf">
-					<a href="/sample">{{etf.ETF_name}}</a>
-					<p>{{etf.last_price}}</p>
+						<a href="/sample">{{etf.ETF_name}}</a>
+						<div id="alex">
+							$ {{etf.last_price}}
+						</div>
 					</li>
 				{% endfor %}
       </ul>
