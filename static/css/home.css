@@ -45,10 +45,39 @@
 .accountInfo{
 	display:flex;
 	flex-direction:column;
-	border:dashed;
-	border-color:green;
 	background-color: white;
+	text-align:center;	
 
+	border:dashed;
+	
+	border-color:green;
+	
+
+
+}
+
+.etfList{
+	display: flex;
+	flex-direction:row;
+	justify-content: center;
+	width:90%;
+	margin:auto;
+	padding:0;
+	
+}
+
+.etf{
+	display:flex;
+	width:100%;
+	justify-content:space-between;
+	/*margin:1%;*/
+
+	list-style: none;
+	border:dashed blue;
+}
+
+#alex{
+	/*align-self:flex-end;*/
 }
 
 /*============================================*/

@@ -31,7 +31,9 @@
 								<input name="password" class ="pass" type="password" placeholder="Password">
 								<input class="goBut botton" type ="submit" value="Go!">
 							</form>
-						
+							{% if errorMessage %}
+							<div class="errorMessage">{{errorMessage}}</div>
+							{% endif %}
 						
 							<input id="signUp" class="signUp botton" type="submit" value="Sign Up"/>
 						
@@ -46,8 +48,12 @@
 								<input name="email" class ="pass" type="text" placeholder="Email">
 								<input class="GoBut botton" type ="submit" value="Go!">
 							</form>
-							<input id="loginUp" class="signUp botton" type="submit" value="Login"/>
+							{% if errorMessage %}
+							<div class="errorMessage">{{errorMessage}}</div>
+							{% endif %}
 
+							<input id="loginUp" class="signUp botton" type="submit" value="Login"/>
+							
 					</div>
 				</div>
 			</div>
