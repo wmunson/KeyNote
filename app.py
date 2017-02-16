@@ -89,7 +89,8 @@ def authentication():
 			etfs = grab_etfs(session['user_id'])
 			return render_template("home.html",
 			first_name = session['first_name'],
-			etfs = etfs)
+			etfs = etfs,
+			news_articles = grab_articles())
 		else:
 			return render_template('login.html')
 
@@ -125,7 +126,7 @@ def create_account():
 @app.route('/example')
 def display_example():
 	example_etf = grab_etf(1)
-	return render_template('example.html',
+	return render_template('build.html',
 				example_etf = example_etf)
 	# ADD ANYTHING ELSE?
 
@@ -146,12 +147,15 @@ def explore_sample():
 					)
 
 
+@app.route('/build')
+def show_build_page():
+	return render_template('build.html')
 
-
-
+@app.route('/digdeeper/<key>')
+def grab_the_ETF():
+	ETF.query.filter_by(id=key).first()
+	pass
 if __name__ == "__main__":
-	db.drop_all()
-	db.create_all()
 	app.run(debug=True)
 
 

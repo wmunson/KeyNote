@@ -39,31 +39,35 @@
 			</li>
 		</ul>
 	</nav>
+
 </div> 
 {% endblock %} -->
 <!-- ====================================== -->
+
 
 {% block body %}
 <div class="blockBody">
 	<div class="leftCol">	
 		<div class="inputDiv">
+			<p>Give Your Theme a Name nd Description. Then Search for Stocks to add to The Queue</p>
 			<input name="etfName" type="text" placeholder="Enter Name">
 			<input name="etfDescript" type="text" placeholder="Enter Description">
 		</div>
 
 		<div class="searchDiv">
-			<input type="text" value="Search">
-			<input type="submit" value="Submit">
+			<input id="search" type="text" placeholder="Search Stocks">
+			
 			<div class="listDiv">
 				<ul class="stockList"></ul>
 			</div>
-		</div>		
+		</div>
+		
 	</div>
 	
-	<div class="RightCol">
+	<div class="rightCol">
 		<div class="pieChart">
-			
-		</div>
+      <p>pie chart hear</p>
+	</div>
 		<div class="stockQueue">
 			<div class="overviewDiv">
 				<p>Stock Queue</p>
@@ -74,6 +78,9 @@
 				</ul>
 			</div>
 
+		</div>
+		<div class="submitDiv">	
+			<input id="submit" type="submit" value="Submit">	
 		</div>
 	</div>
 </div>	

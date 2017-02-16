@@ -1,5 +1,7 @@
-
-/*Nave bar Styling*/
+body{
+	background: linear-gradient(-70deg, #0B55B5,black);
+}
+/*Nav bar Styling*/
 
 .navBar{
 	display:flex;
