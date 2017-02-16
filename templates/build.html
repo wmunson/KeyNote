@@ -4,22 +4,23 @@
 <link rel="stylesheet"	href="../static/css/build.css"/>
 {% endblock %}
 
-<!-- {% block nav %} -->
-<!-- <div class="navBar">
-	<nav>
-		<ul>
+<!-- Remove block nav before finale-already in base -->
+<!-- {% block nav %}
+<div class="navBar">
+	<nav class="nav">
+		<ul class="navUl">
 			<li class="li home">
-				<form action ="" method="GET">
+				<form class="f" action ="" method="GET">
 					<input type="submit" value="KeyNote">
 				</form>
 			</li>
 			<li class="li explore">
-				<form action ="" method="GET">
+				<form class="f" action ="" method="GET">
 					<input type="submit" value="Explore Themes">
 				</form>
 			</li>
 			<li class="li build">
-				<form action ="" method="GET">
+				<form class="f" action ="" method="GET">
 					<input type="submit" value="Build Theme">
 				</form>
 			</li>
@@ -27,19 +28,21 @@
 				<input id="homeSearch" name="mainSearch" placeholder="Search Themes">
 			</li>
 			<li class="li manageAcc">
-				<form action ="" method="GET">
+				<form class="f" action ="" method="GET">
 					<input type="submit" value="Manage Account">
 				</form>
 			</li>
 			<li class="li logOut">
-				<form action ="" method="GET">
+				<form class="f" action ="" method="GET">
 					<input type="submit" value="Log Out">
 				</form>
 			</li>
 		</ul>
 	</nav>
-</div>  -->
-<!-- {% endblock %} -->
+
+</div> 
+{% endblock %} -->
+<!-- ====================================== -->
 
 
 {% block body %}
@@ -62,9 +65,10 @@
 	</div>
 	
 	<div class="rightCol">
-		<div class="pieChart">
-			<p>pie chart hear</p>
+	  <div class="pieChart">
+		  <p>pie chart hear</p>
 		</div>
+
 		<div class="stockQueue">
 			<div class="overviewDiv">
 				<p>Stock Queue</p>
