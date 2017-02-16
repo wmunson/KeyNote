@@ -10,6 +10,8 @@ import io
 # url = 'http://chart.finance.yahoo.com/table.csv?s=MSFT&a=0&b=7&c=2017&d=1&e=7&f=2017&g=d&ignore=.csv'
 # 
 
+
+
 def session_set(user):
 	session['logged-in'] = True
 	session['user_id'] = user.id
@@ -53,6 +55,7 @@ def etf_to_JSON(etf):
 	}
 	return jsonify(etf_dict)
 
+
 def grab_articles():
 	news_url = ('https://newsapi.org/v1/articles?source=the-wall-street-journal&sortBy=top&apiKey=c4208eaed7204bc880581f157f1a3c87')
 	answer = requests.get(news_url).json()
@@ -63,7 +66,6 @@ def grab_articles():
 		news_obj.append(news_article['title'])
 		news_obj.append(news_article['url']) 
 		outbound_news_list.append(news_obj)
-	# print(outbound_news_list)
 	return outbound_news_list
 
 
