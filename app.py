@@ -33,9 +33,7 @@ def login_check(username,prov_password):
 		etfs = grab_etfs(user.id)
 		return etfs
 	else:
-		return render_template('base.html',
-				login_error_message="Sorry, the information you provided is incorrect. Please try again."
-				)
+		return False
 
 def grab_etfs(user_id):
 	key = user_id
@@ -80,11 +78,15 @@ def authentication():
 		username = request.form['username']
 		password = request.form['password']
 		etfs = login_check(username,password)
-		news = grab_articles()
-		return render_template("home.html",
-			first_name = session['first_name'],
-			etfs = etfs,
-			news_articles = news)
+		if etfs == False:
+			return render_template('login.html',
+				errorMessage="Sorry, your login credentials were incorrect.")
+		else:
+			news = grab_articles()
+			return render_template("home.html",
+				first_name = session['first_name'],
+				etfs = etfs,
+				news_articles = news)
 	else:
 		if session['logged-in'] == True:
 			etfs = grab_etfs(session['user_id'])
@@ -118,11 +120,12 @@ def create_account():
 			# GRAB THE USER OBJ (ID most importantly)
 			# user =  User.query.filter_by(username=new_user.username).first
 			# session_set(user)
-			return render_template('login.html')
+			return render_template('login.html',
+					errorMessage="Creation Successful. Give it a try!")
 
 		else:
 			return render_template('login.html',
-								error_message='Sorry the username you have provided is already taken')
+								errorMessage='Sorry the username you have provided is already taken')
 
 @app.route('/example')
 def display_example():
