@@ -122,7 +122,7 @@ def create_account():
 
 		else:
 			return render_template('login.html',
-								error_message='Sorry the username you have provided is already taken')
+								errorMessage='Sorry the username you have provided is already taken')
 
 @app.route('/example')
 def display_example():
