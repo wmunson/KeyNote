@@ -168,7 +168,7 @@ def log_out():
 
 @app.route("/graph")
 def example():
-	return json.dumps(make_stock_list("wes"))
+	return make_stock_list("wes")
 
 
 if __name__ == "__main__":

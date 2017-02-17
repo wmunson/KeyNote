@@ -99,4 +99,7 @@ def create_etf(etf_info):
 # grab_articles()
 
 
-# print(json.dumps(make_stock_list("msft")))
+x = make_stock_list("msft")
+print(type(x))
+# x.decode('string_escape')
+print(x)
