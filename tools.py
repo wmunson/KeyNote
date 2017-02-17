@@ -26,21 +26,35 @@ def session_set(user):
 def make_stock_list(ticker):
 	ticker = ticker.upper()
 	print(ticker)
-	url = "http://chart.finance.yahoo.com/table.csv?s="+ticker+"&a=0&b=7&c=2017&d=1&e=7&f=2017&g=d&ignore=.csv"
+	# url = "http://chart.finance.yahoo.com/table.csv?s="+ticker+"&a=0&b=17&c=2017&d=1&e=17&f=2017&g=d&ignore=.csv"
+	url = "http://chart.finance.yahoo.com/table.csv?s="+'^GSPC'+"&a=0&b=17&c=2017&d=1&e=17&f=2017&g=d&ignore=.csv"
+	# url = "http://chart.finance.yahoo.com/table.csv?s="+ticker+"&a=0&b=7&c=2007&d=1&e=17&f=2017&g=d&ignore=.csv"
 	s=requests.get(url).content
 	
 	# ERROR MUST BE TRAPPED
-	if "404" in str(s):
-		print("error")
-		pass
-	else:
-		dataframe = pd.read_csv(io.StringIO(s.decode('utf-8')))
+	# if "404" in str(s):
+	# 	print("error")
+	# 	print(str(s))
+	# else:
+	dataframe = pd.read_csv(io.StringIO(s.decode('utf-8')))
 
-		price_list = []
-
-		for index, row in dataframe.iterrows():
-			price_list.append(row.Close)
-		# print(price_list)
+	price_list = []
+	date_list = []
+	print(dataframe)
+	for index, row in dataframe.iterrows():
+		price_list.append(row.Close)
+		date_list.append(row.Date)
+	final_product = {
+			"company" : 'GSPC',
+			"price_list": price_list,
+			"date_list": date_list
+	}
+	print(price_list)
+	print(date_list)
+	print(len(price_list))
+	print(len(date_list))
+	print(final_product)
+	return final_product
 
 
 
@@ -85,4 +99,4 @@ def create_etf(etf_info):
 # grab_articles()
 
 
-# make_list("msft")
+make_stock_list("msft")

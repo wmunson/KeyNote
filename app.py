@@ -166,6 +166,10 @@ def log_out():
 	session.clear()
 	return render_template('login.html')
 
+@app.route("/graph")
+def example():
+	return make_stock_list()
+
 
 if __name__ == "__main__":
 	app.run(debug=True)
