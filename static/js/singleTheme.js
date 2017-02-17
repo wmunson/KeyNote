@@ -55,8 +55,8 @@ var loadGraphData = function(){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
-		var data1=this.responseText;
-		console.log(data1)	
+		var data1=JSON.parse(this.responseText);
+		console.log(typeof data1)	
 		};	
 	};
 	xhttp.open("GET","/graph", true);
