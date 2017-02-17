@@ -5,7 +5,7 @@ from flask_bcrypt import Bcrypt
 from create_db import *
 import requests
 from tools import grab_articles, session_set, make_stock_list, etf_to_JSON
-
+import json
 
 app= Flask(__name__)
 
@@ -168,7 +168,7 @@ def log_out():
 
 @app.route("/graph")
 def example():
-	return make_stock_list()
+	return json.dumps(make_stock_list("wes"))
 
 
 if __name__ == "__main__":
