@@ -4,7 +4,7 @@ import csv
 import urllib.request
 import requests
 import io
-
+import json
 
 # EXAMPLE URL
 # url = 'http://chart.finance.yahoo.com/table.csv?s=MSFT&a=0&b=7&c=2017&d=1&e=7&f=2017&g=d&ignore=.csv'
@@ -40,7 +40,7 @@ def make_stock_list(ticker):
 
 	price_list = []
 	date_list = []
-	print(dataframe)
+	# print(dataframe)
 	for index, row in dataframe.iterrows():
 		price_list.append(row.Close)
 		date_list.append(row.Date)
@@ -49,12 +49,12 @@ def make_stock_list(ticker):
 			"price_list": price_list,
 			"date_list": date_list
 	}
-	print(price_list)
-	print(date_list)
-	print(len(price_list))
-	print(len(date_list))
-	print(final_product)
-	return final_product
+	# print(price_list)
+	# print(date_list)
+	# print(len(price_list))
+	# print(len(date_list))
+	# print(final_product)
+	return json.dumps(final_product)
 
 
 
@@ -99,4 +99,4 @@ def create_etf(etf_info):
 # grab_articles()
 
 
-make_stock_list("msft")
+# print(json.dumps(make_stock_list("msft")))
