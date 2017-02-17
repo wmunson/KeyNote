@@ -17,10 +17,18 @@
 }
 
 .welcome{
+	display:flex;
+	flex-direction: column;
 	border:solid;
 	border-color:red;
 	background-color: white;
 	margin:1%;
+}
+
+.graphSP{
+	height:10rem;
+
+	border:dashed gray;
 }
 
 .newsDiv{
