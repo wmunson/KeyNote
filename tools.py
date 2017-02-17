@@ -101,6 +101,4 @@ def create_etf(etf_info):
 
 
 # x = make_stock_list("msft")
-# # # print(type(x))
-# # # # x.decode('string_escape')
 # print(x)
