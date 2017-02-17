@@ -37,9 +37,10 @@ def make_stock_list(ticker):
 	# 	print(str(s))
 	# else:
 	dataframe = pd.read_csv(io.StringIO(s.decode('utf-8')))
-
+	# dataframe.reindex(index=dataframe.index[::-1])
 	price_list = []
 	date_list = []
+	dataframe = dataframe.sort_index(axis=0 ,ascending=False)
 	# print(dataframe)
 	for index, row in dataframe.iterrows():
 		price_list.append(row.Close)
@@ -99,7 +100,7 @@ def create_etf(etf_info):
 # grab_articles()
 
 
-x = make_stock_list("msft")
-print(type(x))
-# x.decode('string_escape')
-print(x)
+# x = make_stock_list("msft")
+# # # print(type(x))
+# # # # x.decode('string_escape')
+# print(x)
