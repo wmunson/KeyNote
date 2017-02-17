@@ -12,9 +12,13 @@
 	flex-direction:column;
 	width:70%;
 	margin:1%;
-	border:dashed;
-	border-color: red;
-	/*align-items: center*/
+	background-color: white;
+	align-items: center
+	border: 1px solid #d8e0e5;
+    border-radius: 8px;
+	/*border:dashed red;*/
+	
+	
 	/*justify-content: space-between;*/
 
 }
@@ -24,11 +28,15 @@
 	flex-direction:column;
 	width:70%;
 	margin:1%;
-	margin:1%;
+	margin-top:4%;
 
+    padding: 32px;
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 
-	border:dashed;
-	border-color: green;
+	/*border:dashed green;*/
+	
 
 }
 
@@ -42,15 +50,24 @@
     box-sizing: border-box;
 }
 
+#nameInput{
+	width:40%;
+}
+
 .searchDiv{
 	display:flex;
 	flex-direction:column;
 	margin:1%;
 	width:90%;
 	align-self: center;
+	margin: 0 auto 75px;
+    padding: 32px;
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 
-	border:dashed;
-	border-color: gray;	
+	/*border:dashed gray;*/
+		
 }
 
 #search{
@@ -66,7 +83,7 @@
 
 
 .listDiv{
-	border:solid;
+	/*border:solid;*/
 }
 
 
@@ -76,26 +93,37 @@
 	flex-wrap: wrap;
 	margin:1%;
 	width:25%;
-
-	border:dashed;
-	border-color: blue;
+	background-color: white;
+	border: 1px solid #d8e0e5;
+    border-radius: 8px;
+	/*border:dashed blue;*/
+	
 }
 
 .pieChart{
 	height:20%;
-	margin:1%;
+	margin:2%;
+    padding: 32px;
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 
-	border:dashed;
-	border-color:red;
+	/*border:dashed red;*/
+	
 }
 
 .stockQueue{
 	display:flex;
 	flex-direction:column;
-	margin:1%;
+	margin:2%;
 
-	border:dashed;
-	border-color:green;
+    padding: 32px;
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+
+	/*border:dashed;*/
+	/*border-color:green;*/
 }
 
 .submitDiv{
@@ -104,8 +132,8 @@
 	/*justify-content: flex-end;*/
 	margin:1%;
 
-	border:dashed;
-	border-color: gray;
+	/*border:dashed gray;*/
+	
 }
 
 #submit{
