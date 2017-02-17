@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from create_db import *
 import requests
-from tools import grab_articles, session_set, make_stock_list, etf_to_JSON
+from tools import grab_articles, session_set, make_stock_list, etf_to_JSON, etf_pricer_final
 import json
 
 app= Flask(__name__)
@@ -168,7 +168,7 @@ def log_out():
 
 @app.route("/graph")
 def example():
-	return make_stock_list("wes")
+	return etf_pricer_final('aapl','ibm','msft')
 
 
 if __name__ == "__main__":

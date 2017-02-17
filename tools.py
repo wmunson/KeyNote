@@ -27,7 +27,8 @@ def make_stock_list(ticker):
 	ticker = ticker.upper()
 	print(ticker)
 	# url = "http://chart.finance.yahoo.com/table.csv?s="+ticker+"&a=0&b=17&c=2017&d=1&e=17&f=2017&g=d&ignore=.csv"
-	url = "http://chart.finance.yahoo.com/table.csv?s="+'^GSPC'+"&a=0&b=17&c=2017&d=1&e=17&f=2017&g=d&ignore=.csv"
+	url = "http://chart.finance.yahoo.com/table.csv?s="+ticker+"&a=0&b=17&c=2017&d=1&e=17&f=2017&g=d&ignore=.csv"
+	# url = "http://chart.finance.yahoo.com/table.csv?s=^GSPC&a=0&b=17&c=2017&d=1&e=17&f=2017&g=d&ignore=.csv"
 	# url = "http://chart.finance.yahoo.com/table.csv?s="+ticker+"&a=0&b=7&c=2007&d=1&e=17&f=2017&g=d&ignore=.csv"
 	s=requests.get(url).content
 	
@@ -37,26 +38,45 @@ def make_stock_list(ticker):
 	# 	print(str(s))
 	# else:
 	dataframe = pd.read_csv(io.StringIO(s.decode('utf-8')))
-	# dataframe.reindex(index=dataframe.index[::-1])
 	price_list = []
 	date_list = []
 	dataframe = dataframe.sort_index(axis=0 ,ascending=False)
-	# print(dataframe)
 	for index, row in dataframe.iterrows():
 		price_list.append(row.Close)
 		date_list.append(row.Date)
-	final_product = {
-			"company" : 'GSPC',
+	stock_product = {
+			"company" : ticker,
 			"price_list": price_list,
 			"date_list": date_list
 	}
-	# print(price_list)
-	# print(date_list)
-	# print(len(price_list))
-	# print(len(date_list))
-	# print(final_product)
-	return json.dumps(final_product)
+	return stock_product
+	# return json.dumps(final_product)
 
+def etf_pricer_final(ticker1,ticker2,ticker3):
+	aapl = make_stock_list(ticker1)['price_list']
+	ibm = make_stock_list(ticker2)['price_list']
+	msft = make_stock_list(ticker3)['price_list']
+	sp = make_stock_list('^GSPC')
+	w_appl = 0.4
+	w_ibm = 0.3
+	w_msft = 0.3
+	etf_price_list = []
+	# print(len(sp))
+	for i in range(0,len(sp['price_list'])):
+		output = aapl[i]*w_appl + ibm[i]*w_ibm + msft[i]*w_msft
+		etf_price_list.append(output)
+	final_product={
+			'Name':'Techie',
+			'date_list': sp['date_list'],
+			'SandP': sp['price_list'],
+			'etf': etf_price_list
+
+	}
+	print(len(etf_price_list))
+	print(len(sp['price_list']))
+	print(len(sp['date_list']))
+	return json.dumps(final_product)
+	# return (aapl,ibm,msft,sp)
 
 
 def etf_to_JSON(etf):
@@ -94,10 +114,18 @@ def create_etf(etf_info):
 		db.session.commit()
 		return True
 
+
+
+
+
+
+
+
+
+
 # FUNCTION TESTING
 
-
-# grab_articles()
+# print(etf_pricer_final('aapl','ibm','msft'))
 
 
 # x = make_stock_list("msft")
