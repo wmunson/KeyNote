@@ -121,14 +121,14 @@
 
 .performanceDiv{
 	display:flex;
-
+	justify-content: center;
 	/*order: -1;*/
 	/*border:dotted;*/
 	/*border-color: brown;*/
 }
 
 .performGraph{
-	width:90%;
+	width:100%;
 	margin:1%;
 }
 
@@ -148,7 +148,7 @@
 .view{
 	/*z-index: -1;*/
 	height:100%;
-	width:100%;
+	width:90%;
 	display:none;
 }
 
