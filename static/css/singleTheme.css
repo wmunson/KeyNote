@@ -1,6 +1,4 @@
-/*body{
-	background: linear-gradient(-70deg, #0B55B5,black);
-}*/
+
 
 .blockBody{
 	display:flex;
@@ -16,7 +14,7 @@
 	display:flex;
 	width:80%;
 	height:16rem;
-	justify-content:space-between;
+	justify-content:space-around;
 	
 	/*border:dashed;*/
 	border-color:blue;
@@ -110,42 +108,53 @@
 .views{
 	display:flex;
 	height:100%;
+	position:relative;
+
 
 }
 
 .overviewDiv{
-	order: 0;
+	/*order: 0;*/
 	/*border:dotted;*/
 	/*border-color: green*/
 }
 
 .performanceDiv{
-	order: -1;
+	display:flex;
+
+	/*order: -1;*/
 	/*border:dotted;*/
 	/*border-color: brown;*/
 }
 
+.performGraph{
+	width:90%;
+	margin:1%;
+}
+
+
 .newsDiv{
-	order: -1;
+	/*order: -1;*/
 	/*border:dotted;*/
 	/*border-color: blue;*/
 }
 
 .commentsDiv{
-	order: -1;
+	/*order: -1;*/
 	/*border:dotted;*/
 	/*border-color: red;*/
 }
 
 .view{
-	position:relative;
-	display:none;
+	/*z-index: -1;*/
 	height:100%;
 	width:100%;
+	display:none;
 }
 
 .activeBox{
 	display:block;
+	/*z-index: 1;*/
 }
 
 
@@ -233,4 +242,4 @@
     box-sizing: border-box;
 }
 
-/*End of NavBar*/
+/*End of NavBar
