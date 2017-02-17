@@ -51,14 +51,62 @@ for (let i=0;i<array.length;i++){
 //Calling data for Performance graph
 
 
+var setArray=function(val, title){
+	var newArr=[]
+	newArr.push(title)
+	for (i=0; i<val.length; i++){
+		newArr.push(val[i])
+	}
+	console.log('newArr:'+ newArr)
+	return newArr
+}
+
 var loadGraphData = function(){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
-		var data1=JSON.parse(this.responseText);
-		console.log(typeof data1)	
+		var data=JSON.parse(this.responseText);
+		var date=setArray(data['date_list'], 'x')
+		var price=setArray(data['price_list'], data['company'])
+		console.log(date)	
+		console.log(price)	
+		
+		require.config({
+			baseUrl: '/js',
+			paths: {
+    		d3: "http://d3js.org/d3.v3.min"
+  			}
+		});
+
+		require(["d3", "c3"], function(d3, c3) {
+  			c3.generate({
+    
+    			bindto: '.performGraph',
+    			
+    			data: {
+        x: 'x',
+        columns: [
+            date,
+            price
+        ]
+    },
+    axis: {
+        x: {
+            type: 'timeseries',
+            tick: {
+                // this also works for non timeseries data
+                values: data['date_list']
+            }
+        }
+    }
+    			})
+
+  			});
+		};
+
+
 		};	
-	};
+	
 	xhttp.open("GET","/graph", true);
 	xhttp.send();
 };
@@ -68,24 +116,3 @@ loadGraphData()
 
 
 
-require.config({
-  baseUrl: '/js',
-  paths: {
-    d3: "http://d3js.org/d3.v3.min"
-  }
-});
-
-require(["d3", "c3"], function(d3, c3) {
-  c3.generate({
-    
-    bindto: '.performGraph',
-    data: {
-      columns: [
-        ['data1', 30, 200, 100, 400, 150, 250],
-        ['data2', 50, 20, 10, 40, 15, 25]
-      ]
-    }
-
-
-  });
-});
