@@ -51,19 +51,19 @@ for (let i=0;i<array.length;i++){
 //Calling data for Performance graph
 
 
-var loadGraphData = fucntion(){
+var loadGraphData = function(){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
 		var data1=this.responseText;
 		console.log(data1)	
-		}	
+		};	
 	};
-	xhttp.open("GET","http://127.0.0.1:5000/graph", true);
+	xhttp.open("GET","/graph", true);
 	xhttp.send();
 };
 
-
+loadGraphData()
 
 
 
