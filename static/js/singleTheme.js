@@ -48,8 +48,9 @@ for (let i=0;i<array.length;i++){
 }
 
 
-//Calling data for Performance graph
-
+//////////////////////////////////////////////
+//Calling data for Performance graph//////////
+//////////////////////////////////////////////
 
 var setArray=function(val, title){
 	var newArr=[]
@@ -61,15 +62,32 @@ var setArray=function(val, title){
 	return newArr
 }
 
+
+Array.prototype.max = function(){
+	return Math.max.apply(null, this);
+};
+
+Array.prototype.min = function(){
+	return Math.min.apply(null, this);
+};
+
+
 var loadGraphData = function(){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
 		var data=JSON.parse(this.responseText);
 		var date=setArray(data['date_list'], 'x')
-		var price=setArray(data['price_list'], data['company'])
+		var etfPrice=setArray(data['etf'], data['Name'])
+		var spPrice=setArray(data['SandP'], 'S&P')
+		var priceMax= data['etf'].max()
+		var priceMin= data['etf'].min()
+		console.log(data)	
 		console.log(date)	
-		console.log(price)	
+		console.log(etfPrice)	
+		console.log(priceMax)	
+		console.log(priceMin)	
+		// console.log(price)	
 		
 		require.config({
 			baseUrl: '/js',
@@ -84,28 +102,39 @@ var loadGraphData = function(){
     			bindto: '.performGraph',
     			
     			data: {
-        x: 'x',
-        columns: [
-            date,
-            price
-        ]
-    },
-    axis: {
-        x: {
-            type: 'timeseries',
-            tick: {
-                // this also works for non timeseries data
-                values: data['date_list']
-            }
-        }
-    }
-    			})
+		        x: 'x',
+		        columns: [
+		            date,
+		            etfPrice,
+		            spPrice
 
-  			});
-		};
+		        ],
+		        axes:{
+		        	etfPrice: 'y2'
+		        }
+			    },
+			    axis: {
+			      	y2:{
+			   			show:true,
+			   			tick:{
+			   				values: data['etf']
+			   			}
+			   			},
+			        x: {
+			            type: 'timeseries',
+			            tick: {
+			                // this also works for non timeseries data
+			                values: data['date_list']
+			            }
+			        }
+			   	}
+	    	})
+
+	  			});
+			};
 
 
-		};	
+			};	
 	
 	xhttp.open("GET","/graph", true);
 	xhttp.send();
