@@ -172,7 +172,20 @@ def example():
 
 @app.route("/account")
 def update account():
-	pass
+	new_username = request.form['new_username']
+	new_password = request.form['new_password']
+	email = request.form['email']
+	first_name = request.form['first_name']
+	last_name = request.form['last_name']
+	user1 = User.query.filter_by(id=key).first()
+	user1.first_name =first_name
+	user1.last_name = last_name
+	user1.email = email
+	user1.password = bcrypt.generate_password_hash(new_password)
+	user1.username = new_username
+	db.session.commit()
+	return render_template('login.html')
+
 
 @app.route('/search', methods=['GET','POST'])
 def search():
