@@ -1,65 +1,106 @@
 .blockBody{
 	display:flex;
+	height:100%;
+	
+	/*border-color:red;*/
 	border:dashed;
-	border-color:red;
-	height:100vh;
 }
 
 
 .leftCol{
 	display:flex;
 	flex-direction:column;
-	border:dashed;
-	border-color:blue;
+	background-color: white;
+	
 	margin:1%;
 	width:70%;
 	
+    padding: 32px;
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+
+	/*border:dashed blue;*/
 }
 
 .welcome{
 	display:flex;
 	flex-direction: column;
-	border:solid;
-	border-color:red;
+	
+	padding: 32px;
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
 	background-color: white;
 	margin:1%;
+	/*border-bottom-size:.2px;*/
+	/*border-bottom-style: outset;*/
+
+	/*border:solid red;*/
 }
 
 .graphSP{
 	height:10rem;
 
-	border:dashed gray;
+	/*border:dashed gray;*/
 }
 
 .newsDiv{
-	border:solid;
-	border-color:black;
+	padding: 32px;
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
 	background-color: white;
 	margin:1%;
+	
+	/*border:solid black;*/
 }
 
 
 
 
 .rightCol{
-	border:dashed;
-	border-color:black;
+	display:flex;
+	background-color: white;
 	margin:1%;
 	width:20%;
+    padding: 32px;
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
 
+	/*border:dashed;*/
+	
+	
 
 }
 
 .accountInfo{
 	display:flex;
 	flex-direction:column;
+	/*flex-wrap: wrap:;*/
 	background-color: white;
 	text-align:center;	
+	padding: 32px;
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+	height:90%;
+	width:95%;
 
-	border:dashed;
+	/*border:dashed green;*/
+
+}
 	
-	border-color:green;
-	
+.accountTitle{
+	display:flex;
+	height:3rem;
+	width:90%;
+	text-align:center;
+	align-self: center;
+	justify-content: center;
+	border-bottom:solid black;
+	border-size:.3rem;
 
 
 }
@@ -69,8 +110,10 @@
 	flex-direction:row;
 	justify-content: center;
 	width:90%;
-	margin:auto;
+	margin:1%;
 	padding:0;
+
+	/*border:dashed black;*/
 	
 }
 
@@ -81,7 +124,8 @@
 	/*margin:1%;*/
 
 	list-style: none;
-	border:dashed blue;
+	
+	/*border:dashed blue;*/
 }
 
 #alex{
@@ -89,86 +133,3 @@
 }
 
 /*============================================*/
-/*Remove before Final!!*/
-/*Nave bar Styling*/
-
-.navBar{
-	display:flex;
-	/*border:dashed;*/
-	width:100%;
-	height:100px;
-	
-}
-
-.nav{
-	display:flex;
-	flex-direction: row;
-	align-items: center;
-	background-color: black;
-	border:solid;
-	border-color:black;
-	border-radius: 8px;
-	width:100%;
-
-}
-
-
-.navUl{
-	display:flex;
-	
-	justify-content: space-around;
-	align-items: center;
-	width:100%;
-	height:80%;
-	background-color:gray;
-	border:solid;
-	border-color:gray;
-	border-radius: 18px
-
-}
-
-.li{
-	display:flex;
-	list-style: none;
-	/*justify-content: center;*/
-	/*align-items: center;*/
-	/*background-color: white;*/
-	/*border:solid;*/
-	/*border-radius: 8px;*/
-
-}
-
-.f {
-	display:flex;
-	flex-direction: column;
-	/*height:100%;*/
-	align-self: stretch;
-	margin:0;
-	background-color: white;
-	border-color: black;
-	border-radius: 8px
-}
-
-.f input{
-	width: 100%;
-    background-color: gray;
-    color: white;
-    padding: 14px 20px;
-    margin: 0;
-    border: solid;
-    border-radius: 8px;
-    cursor: pointer;
-	font:10px;
-}
-
-.search input{
-	/*width: 100%;*/
-    padding: 12px 20px;
-    margin: 8px 0;
-    /*display: inline-block;*/
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-/*End of NavBar*/

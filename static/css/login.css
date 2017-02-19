@@ -18,11 +18,12 @@ body{
 
 .subCon{
 	display:flex;
-	/*border:dashed;	*/
 	width:100%;
 	height:60%;
-	/*border-color: red;*/
 	justify-content: space-around;
+	
+	
+	/*border:dashed red;	*/
 	/*align-self: center;*/
 	
 }
@@ -33,16 +34,13 @@ body{
 
 .children{
 	/*display:flex;*/
-	/*border:dashed;	*/
-	/*border-color: red;*/
+	
+	/*border:dashed red;	*/
 	/*align-content: space-around;*/
 }
 
 .welcome{
 	display:flex;
-	
-	/*border:dashed;*/
-	/*border-color: blue;*/
 	justify-content: center;
 	width:50%;
 	background-color: white;
@@ -52,10 +50,19 @@ body{
     border: 1px solid #d8e0e5;
     border-radius: 8px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+	
+	/*border:dashed blue;*/
+
 }
 
 .message{
-	width: 80%;
+	
+	padding: 32px;
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+	margin:1%;
+	width: 95%;
 	/*border:solid;*/
 
 }
@@ -68,8 +75,7 @@ body{
 	display:flex;
 	/*flex-direction:column;*/
 	position:relative;
-	/*border:dashed;*/
-	/*border-color: green;*/
+	
 	/*align-items: center;*/
 	/*justify-content: space-between;*/
 	width:30%;
@@ -80,20 +86,25 @@ body{
     border: 1px solid #d8e0e5;
     border-radius: 8px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+	
+	/*border:dashed green;*/
 }
 
 .loginDiv{
 	display:flex;
 	flex-direction:column;
-	
 	align-items: center;
-	justify-content: space-between;
-	
+	justify-content: space-between;	
 	align-self: center;
 	background-color: white;
+	/*padding: 32px;*/
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
 
-    /*border:dashed;*/
-	/*border-color: green;*/
+
+    /*border:dashed pink;*/
+	
 
 }
 
@@ -102,15 +113,19 @@ body{
 	flex-direction:column;
 	width:50%;
 	margin-top:14%;
+
+
 }
 
 .signUp{
 	align-self: flex-start;
+	margin:1%;
 	
 }
 
 .goBut{
 	width:50%;
+	
 	
 
 }
@@ -123,20 +138,14 @@ body{
 .signUpDiv{
 	display:flex;
 	flex-direction:column;
-	
 	align-items: center;
 	justify-content: space-between;
-	/*width:90%;*/
-	/*height:110%;*/
-	/*z-index: 1;*/
 	align-self: center;
 	background-color: white;
-	
-    /*margin: 0 auto 75px;*/
-    /*padding: 32px;*/
-    /*border: 1px solid #d8e0e5;*/
-    /*border-radius: 8px;*/
-    /*box-shadow: 0 1px 2px rgba(0,0,0,0.15);*/
+	/*padding: 32px;*/
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
 
     /*border:dashed;*/
 	/*border-color: blue;*/
