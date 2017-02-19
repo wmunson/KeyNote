@@ -61,7 +61,6 @@ def etf_pricer_final(ticker1,ticker2,ticker3):
 	w_ibm = 0.3
 	w_msft = 0.3
 	etf_price_list = []
-	# print(len(sp))
 	for i in range(0,len(sp['price_list'])):
 		output = aapl[i]*w_appl + ibm[i]*w_ibm + msft[i]*w_msft
 		etf_price_list.append(output)
@@ -76,7 +75,6 @@ def etf_pricer_final(ticker1,ticker2,ticker3):
 	print(len(sp['price_list']))
 	print(len(sp['date_list']))
 	return json.dumps(final_product)
-	# return (aapl,ibm,msft,sp)
 
 
 def etf_to_JSON(etf):
@@ -88,7 +86,7 @@ def etf_to_JSON(etf):
 			'last_price': etf.last_price,
 			'creation_date': etf.creation_date
 	}
-	return jsonify(etf_dict)
+	return etf_dict
 
 
 def grab_articles():
