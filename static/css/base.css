@@ -1,6 +1,11 @@
 body{
 	background: linear-gradient(-70deg, #0B55B5,black);
+	z-index:0;
 }
+.container{
+	z-index:0
+}
+
 /*Nav bar Styling*/
 
 .navBar{
@@ -41,6 +46,9 @@ body{
 .li{
 	display:flex;
 	list-style: none;
+	position:relative;
+	z-index:0;
+	/*cursor: pointer;*/
 	/*justify-content: center;*/
 	/*align-items: center;*/
 	/*background-color: white;*/
@@ -60,7 +68,7 @@ body{
 	border-radius: 8px
 }
 
-.f input{
+.fInput{
 	width: 100%;
     background-color: gray;
     color: white;
@@ -72,6 +80,7 @@ body{
 	font:10px;
 }
 
+
 .search input{
 	/*width: 100%;*/
     padding: 12px 20px;
@@ -81,5 +90,92 @@ body{
     border-radius: 4px;
     box-sizing: border-box;
 }
+
+#account{
+	/*align-self: flex-end;*/
+	display:flex;
+	position:relative;
+}
+
+.drop{
+	display:flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	/*align-self: stretch;*/
+	width:180%;
+	height:740%;
+	position:absolute;
+	z-index:-1;
+	border:dashed red;
+
+}
+
+.dropMenu{
+	/*display:none;*/
+	display:flex;
+	flex-direction:column;
+	justify-content: space-between;
+	align-self: flex-end;
+	width:100%;
+	height:85%;
+	background-color: white;
+	z-index:0;
+	text-align: center;
+
+
+	border:dashed yellow;
+
+}
+.dropMenu b{
+	text-align: left:;
+	align-self: flex-start;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.accInput{
+	display: flex;
+	width: 90%;
+    background-color: gray;
+    color: white;
+    /*padding: 14px 20px;*/
+    margin: 1%;
+    margin-top: 0;
+    padding-top:0;
+    border: solid;
+    border-radius: 8px;
+    /*cursor: pointer;*/
+	font:10px;
+}
+
+.active{
+	display:block;
+}
+
+/*.arrow{
+	position:absolute;
+	align-self: flex-start;
+	background-color: white;
+	margin-top: 10%;
+	width:0;
+	height:0;
+	border-left: 50px transparent;
+	border-right: 50px transparent;
+	border-bottom: 50px solid black;
+	z-index:0
+	border:solid;
+}*/
+
+/*.accInput{
+	width: 50%;
+    background-color: gray;
+    color: white;
+    padding: 14px 20px;
+    margin: 0;
+    border: solid;
+    border-radius: 8px;
+    cursor: pointer;
+	font:10px;
+}*/
 
 /*End of NavBar*/

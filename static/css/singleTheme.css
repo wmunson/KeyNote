@@ -14,19 +14,27 @@
 	display:flex;
 	width:80%;
 	height:16rem;
-	justify-content:space-around;
-	
-	/*border:dashed;*/
-	border-color:blue;
+	justify-content:space-between;
+	background-color: white;
+	border: 1px solid #d8e0e5;
+    border-radius: 8px;
+
+	/*border:dashed pink;*/
 }
 
 .theme{
 	display:flex;
 	flex-direction: column;
 
-	border:dashed;
-	border-color:gray;
+	
 	background-color: white;
+	margin:1%;
+	padding: 32px;
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+	
+	/*border:dashed gray;*/
 }
 
 .buttons{
@@ -35,23 +43,37 @@
 	justify-content: space-around;
 	align-self: center;
 	height:60%;
+	margin:1%;
+	padding: 32px;
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+
+	/*border:dashed red;*/
 	
 }
 
+.buttons form{
+	text-align:center;
+
+}
 
 .bottomRow{
 	display:flex;
 	flex-direction: column;
 	width:95%;
 	margin: 1%;
-
-	border:dashed;
-	border-color:red;
 	background-color: white;
+	border: 1px solid #d8e0e5;
+    border-radius: 8px;
+
+	/*border:dashed red;*/
 }
 
 .toggleBar{
-	background-color: gray
+	background-color: gray;
+	border: 1px solid #d8e0e5;
+    border-radius: 8px;
 }
 
 .toggleList{
@@ -64,10 +86,10 @@
 	flex-direction: row;
 	align-items: center;
 	background-color: gray;
-	border:solid;
-	border-color:gray;
+	
 	border-radius: 8px;
 	
+	/*border:solid gray;*/
 }
 
 
@@ -82,18 +104,20 @@
 	/*height:100%;*/
 	align-self: stretch;
 	margin:0;
+	margin-top:.1%;
+	margin-bottom: .1%;
 	padding:auto;
 	background-color: white;
 	cursor:pointer;
 	height: 100%;
 	padding:1em;
-	margin:0;
 	border-color: black;
 	border-radius: 8px
 }
 
 .tab:hover{
 	text-decoration:underline;
+	background-color: #3cb0fd;
 }
 
 .activeTab{
@@ -102,6 +126,7 @@
 	border-bottom: solid;
 	border-color: white;
 	margin-bottom: -5px;
+	text-decoration: underline;
 }
 
 
@@ -109,6 +134,8 @@
 	display:flex;
 	height:100%;
 	position:relative;
+
+	/*border:dashed black;*/
 
 
 }
@@ -159,87 +186,3 @@
 
 
 
-/*============================================*/
-/*Remove before Final!!*/
-/*Nave bar Styling*/
-
-.navBar{
-	display:flex;
-	/*border:dashed;*/
-	width:100%;
-	height:100px;
-	
-}
-
-.nav{
-	display:flex;
-	flex-direction: row;
-	align-items: center;
-	background-color: black;
-	border:solid;
-	border-color:black;
-	border-radius: 8px;
-	width:100%;
-
-}
-
-
-.navUl{
-	display:flex;
-	
-	justify-content: space-around;
-	align-items: center;
-	width:100%;
-	height:80%;
-	background-color:gray;
-	border:solid;
-	border-color:gray;
-	border-radius: 18px
-
-}
-
-.li{
-	display:flex;
-	list-style: none;
-	/*justify-content: center;*/
-	/*align-items: center;*/
-	/*background-color: white;*/
-	/*border:solid;*/
-	/*border-radius: 8px;*/
-
-}
-
-.f {
-	display:flex;
-	flex-direction: column;
-	/*height:100%;*/
-	align-self: stretch;
-	margin:0;
-	background-color: white;
-	border-color: black;
-	border-radius: 8px
-}
-
-.f input{
-	width: 100%;
-    background-color: gray;
-    color: white;
-    padding: 14px 20px;
-    margin: 0;
-    border: solid;
-    border-radius: 8px;
-    cursor: pointer;
-	font:10px;
-}
-
-.search input{
-	/*width: 100%;*/
-    padding: 12px 20px;
-    margin: 8px 0;
-    /*display: inline-block;*/
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-/*End of NavBar
