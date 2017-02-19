@@ -170,6 +170,23 @@ def log_out():
 def example():
 	return etf_pricer_final('aapl','ibm','msft')
 
+@app.route("/account")
+def update account():
+	pass
+
+@app.route('/search', methods=['GET','POST'])
+def search():
+	search =  request.form['search_bar']
+	etf_results = ETF.query.filter_by(ETF_name = search).all()
+	etf_obj_list = []
+	for etf_result in etf_results:
+		etf_obj_list.append(etf_to_JSON(etf_result))
+	etf_dict = {
+			'results': etf_obj_list
+	}
+	return json.dumps(etf_dict)
+	# return render_template('search.html',
+	# 		etfs = etf_results)
 
 if __name__ == "__main__":
 	app.run(debug=True)
