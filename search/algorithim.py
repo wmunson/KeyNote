@@ -9,7 +9,7 @@ print(x)
 print(type(x))
 print(dir(x))
 
-
+print("hahah")
 
 
 
