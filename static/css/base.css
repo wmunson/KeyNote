@@ -21,11 +21,11 @@ body{
 	flex-direction: row;
 	align-items: center;
 	background-color: black;
-	border:solid;
-	border-color:black;
+	
 	border-radius: 8px;
 	width:100%;
 
+	/*border:solid black;*/
 }
 
 
@@ -111,8 +111,8 @@ body{
 }
 
 .dropMenu{
-	/*display:none;*/
-	display:flex;
+	display:none;
+	/*display:flex;*/
 	flex-direction:column;
 	justify-content: space-between;
 	align-self: flex-end;
@@ -138,18 +138,25 @@ body{
 	width: 90%;
     background-color: gray;
     color: white;
-    /*padding: 14px 20px;*/
     margin: 1%;
     margin-top: 0;
     padding-top:0;
     border: solid;
     border-radius: 8px;
     /*cursor: pointer;*/
+    text-align: center;
 	font:10px;
 }
 
 .active{
 	display:block;
+}
+
+.editing{
+	background-color: white;
+	text-align:left;
+	color:black;
+	border-style: groove;
 }
 
 /*.arrow{
