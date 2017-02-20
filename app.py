@@ -170,8 +170,8 @@ def log_out():
 def example():
 	return etf_pricer_final('aapl','ibm','msft')
 
-@app.route("/account")
-def update account():
+@app.route('/account')
+def update_account():
 	new_username = request.form['new_username']
 	new_password = request.form['new_password']
 	email = request.form['email']
