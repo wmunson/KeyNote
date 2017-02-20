@@ -11,6 +11,16 @@ import json
 # 
 
 
+def user_to_JSON(user):
+	user_dict = {
+		'user_id': user.id,
+		'username':user.username,
+		'first_name': user.first_name,
+		'last_name': user.last_name,
+		'emal':user.email
+	}
+	return json.dumps(user_dict)
+
 
 def session_set(user):
 	session['logged-in'] = True
