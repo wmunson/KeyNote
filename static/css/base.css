@@ -106,7 +106,7 @@ body{
 	height:740%;
 	position:absolute;
 	z-index:-1;
-	border:dashed red;
+	/*border:dashed red;*/
 
 }
 
@@ -121,9 +121,13 @@ body{
 	background-color: white;
 	z-index:0;
 	text-align: center;
+	border: solid;
+    border-style:outset;
+    border-radius: 8px;
+    cursor: pointer;
+	font:10px;
 
-
-	border:dashed yellow;
+	/*border:dashed yellow;*/
 
 }
 .dropMenu b{
