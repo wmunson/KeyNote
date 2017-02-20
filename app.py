@@ -141,6 +141,7 @@ def explore_ETFs_page():
 
 @app.route('/sample', methods=['GET'])
 def explore_sample():
+	session.clear()
 	etf =ETF.query.first()
 	return render_template('singleTheme.html',
 					ETF_name = etf.ETF_name,
@@ -177,9 +178,9 @@ def return_user_info():
 
 
 
-@app.route('/account' methods=['POST'])
+@app.route('/account', methods=['POST'])
 def update_account():
-	if request.method = 'POST':
+	if request.method == 'POST':
 		new_username = request.form['username']
 		email = request.form['email']
 		first_name = request.form['firstName']
