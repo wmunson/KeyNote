@@ -21,11 +21,11 @@ body{
 	flex-direction: row;
 	align-items: center;
 	background-color: black;
-	border:solid;
-	border-color:black;
+	
 	border-radius: 8px;
 	width:100%;
 
+	/*border:solid black;*/
 }
 
 
@@ -57,6 +57,8 @@ body{
 
 }
 
+
+
 .f {
 	display:flex;
 	flex-direction: column;
@@ -80,6 +82,9 @@ body{
 	font:10px;
 }
 
+.fInput:hover{
+	background-color: #3cb0fd;
+}
 
 .search input{
 	/*width: 100%;*/
@@ -106,13 +111,13 @@ body{
 	height:740%;
 	position:absolute;
 	z-index:-1;
-	border:dashed red;
+	/*border:dashed red;*/
 
 }
 
 .dropMenu{
-	/*display:none;*/
-	display:flex;
+	display:none;
+	/*display:flex;*/
 	flex-direction:column;
 	justify-content: space-between;
 	align-self: flex-end;
@@ -121,9 +126,13 @@ body{
 	background-color: white;
 	z-index:0;
 	text-align: center;
+	border: solid;
+    border-style:outset;
+    border-radius: 8px;
+    cursor: pointer;
+	font:10px;
 
-
-	border:dashed yellow;
+	/*border:dashed yellow;*/
 
 }
 .dropMenu b{
@@ -138,18 +147,25 @@ body{
 	width: 90%;
     background-color: gray;
     color: white;
-    /*padding: 14px 20px;*/
     margin: 1%;
     margin-top: 0;
     padding-top:0;
     border: solid;
     border-radius: 8px;
     /*cursor: pointer;*/
+    text-align: center;
 	font:10px;
 }
 
 .active{
 	display:block;
+}
+
+.editing{
+	background-color: white;
+	text-align:left;
+	color:black;
+	border-style: groove;
 }
 
 /*.arrow{
