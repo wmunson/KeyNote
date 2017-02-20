@@ -177,20 +177,23 @@ def return_user_info():
 
 
 
-@app.route('/account')
+@app.route('/account' methods=['POST'])
 def update_account():
-	new_username = request.form['username']
-	email = request.form['email']
-	first_name = request.form['firstName']
-	last_name = request.form['lastName']
-	user1 = User.query.filter_by(id=session['user_id']).first()
-	user1.first_name =first_name
-	user1.last_name = last_name
-	user1.email = email
-	user1.username = new_username
-	db.session.commit()
-	return render_template('login.html',	
-		errorMessage = "Try logging in to verify changes")
+	if request.method = 'POST':
+		new_username = request.form['username']
+		email = request.form['email']
+		first_name = request.form['firstName']
+		last_name = request.form['lastName']
+		user1 = User.query.filter_by(id=session['user_id']).first()
+		user1.first_name =first_name
+		user1.last_name = last_name
+		user1.email = email
+		user1.username = new_username
+		db.session.commit()
+		return render_template('login.html',	
+			errorMessage = "Try logging in to verify changes")
+	else:
+		pass
 
 
 @app.route('/search', methods=['GET','POST'])
