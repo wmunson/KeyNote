@@ -98,9 +98,7 @@ var loadGraphData = function(){
 
 		require(["d3", "c3"], function(d3, c3) {
   			c3.generate({
-    
     			bindto: '.performGraph',
-    			
     			data: {
 		        x: 'x',
 		        columns: [
@@ -109,9 +107,9 @@ var loadGraphData = function(){
 		            spPrice
 
 		        ],
-		        axes:{
-		        	etfPrice: 'y2'
-		        }
+		        // axes:{
+		        // 	etfPrice: 'y2'
+		        // }
 			    },
 			    axis: {
 			      	y2:{
