@@ -43,8 +43,8 @@ document.getElementById('conClick').addEventListener('click',function(){
 ////changes the input fields for editing and back to readonly/////
 //////////////////////////////////////////////////////////////////
 
-const makeEdit = function(){
-	
+const makeEdit = function(event){
+		event.preventDefault();
 		// console.log('nope!');
 		// document.getElementsByClassName("accInput").removeAttribute("readonly");
 		document.getElementById('last').removeAttribute("readonly");
@@ -63,6 +63,8 @@ const makeEdit = function(){
 		
 		document.getElementById('edit').setAttribute("value","Update");
 		document.getElementById('edit').classList.add("editer");
+
+		document.getElementById('form').setAttribute("action","/account")
 			
 };
 
@@ -89,30 +91,25 @@ const update= function(){
 }
 
 
-document.getElementById('edit').addEventListener('click',function(){
+document.getElementById('edit').addEventListener('click',function(event){
 	// console.log(this.classList)
 	if (this.classList=="editer"){
 		update();
-		postInfo();
+		// postInfo();
 	}
 	else{
-		makeEdit()
+		makeEdit(event)
 	}
 });
 
 /////send updated account info to DB through ajax/////////
 
 const postInfo = function(){
-	var first = document.getElementById('first')
-	var last = document.getElementById('last')
-	var user = document.getElementById('user')
-	var email = document.getElementById('email')
-	var jsonObj = {
-					'first_name':first,
-					'last_name':last,
-					'username':user,
-					'email':email
-					}
+	// var first = document.getElementById('first')
+	// var last = document.getElementById('last')
+	// var user = document.getElementById('user')
+	// var email = document.getElementById('email')
+	// var jsonObj = "{'first_name':"+first+",'last_name':"+last+",'username':"+user+",'email':"+email+"}"
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 		if(this.readystate == 4 && this.ststus == 200){
@@ -121,9 +118,9 @@ const postInfo = function(){
 	};
 	xhttp.open("POST","/account", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send(jsonObj)
+	xhttp.send();
 
 
-	console.log(first.value)
+	console.log(first.value);
 }
 
