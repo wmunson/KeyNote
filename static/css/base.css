@@ -57,6 +57,8 @@ body{
 
 }
 
+
+
 .f {
 	display:flex;
 	flex-direction: column;
@@ -80,6 +82,9 @@ body{
 	font:10px;
 }
 
+.fInput:hover{
+	background-color: #3cb0fd;
+}
 
 .search input{
 	/*width: 100%;*/
