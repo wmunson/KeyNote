@@ -171,9 +171,9 @@ def example():
 
 @app.route("/manage")
 def return_user_info():
-	# user = User.query.filter_by(id=session['user_id']).first()
-	# final_product = user_to_JSON(user)
-	return json.dumps(session)
+	user = User.query.filter_by(id=session['user_id']).first()
+	final_product = user_to_JSON(user)
+	return final_product
 
 
 
