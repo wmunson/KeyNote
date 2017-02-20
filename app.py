@@ -117,9 +117,7 @@ def create_account():
 			new_user = User(new_username, hash_password, first_name,last_name, email)
 			db.session.add(new_user)
 			db.session.commit()
-			# GRAB THE USER OBJ (ID most importantly)
-			# user =  User.query.filter_by(username=new_user.username).first
-			# session_set(user)
+			print(User.query.filter_by(username=new_user.username).first())
 			return render_template('login.html',
 					errorMessage="Creation Successful. Give it a try!")
 
@@ -172,19 +170,20 @@ def example():
 
 @app.route('/account')
 def update_account():
-	new_username = request.form['new_username']
-	new_password = request.form['new_password']
+	new_username = request.form['username']
+	new_password = request.form['password']
 	email = request.form['email']
-	first_name = request.form['first_name']
-	last_name = request.form['last_name']
-	user1 = User.query.filter_by(id=key).first()
+	first_name = request.form['firstName']
+	last_name = request.form['lastName']
+	user1 = User.query.filter_by(id=session['user_id']).first()
 	user1.first_name =first_name
 	user1.last_name = last_name
 	user1.email = email
 	user1.password = bcrypt.generate_password_hash(new_password)
 	user1.username = new_username
 	db.session.commit()
-	return render_template('login.html')
+	return render_template('login.html',
+		errorMessage = "Try logging in to verify changes")
 
 
 @app.route('/search', methods=['GET','POST'])
@@ -200,6 +199,9 @@ def search():
 	return json.dumps(etf_dict)
 	# return render_template('search.html',
 	# 		etfs = etf_results)
+
+
+
 
 if __name__ == "__main__":
 	app.run(debug=True)
