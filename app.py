@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from create_db import *
 import requests
-from tools import grab_articles, session_set, make_stock_list, etf_to_JSON, etf_pricer_final
+from tools import grab_articles, session_set, make_stock_list, etf_to_JSON, etf_pricer_final, user_to_JSON
 import json
 
 app= Flask(__name__)
@@ -18,6 +18,7 @@ app.secret_key = "secret"
 db = SQLAlchemy(app)
 
 bcrypt = Bcrypt(app)
+
 
 
 
@@ -168,10 +169,17 @@ def log_out():
 def example():
 	return etf_pricer_final('aapl','ibm','msft')
 
+@app.route("/manage")
+def return_user_info():
+	# user = User.query.filter_by(id=session['user_id']).first()
+	# final_product = user_to_JSON(user)
+	return json.dumps(session)
+
+
+
 @app.route('/account')
 def update_account():
 	new_username = request.form['username']
-	new_password = request.form['password']
 	email = request.form['email']
 	first_name = request.form['firstName']
 	last_name = request.form['lastName']
@@ -179,10 +187,9 @@ def update_account():
 	user1.first_name =first_name
 	user1.last_name = last_name
 	user1.email = email
-	user1.password = bcrypt.generate_password_hash(new_password)
 	user1.username = new_username
 	db.session.commit()
-	return render_template('login.html',
+	return render_template('login.html',	
 		errorMessage = "Try logging in to verify changes")
 
 
