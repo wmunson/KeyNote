@@ -1,4 +1,16 @@
 from models import db, Company
+import urllib.request
+import requests
+
+
+url = 'https://api.intrinio.com/tags/standardized?identifier=AAPL&statement=income_statement'
+x=requests.get(url).content
+print(x)
+print(type(x))
+print(dir(x))
+
+
+
 
 
 
