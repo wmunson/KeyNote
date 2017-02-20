@@ -126,6 +126,17 @@ def create_account():
 			return render_template('login.html',
 								errorMessage='Sorry the username you have provided is already taken')
 
+@app.route("/etf/<etf_name>")
+def return_etf(etf_name):
+	etf = ETF.query.filter_by(ETF_name = str(etf_name)).first()
+	return render_template('singleTheme.html',
+					ETF_name = etf.ETF_name,
+					date = str(etf.creation_date),
+					author = "KeyNote Staff",
+					ETF_descr = etf.ETF_descr
+					)
+
+
 @app.route('/example')
 def display_example():
 	example_etf = grab_etf(1)
