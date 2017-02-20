@@ -17,7 +17,7 @@ def user_to_JSON(user):
 		'username':user.username,
 		'first_name': user.first_name,
 		'last_name': user.last_name,
-		'emal':user.email
+		'email':user.email
 	}
 	return json.dumps(user_dict)
 
