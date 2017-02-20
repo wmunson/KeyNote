@@ -2,8 +2,32 @@
 document.getElementById('baseAccount').addEventListener('click',function(){
 	document.getElementById('baseMenu').classList.add('active');
 	// document.getElementById('baseDrop').classList.add('active');
-
+	getInfo(event);
 });
+
+const getInfo = function(event){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if (this.readyState == 4 && this.status == 200){
+			var data = JSON.parse(this.responseText);
+			console.log(data)
+		}	
+	}
+
+	xhttp.open("GET", "/manage", true);
+	xhttp.send();
+};
+
+
+
+
+
+
+
+
+
+
+
 
 document.getElementById('conClick').addEventListener('click',function(){
 	document.getElementById('baseMenu').classList.remove('active');
@@ -21,8 +45,8 @@ const makeEdit = function(){
 		document.getElementById('user').removeAttribute("readonly");
 		document.getElementById('user').classList.add("editing");
 		
-		document.getElementById('pass').removeAttribute("readonly");
-		document.getElementById('pass').classList.add("editing");
+		// document.getElementById('pass').removeAttribute("readonly");
+		// document.getElementById('pass').classList.add("editing");
 		
 		document.getElementById('first').removeAttribute("readonly");
 		document.getElementById('first').classList.add("editing");
@@ -30,6 +54,7 @@ const makeEdit = function(){
 		document.getElementById('last').removeAttribute("readonly");
 		document.getElementById('last').classList.add("editing");
 		
+		document.getElementById('edit').setAttribute("value","Update");
 		document.getElementById('edit').classList.add("editer");
 			
 };
@@ -42,8 +67,8 @@ const update= function(){
 		document.getElementById('user').setAttribute("readonly","");
 		document.getElementById('user').classList.remove("editing");
 		
-		document.getElementById('pass').setAttribute("readonly","");
-		document.getElementById('pass').classList.remove("editing");
+		// document.getElementById('pass').setAttribute("readonly","");
+		// document.getElementById('pass').classList.remove("editing");
 		
 		document.getElementById('first').setAttribute("readonly","");
 		document.getElementById('first').classList.remove("editing");
@@ -51,7 +76,7 @@ const update= function(){
 		document.getElementById('last').setAttribute("readonly","");
 		document.getElementById('last').classList.remove("editing");
 		
-		// document.getElementById('updateBut').setAttribute("value","Edit");
+		document.getElementById('edit').setAttribute("value","Edit");
 		document.getElementById('edit').classList.remove("editer");
 
 }
@@ -66,3 +91,8 @@ document.getElementById('edit').addEventListener('click',function(){
 		makeEdit()
 	}
 });
+
+
+document.getElementById('edit')
+
+
