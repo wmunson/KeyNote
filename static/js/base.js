@@ -11,6 +11,14 @@ const getInfo = function(event){
 		if (this.readyState == 4 && this.status == 200){
 			var data = JSON.parse(this.responseText);
 			console.log(data)
+			var first = data['first_name']
+			var last = data['last_name']
+			var user = data['username']
+			var email = data['email']
+			document.getElementById('email').setAttribute("value",email);
+			document.getElementById('user').setAttribute("value",user);
+			document.getElementById('first').setAttribute("value"first);
+			document.getElementById('last').setAttribute("value",last);
 		}	
 	}
 
@@ -39,7 +47,7 @@ const makeEdit = function(){
 	
 		// console.log('nope!');
 		// document.getElementsByClassName("accInput").removeAttribute("readonly");
-		document.getElementById('email').removeAttribute("readonly");
+		document.getElementById('last'').removeAttribute("readonly");
 		document.getElementById('email').classList.add("editing");
 		
 		document.getElementById('user').removeAttribute("readonly");
