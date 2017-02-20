@@ -1,3 +1,6 @@
+//////////////////////////////////////////////////////////////////
+////Brings up manage box and autofills info//////////////////////
+/////////////////////////////////////////////////////////////////
 
 document.getElementById('baseAccount').addEventListener('click',function(){
 	document.getElementById('baseMenu').classList.add('active');
@@ -17,7 +20,7 @@ const getInfo = function(event){
 			var email = data['email']
 			document.getElementById('email').setAttribute("value",email);
 			document.getElementById('user').setAttribute("value",user);
-			document.getElementById('first').setAttribute("value"first);
+			document.getElementById('first').setAttribute("value",first);
 			document.getElementById('last').setAttribute("value",last);
 		}	
 	}
@@ -26,16 +29,9 @@ const getInfo = function(event){
 	xhttp.send();
 };
 
-
-
-
-
-
-
-
-
-
-
+//////////////////////////////////////////////////////////////////
+//////removes manage box/////////////////////////////////////
+////////////////////////////////////////////////////////////
 
 document.getElementById('conClick').addEventListener('click',function(){
 	document.getElementById('baseMenu').classList.remove('active');
@@ -43,13 +39,16 @@ document.getElementById('conClick').addEventListener('click',function(){
 
 });
 
+///////////////////////////////////////////////////////////////////
+////changes the input fields for editing and back to readonly/////
+//////////////////////////////////////////////////////////////////
+
 const makeEdit = function(){
 	
 		// console.log('nope!');
 		// document.getElementsByClassName("accInput").removeAttribute("readonly");
-		document.getElementById('last'').removeAttribute("readonly");
+		document.getElementById('last').removeAttribute("readonly");
 		document.getElementById('email').classList.add("editing");
-		
 		document.getElementById('user').removeAttribute("readonly");
 		document.getElementById('user').classList.add("editing");
 		
@@ -91,16 +90,40 @@ const update= function(){
 
 
 document.getElementById('edit').addEventListener('click',function(){
-	console.log(this.classList)
+	// console.log(this.classList)
 	if (this.classList=="editer"){
 		update();
+		postInfo();
 	}
 	else{
 		makeEdit()
 	}
 });
 
+/////send updated account info to DB through ajax/////////
 
-document.getElementById('edit')
+const postInfo = function(){
+	var first = document.getElementById('first')
+	var last = document.getElementById('last')
+	var user = document.getElementById('user')
+	var email = document.getElementById('email')
+	var jsonObj = {
+					'first_name':first,
+					'last_name':last,
+					'username':user,
+					'email':email
+					}
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readystate == 4 && this.ststus == 200){
+			jsonObj = xhttp.responseText;
+		}
+	};
+	xhttp.open("POST","/account", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(jsonObj)
 
+
+	console.log(first.value)
+}
 
