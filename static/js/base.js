@@ -4,7 +4,7 @@
 
 document.getElementById('baseAccount').addEventListener('click',function(){
 	document.getElementById('baseMenu').classList.add('active');
-	// document.getElementById('baseDrop').classList.add('active');
+	document.getElementById('baseDrop').classList.add('activeDrop');
 	getInfo(event);
 });
 
@@ -35,7 +35,7 @@ const getInfo = function(event){
 
 document.getElementById('conClick').addEventListener('click',function(){
 	document.getElementById('baseMenu').classList.remove('active');
-	document.getElementById('baseDrop').classList.remove('active');
+	document.getElementById('baseDrop').classList.remove('activeDrop');
 
 });
 
@@ -104,23 +104,23 @@ document.getElementById('edit').addEventListener('click',function(event){
 
 /////send updated account info to DB through ajax/////////
 
-const postInfo = function(){
-	// var first = document.getElementById('first')
-	// var last = document.getElementById('last')
-	// var user = document.getElementById('user')
-	// var email = document.getElementById('email')
-	// var jsonObj = "{'first_name':"+first+",'last_name':"+last+",'username':"+user+",'email':"+email+"}"
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function(){
-		if(this.readystate == 4 && this.ststus == 200){
-			jsonObj = xhttp.responseText;
-		}
-	};
-	xhttp.open("POST","/account", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send();
+// const postInfo = function(){
+// 	// var first = document.getElementById('first')
+// 	// var last = document.getElementById('last')
+// 	// var user = document.getElementById('user')
+// 	// var email = document.getElementById('email')
+// 	// var jsonObj = "{'first_name':"+first+",'last_name':"+last+",'username':"+user+",'email':"+email+"}"
+// 	var xhttp = new XMLHttpRequest();
+// 	xhttp.onreadystatechange = function(){
+// 		if(this.readystate == 4 && this.ststus == 200){
+// 			jsonObj = xhttp.responseText;
+// 		}
+// 	};
+// 	xhttp.open("POST","/account", true);
+// 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+// 	xhttp.send();
 
 
-	console.log(first.value);
-}
+// 	console.log(first.value);
+// }
 

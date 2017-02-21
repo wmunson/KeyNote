@@ -78,16 +78,17 @@ var loadGraphData = function(){
 		if(this.readyState == 4 && this.status == 200){
 		var data=JSON.parse(this.responseText);
 		var date=setArray(data['date_list'], 'x')
-		var etfPrice=setArray(data['etf'], data['Name'])
+		var etfPrice=setArray(data['etf'], 'YourTheme')
 		var spPrice=setArray(data['SandP'], 'S&P')
 		var priceMax= data['etf'].max()
 		var priceMin= data['etf'].min()
-		console.log(data)	
-		console.log(date)	
-		console.log(etfPrice)	
-		console.log(priceMax)	
-		console.log(priceMin)	
-		// console.log(price)	
+		var name = data['Name'].toString()
+		console.log('name:'+name)	
+		console.log(data['etf'])	
+		console.log(etfPrice.toString())	
+		console.log(spPrice.toString())	
+		console.log(typeof(name))	
+		console.log(typeof(etfPrice[0]))	
 		
 		require.config({
 			baseUrl: '/js',
@@ -97,6 +98,7 @@ var loadGraphData = function(){
 		});
 
 		require(["d3", "c3"], function(d3, c3) {
+  			
   			c3.generate({
     			bindto: '.performGraph',
     			data: {
@@ -107,16 +109,31 @@ var loadGraphData = function(){
 		            spPrice
 
 		        ],
-		        // axes:{
-		        // 	etfPrice: 'y2'
-		        // }
+		        names: {
+		        		YourTheme: name
+		        },
+		        axes:{
+		        	YourTheme: 'y2'
+		        }
 			    },
 			    axis: {
+			      	y: {
+			      		label: {
+			      			text: 'S&P',
+			      			position: 'outer-middle'
+			      		}
+			      	},
+
+
 			      	y2:{
-			   			show:true,
-			   			tick:{
-			   				values: data['etf']
-			   			}
+			   			show: true,
+			   			label: {
+			   				text: name,
+			   				position: 'inner-middle'
+			   			},
+			   			// tick:{
+			   			// 	values: data['etf']
+			   			// }
 			   			},
 			        x: {
 			            type: 'timeseries',
