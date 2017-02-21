@@ -1,0 +1,196 @@
+body{
+	/*background: #0A7774;*/
+	background: linear-gradient(-70deg, #0B55B5,black);
+	/*background-image: url("/images/login_back.jpg");*/
+	/*background-repeat:no-repeat;*/
+	/*background-repeat-y:no-repeat;*/
+	
+}
+
+.container{
+	display:flex;
+	/*border:dashed;*/
+	/*border-color: black;*/
+	height:100vh;
+	align-items: center;
+	flex-wrap:wrap;
+}
+
+.graphDiv{
+	display:flex;
+	width:90%;
+	height:60%;
+	justify-content: space-around;
+	background-color: white;
+	/*width: 450px;*/
+    margin: 0 auto 75px;
+    /*padding: 32px;*/
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+	
+	/*border:dashed red;	*/
+	/*align-self: center;*/
+	
+}
+
+.subDiv{
+	/*align-self: center;*/
+}
+
+.children{
+	/*display:flex;*/
+	
+	/*border:dashed red;	*/
+	/*align-content: space-around;*/
+}
+
+.welcome{
+	display:flex;
+	justify-content: center;
+	width:50%;
+	background-color: white;
+	/*width: 450px;*/
+    margin: 0 auto 75px;
+    padding: 32px;
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+	
+	/*border:dashed blue;*/
+
+}
+
+.message{
+	
+	padding: 32px;
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+	margin:1%;
+	width: 95%;
+	/*border:solid;*/
+
+}
+
+.exploreBut{
+	
+}
+
+.changeCon{
+	display:flex;
+	/*flex-direction:column;*/
+	position:relative;
+	
+	/*align-items: center;*/
+	/*justify-content: space-between;*/
+	width:30%;
+	background-color: white;
+	/*width: 450px;*/
+    margin: 0 auto 75px;
+    padding: 32px;
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+	
+	/*border:dashed green;*/
+}
+
+.loginDiv{
+	display:flex;
+	flex-direction:column;
+	align-items: center;
+	justify-content: space-between;	
+	align-self: center;
+	background-color: white;
+	/*padding: 32px;*/
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+
+
+    /*border:dashed pink;*/
+	
+
+}
+
+.loginForm{
+	display: flex;
+	flex-direction:column;
+	width:50%;
+	margin-top:14%;
+
+
+}
+
+.signUp{
+	align-self: flex-start;
+	margin:1%;
+	
+}
+
+.goBut{
+	width:50%;
+	
+	
+
+}
+
+.botton:hover {
+  	background: #3cb0fd;
+  	cursor: pointer;
+ }
+
+.signUpDiv{
+	display:flex;
+	flex-direction:column;
+	align-items: center;
+	justify-content: space-between;
+	align-self: center;
+	background-color: white;
+	/*padding: 32px;*/
+    border: 1px solid #d8e0e5;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+
+    /*border:dashed;*/
+	/*border-color: blue;*/
+}
+
+
+.signupForm{
+	display: flex;
+	flex-direction:column;
+	width:50%;
+	margin-top:10%;
+}
+
+
+.box{
+	position:absolute;
+	/*z-index: -1*/
+	/*height:0%;*/
+	/*width:0%;*/
+	
+}
+
+.active{
+	z-index: 1;
+	height:90%;
+	width:90%;
+}
+
+
+.lowerDiv{
+	display:flex;
+	border:solid;
+	border-color: blue;
+	width:100%;
+	justify-content: center;
+}
+
+.errorMessage{
+	text-decoration:underline;
+	color:red;
+	font-size:1.2rem;
+}
