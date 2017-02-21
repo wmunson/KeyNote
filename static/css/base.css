@@ -106,11 +106,12 @@ body{
 	display:flex;
 	flex-direction: column;
 	justify-content: flex-end;
-	/*align-self: stretch;*/
-	width:180%;
-	height:740%;
+	align-self: flex-end;
+	width:100%;
+	height:200%;
 	position:absolute;
 	z-index:-1;
+	
 	/*border:dashed red;*/
 
 }
@@ -121,10 +122,10 @@ body{
 	flex-direction:column;
 	justify-content: space-between;
 	align-self: flex-end;
-	width:100%;
+	width:180%;
 	height:85%;
 	background-color: white;
-	z-index:0;
+	z-index:-1;
 	text-align: center;
 	border: solid;
     border-style:outset;
@@ -159,8 +160,14 @@ body{
 
 .active{
 	display:block;
+	z-index: 1000;
 }
 
+.activeDrop{
+	z-index: 10;
+	height:740%;
+	/*border: dashed blue;*/
+}
 .editing{
 	background-color: white;
 	text-align:left;
