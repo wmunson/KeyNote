@@ -1,9 +1,15 @@
 
+.navigation{
+	z-index: 100;
+	position:relative;
+}
+
 .blockBody{
 	display:flex;
 	justify-content: space-between;
 	border:solid;
 	height:100vh;
+	z-index: 0;
 
 }
 
@@ -16,6 +22,7 @@
 	align-items: center
 	border: 1px solid #d8e0e5;
     border-radius: 8px;
+    z-index: 0;
 	/*border:dashed red;*/
 	
 	
@@ -96,18 +103,21 @@
 	background-color: white;
 	border: 1px solid #d8e0e5;
     border-radius: 8px;
+    z-index: 0;
 	/*border:dashed blue;*/
 	
 }
 
 .pieChart{
-	height:20%;
+	align-self: center;
+	width:95%;
+	height:40%;
 	margin:2%;
-    padding: 32px;
+    /*padding: 32px;*/
     border: 1px solid #d8e0e5;
     border-radius: 8px;
     box-shadow: 0 3px 5px rgba(0,0,0,0.15);
-
+	z-index: 0;
 	/*border:dashed red;*/
 
 }
