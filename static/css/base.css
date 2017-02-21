@@ -7,6 +7,10 @@ body{
 }
 
 /*Nav bar Styling*/
+.navigation{
+	z-index: 10;
+}
+
 
 .navBar{
 	display:flex;
@@ -110,7 +114,7 @@ body{
 	width:100%;
 	height:200%;
 	position:absolute;
-	z-index:-1;
+	z-index:-10000;
 	
 	/*border:dashed red;*/
 
@@ -125,7 +129,7 @@ body{
 	width:180%;
 	height:85%;
 	background-color: white;
-	z-index:-1;
+	z-index:-1000;
 	text-align: center;
 	border: solid;
     border-style:outset;
@@ -160,7 +164,7 @@ body{
 
 .active{
 	display:block;
-	z-index: 1000;
+	z-index: 10;
 }
 
 .activeDrop{
