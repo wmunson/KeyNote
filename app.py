@@ -229,7 +229,7 @@ def grab_stock_list(string):
 	else:
 		input_url = "http://dev.markitondemand.com/Api/v2/Lookup/json?input=" + string
 		stock_list = requests.get(input_url).json()
-		return stock_list
+		return json.dumps(stock_list)
 
 @app.route('/stock/more/<ticker>', methods=['GET'])
 def grab_stock_info(ticker):
@@ -238,7 +238,7 @@ def grab_stock_info(ticker):
 	else:
 		input_url = "http://dev.markitondemand.com/Api/v2/Lookup/json?symbol=" + ticker.upper()
 		stock_info = requests.get(input_url).json()
-		return stock_info
+		return json.dumps(stock_info)
 
 
 if __name__ == "__main__":
