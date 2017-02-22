@@ -229,7 +229,13 @@ def grab_stock_list(string):
 	else:
 		input_url = "http://dev.markitondemand.com/Api/v2/Lookup/json?input=" + string
 		stock_list = requests.get(input_url).json()
-		return json.dumps(stock_list)
+		final_product = []
+		for stock_obj in stock_list:
+			if stock_obj['Status'] == 'SUCCESS':
+				final_product.append(stock_obj)
+			else:
+				pass
+		return json.dumps({'result' :final_product})
 
 @app.route('/stock/more/<ticker>', methods=['GET'])
 def grab_stock_info(ticker):
