@@ -94,6 +94,49 @@
 }
 
 
+.stockTick{
+	position:relative;
+	display:flex;
+	flex-direction:column;
+	
+	margin:1%;
+}
+
+
+
+.stockDiv{
+	display:flex;
+	position:relative;
+	justify-content: center;
+	height:0;
+	width:30%;
+	
+	/*border:dashed blue;*/
+}
+
+.innDiv{
+	height:15rem;
+	width:80%;
+	z-index:10;
+	
+	background-color: white;
+	border:dashed yellow;
+}
+
+#hoverUl{
+	
+}
+
+#hoverUl li{
+	margin:1%;
+	width:20%;
+}
+
+.remove{
+	display:none;
+}
+
+
 .rightCol{
 	display:flex;
 	flex-direction: column;
@@ -158,7 +201,4 @@
     cursor: pointer;
 }
 
-.stockTick{
-	margin:1%;
-}
 
