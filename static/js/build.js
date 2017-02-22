@@ -39,11 +39,23 @@ require(["d3", "c3"], function(d3, c3) {
 document.getElementById('searchStocks').addEventListener('keyup', function(event){
 	event.preventDefault()
 	if(event.keyCode == 13){ 
-	console.log('good');
+	var name=this.value
+	console.log(this.value);
+	searchStock(name);
 	}
 });
 
 
-const searchStock = function(event){
-
+const searchStock = function(name){
+// console.log(name)	
+var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if (this.readyState == 4 && this.status == 200){
+			var data = JSON.parse(this.responseText);
+			console.log(data)
+		}
+	};
+	xhttp.open("GET", "", true);
+	xhttp.send();
 }
+
