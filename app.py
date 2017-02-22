@@ -222,7 +222,23 @@ def search():
 	# return render_template('search.html',
 	# 		etfs = etf_results)
 
+@app.route('/stock/<string>', methods=['GET'])
+def grab_stock_list(string):
+	if type(string) != str:
+		pass
+	else:
+		input_url = "http://dev.markitondemand.com/Api/v2/Lookup/json?input=" + string
+		stock_list = requests.get(input_url).json()
+		return stock_list
 
+@app.route('/stock/more/<ticker>', methods=['GET'])
+def grab_stock_info(ticker):
+	if type(ticker) != str:
+		pass
+	else:
+		input_url = "http://dev.markitondemand.com/Api/v2/Lookup/json?symbol=" + ticker.upper()
+		stock_info = requests.get(input_url).json()
+		return stock_info
 
 
 if __name__ == "__main__":
