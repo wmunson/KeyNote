@@ -236,7 +236,7 @@ def grab_stock_info(ticker):
 	if type(ticker) != str:
 		pass
 	else:
-		input_url = "http://dev.markitondemand.com/Api/v2/Lookup/json?symbol=" + ticker.upper()
+		input_url = 'http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol=' + ticker.upper()
 		stock_info = requests.get(input_url).json()
 		return json.dumps(stock_info)
 
