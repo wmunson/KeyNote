@@ -128,13 +128,19 @@ def create_account():
 
 @app.route("/etf/<etf_name>")
 def return_etf(etf_name):
-	etf = ETF.query.filter_by(ETF_name = str(etf_name)).first()
-	return render_template('singleTheme.html',
-					ETF_name = etf.ETF_name,
-					date = str(etf.creation_date),
-					author = "KeyNote Staff",
-					ETF_descr = etf.ETF_descr
-					)
+	if request.method = 'GET':
+		etf = ETF.query.filter_by(ETF_name = str(etf_name)).first()
+		return render_template('singleTheme.html',
+						ETF_name = etf.ETF_name,
+						date = str(etf.creation_date),
+						author = "KeyNote Staff",
+						ETF_descr = etf.ETF_descr
+						)
+	if request.method = ['POST']:
+		client_stuff = request.get_json(force=True)
+		print(client_stuff)
+	else:
+		print('Huston we have a problem...')
 
 
 @app.route('/example')
