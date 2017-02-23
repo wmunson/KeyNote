@@ -111,10 +111,12 @@
 	height:0;
 	width:30%;
 	
-	/*border:dashed blue;*/
+	
+	border:dashed blue;
 }
 
 .innDiv{
+	display:none;
 	height:15rem;
 	width:80%;
 	z-index:10;
@@ -124,18 +126,22 @@
 }
 
 #hoverUl{
-	
+	border: red;
 }
 
 #hoverUl li{
 	margin:1%;
 	width:20%;
+	border:green;
 }
 
 .remove{
-	display:none;
+	/*display:none;*/
 }
 
+.hovering{
+	display:block;
+}
 
 .rightCol{
 	display:flex;
