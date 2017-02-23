@@ -231,7 +231,10 @@ def grab_stock_list(string):
 		stock_list = requests.get(input_url).json()
 		final_product = []
 		for stock_obj in stock_list:
-			if stock_obj['Status'] == 'SUCCESS':
+			if stock_obj['Name'] and stock_obj['Name'] != ' ':
+				print(stock_obj)
+				print(stock_obj['Name'])
+				print(type(stock_obj['Name']))
 				final_product.append(stock_obj)
 			else:
 				pass
@@ -244,12 +247,31 @@ def grab_stock_info(ticker):
 	else:
 		input_url = 'http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol=' + ticker.upper()
 		stock_info = requests.get(input_url).json()
-		return json.dumps(stock_info)
+		if stock_info['Status'] == "SUCCESS"
+			return json.dumps(stock_info)
+		else:
+			return json.dumps({'void': "Sorry the information is not available."})
 
 
 if __name__ == "__main__":
 	app.run(debug=True)
 
-
+{
+  "Status": "Failure|APP_SPECIFIC_ERROR",
+  "Name": "CBOE Apple VIX Index",
+  "Symbol": "VXAPL",
+  "LastPrice": "Not Available",
+  "Change": "Not Available",
+  "ChangePercent": "Not Available",
+  "Timestamp": "Not Available",
+  "MSDate": "Not Available",
+  "MarketCap": "Not Available",
+  "Volume": "Not Available",
+  "ChangeYTD": "Not Available",
+  "ChangePercentYTD": "Not Available",
+  "High": "Not Available",
+  "Low": "Not Available",
+  "Open": "Not Available"
+}
 
 
