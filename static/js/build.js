@@ -121,8 +121,8 @@ const searchStock = function(name){
 		xhttp.onreadystatechange = function(){
 			if (this.readyState == 4 && this.status == 200){
 				var data = JSON.parse(this.responseText);
-				console.log(data)
-				stocksToDom(data)
+				console.log(data['result'])
+				stocksToDom(data['result'])
 			}
 		};
 		xhttp.open("GET", url, true);
@@ -203,59 +203,84 @@ const addDiv=function(symbol){
 			const data = JSON.parse(this.responseText);
 			console.log(data);
 			
-			input.setAttribute('data-price',data['LastPrice']);
+			if(data['void']){
+				const divTop = document.createElement('div');
+				divTop.setAttribute('class','stockDiv');
+				
+				const divInn = document.createElement('div');
+				divInn.setAttribute('id',data['Symbol']+'wes');
+				divInn.setAttribute('class','innDiv');
+				
+				const ul = document.createElement('ul');
+				ul.setAttribute("id",'hoverUl');
 
-			const divTop = document.createElement('div');
-			divTop.setAttribute('class','stockDiv');
-			
-			const divInn = document.createElement('div');
-			divInn.setAttribute('id',data['Symbol']+'wes');
-			divInn.setAttribute('class','innDiv');
-			
-			const ul = document.createElement('ul');
-			ul.setAttribute("id",'hoverUl');
+				var lSym = document.createElement('li');
+				lSym.innerHTML=data['void'];
+				ul.appendChild(lSym)
 
-			var lSym = document.createElement('li');
-			lSym.innerHTML=data['Symbol'];
-			ul.appendChild(lSym)
+				divInn.appendChild(ul);
+				divTop.appendChild(divInn);
 
-			var ltime = document.createElement('li');
-			ltime.innerHTML=data['Timestamp'];
-			ul.appendChild(ltime);
+				parent.appendChild(divTop);
 
-			var lLP = document.createElement('li');
-			lLP.innerHTML="$"+data['LastPrice'];
-			ul.appendChild(lLP)
+			}
+			else{
 
-			var lCP = document.createElement('li');
-			lCP.innerHTML="%"+data['ChangePercent'];
-			ul.appendChild(lCP)
+				input.setAttribute('data-price',data['LastPrice']);
 
-			var lMC = document.createElement('li');
-			lMC.innerHTML=data['MarketCap'];
-			ul.appendChild(lMC)
+				const divTop = document.createElement('div');
+				divTop.setAttribute('class','stockDiv');
+				
+				const divInn = document.createElement('div');
+				divInn.setAttribute('id',data['Symbol']+'wes');
+				divInn.setAttribute('class','innDiv');
+				
+				const ul = document.createElement('ul');
+				ul.setAttribute("id",'hoverUl');
 
-			var lvol = document.createElement('li');
-			lvol.innerHTML=data['Volume'];
-			ul.appendChild(lvol)
+				var lSym = document.createElement('li');
+				lSym.innerHTML=data['Symbol'];
+				ul.appendChild(lSym)
 
-			var lhigh = document.createElement('li');
-			lhigh.innerHTML="$"+data['High'];
-			ul.appendChild(lhigh)
+				var ltime = document.createElement('li');
+				ltime.innerHTML=data['Timestamp'];
+				ul.appendChild(ltime);
 
-			var llow = document.createElement('li');
-			llow.innerHTML="$"+data['Low'];
-			ul.appendChild(llow)
+				var lLP = document.createElement('li');
+				lLP.innerHTML="$"+data['LastPrice'];
+				ul.appendChild(lLP)
 
-			var lopen = document.createElement('li');
-			lopen.innerHTML="$"+data['Open'];
-			ul.appendChild(lopen)
+				var lCP = document.createElement('li');
+				lCP.innerHTML="%"+data['ChangePercent'];
+				ul.appendChild(lCP)
 
+				var lMC = document.createElement('li');
+				lMC.innerHTML=data['MarketCap'];
+				ul.appendChild(lMC)
+
+				var lvol = document.createElement('li');
+				lvol.innerHTML=data['Volume'];
+				ul.appendChild(lvol)
+
+				var lhigh = document.createElement('li');
+				lhigh.innerHTML="$"+data['High'];
+				ul.appendChild(lhigh)
+
+				var llow = document.createElement('li');
+				llow.innerHTML="$"+data['Low'];
+				ul.appendChild(llow)
+
+				var lopen = document.createElement('li');
+				lopen.innerHTML="$"+data['Open'];
+				ul.appendChild(lopen)
+
+				divInn.appendChild(ul);
+				divTop.appendChild(divInn);
+
+				parent.appendChild(divTop);
+			}
 			// var text=document.createTextNode('text');
-			divInn.appendChild(ul);
-			divTop.appendChild(divInn);
-
-			parent.appendChild(divTop);
+			
 			
 
 			}

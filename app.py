@@ -247,7 +247,7 @@ def grab_stock_info(ticker):
 	else:
 		input_url = 'http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol=' + ticker.upper()
 		stock_info = requests.get(input_url).json()
-		if stock_info['Status'] == "SUCCESS"
+		if stock_info['Status'] == "SUCCESS":
 			return json.dumps(stock_info)
 		else:
 			return json.dumps({'void': "Sorry the information is not available."})
