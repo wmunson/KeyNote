@@ -45,12 +45,13 @@
 
 
 {% block body %}
+
 <div class="blockBody">
 	<div class="leftCol">	
 		<div class="inputDiv">
 			<p>Give Your Theme a Name nd Description. Then Search for Stocks to add to The Queue</p>
 			<input id="nameInput" name="etfName" type="text" placeholder="Enter Name">
-			<input name="etfDescript" type="text" placeholder="Enter Description">
+			<input id="etfDescript" type="text" placeholder="Enter Description">
 		</div>
 
 		<div class="searchDiv">
@@ -84,13 +85,14 @@
 	
 	<div class="rightCol">
 	  <div class="pieChart">
-		  <p>pie chart hear</p>
+		  <!-- <p>pie chart hear</p> -->
 		</div>
 
 		<div class="stockQueue">
 			<div class="overviewDiv">
 				<p>Stock Queue</p>
 				<ul id="queueTick" class="queueList">
+					
 					<!-- <li class="ticker">
 						<input type="range" id="sliderBar" min="0" max="100" step="1" value="0">
 					</li> -->
