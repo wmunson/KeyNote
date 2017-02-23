@@ -52,27 +52,57 @@ const hoverEvents=function(div){
 	});
 }
 
+/////////refreshes ul list//////
+
+const removeLi = function(){
+	var parent = document.querySelector('#stockUl');
+	while(parent.firstChild){
+		parent.removeChild(parent.firstChild)
+	}
+}
+
+
 
 //////////////adds click event for queueing stock////
 
-const removeLi = function(){
-	
-}
-
-
 const queueEvent = function(input){
-	input.addEventListener('click',function(){
-		console.log('click')
-		// document.getElementById(input.data-id)
+	input.addEventListener('click',function(e){
+		// console.log(e.target.dataset.id)
+		
+		var tick = document.createTextNode(e.target.dataset.id);
+		var price = document.createTextNode('PRICE: '+e.target.dataset.price);
+		console.log(tick)
+		console.log(price)
+
+		var ul = document.getElementById('queueTick');
+		
+		var li = document.createElement('li');
+		li.setAttribute('class','ticker')
+
+		var slide = document.createElement('input');
+		slide.setAttribute('type','range');
+		slide.setAttribute('class','slideBar');
+		slide.setAttribute('min',0);
+		slide.setAttribute('max',100);
+		slide.setAttribute('step',1);
+		slide.setAttribute('value',0);
+
+		li.appendChild(tick);
+		li.appendChild(price);
+		li.appendChild(slide);
+		ul.appendChild(li);
+
+
+
 	})
 }
 
+////////// search bar event ////////////
 
 document.getElementById('searchStocks').addEventListener('keyup', function(event){
-	removeLi()
-
 	event.preventDefault()
 	if(event.keyCode == 13){ 
+	removeLi()
 	var name=this.value;
 	console.log(name);
 	searchStock(name);
@@ -118,13 +148,15 @@ const stocksToDom = function(stocks){
 		input.setAttribute('type','submit');
 		input.setAttribute('class','queueBut');
 		input.setAttribute('data-id', stocks[i].Symbol);
+		// input.setAttribute('data-price', stocks[i].LastPrice);
+
+		queueEvent(input);
 
 		if (stocks[i].Name){
 			const name = document.createTextNode("NAME: "+stocks[i].Name+", EXCHANGE: "+stocks[i].Exchange);
 			div.appendChild(name)
 			// addInput(stocks[i].Symbol);
 			addDiv(stocks[i].Symbol);
-			queueEvent(input);
 			div.appendChild(input);
 			hoverEvents(div);
 			li.appendChild(div);
@@ -136,7 +168,6 @@ const stocksToDom = function(stocks){
 			div.appendChild(symbol)
 			// addInput(stocks[i].Symbol);
 			addDiv(stocks[i].Symbol);
-			queueEvent(input);
 			div.appendChild(input);
 			hoverEvents(div);
 			li.appendChild(div);
@@ -167,9 +198,13 @@ const addDiv=function(symbol){
 	xhttp.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
 			const parent = document.querySelector('#'+symbol);
+			const input = document.querySelector('[data-id="'+symbol+'"]')
+			
 			const data = JSON.parse(this.responseText);
 			console.log(data);
 			
+			input.setAttribute('data-price',data['LastPrice']);
+
 			const divTop = document.createElement('div');
 			divTop.setAttribute('class','stockDiv');
 			
@@ -232,6 +267,7 @@ const addDiv=function(symbol){
 
 
 
+
 // li.addEventListener('mouseout',function(){
 // 		var tick = '#'+this.id
 // 		var node = document.querySelector('.stockDiv'); 
@@ -243,8 +279,5 @@ const addDiv=function(symbol){
 // 	console.log(this.id)
 // })
 
-//////////////////////////////////
-////////////////////////adding stocks to queue
-////////////////////////////
 
 
