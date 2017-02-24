@@ -138,6 +138,7 @@ def return_etf(etf_name):
 						)
 	if request.method == 'POST':
 		client_stuff = request.get_json(force=True)
+		print(client_stuff)
 		if etf_name == client_stuff['Name']:
 			name = etf_name
 			description = client_stuff['Description']
@@ -147,12 +148,16 @@ def return_etf(etf_name):
 			for etf in etf_array:
 				full_value += int(etf[1])
 			for etf in etf_array:
-				compositon[etf[0]] = [etf[2], etf[1]/full_value]
+				composition[etf[0]] = [etf[2], int(etf[1])/full_value]
 			last_price = 0
 			new_etf = ETF(name, description, composition, last_price)
-			db.sesison.add(new_etf)
-			db.sesison.commit()
-			etf = ETF.query.filter_by(ETF_name = str(name)).first()
+			db.session.add(new_etf)
+			db.session.commit()
+			etf = ETF.query.filter_by(ETF_name = name).first()
+			new_ref = Reference(session['user_id'],etf.id)
+			db.session.add(new_ref)
+			db.session.commit()
+			print(etf.ETF_name)
 			if etf:
 				return render_template('singleTheme.html', 
 									etf_name = etf.ETF_name,
