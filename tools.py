@@ -126,8 +126,7 @@ def create_etf(etf_info):
 def price_etf(composition):
 	result = 0
 	for key, value in composition.items():
-			print('Price is ' + str(value[0]) + ' and the weight is ' + str(value[1]))
-			# print('The product is ' + str(value[0]*value[1]))
+
 			result += float(value[0]) * float(value[1])
 	return round(result,2)
 
