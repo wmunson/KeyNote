@@ -151,7 +151,7 @@ def return_etf(etf_name):
 			composition[etf[0]] = [etf[2], int(etf[1])/full_value]
 		last_price = price_etf(composition)
 		author = session['username']
-		new_etf = ETF(name, author, description, composition, last_price
+		new_etf = ETF(name, author, description, composition, last_price)
 		db.session.add(new_etf)
 		db.session.commit()
 		etf = ETF.query.filter_by(ETF_name = name).first()
