@@ -155,6 +155,7 @@ def return_etf(etf_name):
 			new_etf = ETF(name, author, description, composition, last_price)
 			db.session.add(new_etf)
 			db.session.commit()
+
 			etf = ETF.query.filter_by(ETF_name = name).first()
 			new_ref = Reference(session['user_id'],etf.id)
 			db.session.add(new_ref)
