@@ -151,7 +151,7 @@ def return_etf(etf_name):
 			composition[etf[0]] = [etf[2], int(etf[1])/full_value]
 		last_price = price_etf(composition)
 		author = session['username']
-		new_etf = ETF(name, author, description, composition, last_price)
+		new_etf = ETF(name, author, description, composition, last_price
 		db.session.add(new_etf)
 		db.session.commit()
 		etf = ETF.query.filter_by(ETF_name = name).first()
@@ -193,7 +193,7 @@ def explore_sample():
 	return render_template('singleTheme.html',
 					ETF_name = etf.ETF_name,
 					date = str(etf.creation_date),
-					author = "KeyNote Staff",
+					author = etf.ETF_author,
 					ETF_descr = etf.ETF_descr
 					)
 
@@ -288,6 +288,11 @@ def grab_stock_info(ticker):
 		else:
 			return json.dumps({'Symbol': stock_info['Symbol'],
 				'void': "Sorry the information is not available."})
+
+@app.route('/overview/<etf_name>', methods=['GET'])
+def grab_composition(etf_name):
+	etf = ETF.query.filter_by(ETF_name = etf_name).first()
+	return json.dumps(etf.ETF_comp)
 
 
 if __name__ == "__main__":
