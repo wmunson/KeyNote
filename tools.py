@@ -123,9 +123,13 @@ def create_etf(etf_info):
 		return True
 
 
-
-
-
+def price_etf(composition):
+	result = 0
+	for key, value in composition.items():
+			print('Price is ' + str(value[0]) + ' and the weight is ' + str(value[1]))
+			print('The product is ' + str(value[0]*value[1]))
+			result += value[0] * value[1]
+	return result
 
 
 
@@ -138,3 +142,6 @@ def create_etf(etf_info):
 
 # x = make_stock_list("msft")
 # print(x)
+
+x = {'key': [1,2], 'key2': [1,3]}
+print(price_etf(x))
