@@ -154,6 +154,20 @@ def return_etf(etf_name):
 			db.session.add(new_etf)
 			db.session.commit()
 
+			etf = ETF.query.filter_by(ETF_name = name).first()
+			new_ref = Reference(session['user_id'],etf.id)
+			db.session.add(new_ref)
+			db.session.commit()
+			print(etf.ETF_name)
+			if etf:
+				return render_template('singleTheme.html', 
+									etf_name = etf.ETF_name,
+									date = str(etf.creation_date),
+									author = session['first_name'] + session['last_name'],
+									ETF_descr = etf.ETF_descr
+									)
+			else:
+				return render_template('build.html')
 
 		name = client_stuff['Name']
 		description = client_stuff['Description']
@@ -183,7 +197,6 @@ def return_etf(etf_name):
 								)
 		else:
 			return render_template('build.html')
-
 	else:
 		print('Huston we have a problem...')
 
