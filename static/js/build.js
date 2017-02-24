@@ -365,14 +365,20 @@ document.getElementById('submit').addEventListener('click', function(){
 		"Description": descript,
 		"etf": arr
 	}
+	var param = JSON.stringify(data);
 	url = "http://127.0.0.1:5000/etf/"+name
 	var xhttp = new XMLHttpRequest
 	xhttp.onreadystatechange = function(){
 			if (this.readyState == 4 && this.status == 200){};
 		};
-		xhttp.open("POST", url, true);
-		xhttp.setRequestHeader("Content-type","application/x-www-form-urlenco");
-		xhttp.send(data);
+		
+		console.log(data);
+		console.log(typeof(param));
+		console.log(param);
+
+	xhttp.open("POST", url, true);
+	xhttp.setRequestHeader("Content-type","application/json");
+	xhttp.send(param);
 		
 
 });
