@@ -128,11 +128,6 @@ def create_account():
 
 @app.route("/etf/<etf_name>", methods=['GET', 'POST'])
 def return_etf(etf_name):
-	print('========================')
-	print(request)
-	print(request.method)
-	print('====================')
-
 	if request.method == 'GET':
 		etf = ETF.query.filter_by(ETF_name = str(etf_name)).first()
 		return render_template('singleTheme.html',
@@ -143,7 +138,6 @@ def return_etf(etf_name):
 						)
 	if request.method == 'POST':
 		client_stuff = request.get_json(force=True)
-		print(client_stuff)
 		if etf_name == client_stuff['Name']:
 			name = etf_name
 			description = client_stuff['Description']
@@ -151,14 +145,23 @@ def return_etf(etf_name):
 			composition = {}
 			full_value = 0
 			for etf in etf_array:
-				full_value += etf[1]
+				full_value += int(etf[1])
 			for etf in etf_array:
 				compositon[etf[0]] = [etf[2], etf[1]/full_value]
 			last_price = 0
 			new_etf = ETF(name, description, composition, last_price)
 			db.sesison.add(new_etf)
 			db.sesison.commit()
-			print('database got hit!!')
+			etf = ETF.query.filter_by(ETF_name = str(name)).first()
+			if etf:
+				return render_template('singleTheme.html', 
+									etf_name = etf.ETF_name,
+									date = str(etf.creation_date),
+									author = session['first_name'] + session['last_name'],
+									ETF_descr = etf.ETF_descr
+									)
+			else:
+				return render_template('build.html')
 	else:
 		print('Huston we have a problem...')
 
