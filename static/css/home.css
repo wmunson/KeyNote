@@ -107,7 +107,7 @@
 
 .etfList{
 	display: flex;
-	flex-direction:row;
+	flex-direction:column;
 	justify-content: center;
 	width:90%;
 	margin:1%;
@@ -124,6 +124,10 @@
 	/*margin:1%;*/
 	/*z-index:0;*/
 	list-style: none;
+	margin:1%;
+	border-bottom: solid black;
+	border-bottom-width: .08rem;
+	
 	
 	/*border:dashed blue;*/
 }
