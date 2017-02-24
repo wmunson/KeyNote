@@ -353,7 +353,8 @@ const addDiv=function(symbol){
 ///////////// submit button ///////
 //////////////////////////////////
 
-document.getElementById('submit').addEventListener('click', function(){
+document.getElementById('submit').addEventListener('click', function(event){
+	event.preventDefault();
 	var name = document.getElementById('nameInput').value;
 	// console.log(name);
 	var descript = document.getElementById('etfDescript').value;
@@ -364,7 +365,10 @@ document.getElementById('submit').addEventListener('click', function(){
 		"Name": name,
 		"Description": descript,
 		"etf": arr
-	}
+	};
+
+	document.getElementById('subForm').setAttribute('action','/etf/'+name);
+
 	var param = JSON.stringify(data);
 	url = "http://127.0.0.1:5000/etf/"+name
 	var xhttp = new XMLHttpRequest
