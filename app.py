@@ -147,7 +147,7 @@ def return_etf(etf_name):
 			for etf in etf_array:
 				full_value += int(etf[1])
 			for etf in etf_array:
-				compositon[etf[0]] = [etf[2], etf[1]/full_value]
+				compositon[etf[0]] = [etf[2], int(etf[1])/full_value]
 			last_price = 0
 			new_etf = ETF(name, description, composition, last_price)
 			db.sesison.add(new_etf)
