@@ -138,6 +138,7 @@ def return_etf(etf_name):
 						)
 	if request.method == 'POST':
 		client_stuff = request.get_json(force=True)
+		print(client_stuff)
 		if etf_name == client_stuff['Name']:
 			name = etf_name
 			description = client_stuff['Description']
@@ -153,6 +154,7 @@ def return_etf(etf_name):
 			db.session.add(new_etf)
 			db.session.commit()
 			etf = ETF.query.filter_by(ETF_name = name).first()
+			print(etf.ETF_name)
 			if etf:
 				return render_template('singleTheme.html', 
 									etf_name = etf.ETF_name,
