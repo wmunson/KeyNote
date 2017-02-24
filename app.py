@@ -161,7 +161,7 @@ def return_etf(etf_name):
 		print(etf.ETF_name)
 		if etf:
 			return render_template('singleTheme.html', 
-								etf_name = etf.ETF_name,
+								ETF_name = etf.ETF_name,
 								date = str(etf.creation_date),
 								author = etf.ETF_author,
 								ETF_descr = etf.ETF_descr

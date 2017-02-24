@@ -56,7 +56,13 @@
 	/*border:solid black;*/
 }
 
+.newsDiv li{
+	padding:.1rem;
+}
 
+.newsDiv li:nth-child(odd){
+	background-color: #C9E4E3;
+}
 
 
 .rightCol{
@@ -123,14 +129,21 @@
 	justify-content:space-between;
 	/*margin:1%;*/
 	/*z-index:0;*/
+	padding:.1rem;
 	list-style: none;
 	margin:1%;
 	border-bottom: solid black;
 	border-bottom-width: .08rem;
 	
+
 	
 	/*border:dashed blue;*/
 }
+
+.etf:nth-child(odd){
+	background-color: #C9E4E3;
+}
+
 
 #alex{
 	/*align-self:flex-end;*/

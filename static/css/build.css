@@ -108,8 +108,14 @@
 	border-bottom: solid black;
 	border-bottom-width: .2rem;
 	width:95%;
-	
+	padding:.2rem;
+	padding-top: .4rem;
+
 	margin:1%;
+}
+
+.stockTick:nth-child(odd){
+	background-color: #C9E4E3;
 }
 
 .listCon{

@@ -144,15 +144,22 @@ const queueEvent = function(input){
 ////////// search bar event ////////////
 
 document.getElementById('searchStocks').addEventListener('keyup', function(event){
+	console.log('enter')
 	event.preventDefault()
 	if(event.keyCode == 13){ 
-	// setTimeout(function(){console.log('waiting')},10000);
-	removeLi()
 	var name=this.value;
-	// console.log(name);
-	searchStock(name);
-	
-	// stocksToDom(stocks);
+	setTimeout(function(){
+		console.log('waiting')
+		
+		removeLi()
+		
+
+		// console.log(name);
+		
+		searchStock(name);
+		
+		// stocksToDom(stocks);
+		},5000);
 	}
 });
 
