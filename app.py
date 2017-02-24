@@ -147,12 +147,12 @@ def return_etf(etf_name):
 			for etf in etf_array:
 				full_value += int(etf[1])
 			for etf in etf_array:
-				compositon[etf[0]] = [etf[2], int(etf[1])/full_value]
+				composition[etf[0]] = [etf[2], int(etf[1])/full_value]
 			last_price = 0
 			new_etf = ETF(name, description, composition, last_price)
-			db.sesison.add(new_etf)
-			db.sesison.commit()
-			etf = ETF.query.filter_by(ETF_name = str(name)).first()
+			db.session.add(new_etf)
+			db.session.commit()
+			etf = ETF.query.filter_by(ETF_name = name).first()
 			if etf:
 				return render_template('singleTheme.html', 
 									etf_name = etf.ETF_name,
