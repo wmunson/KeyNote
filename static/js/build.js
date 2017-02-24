@@ -38,7 +38,7 @@ const graph = function(arr){require(["d3", "c3"], function(d3, c3) {
 
 const getGraphVal = function(){
 	
-	var finalArr=[]
+	var graphArr=[]
 	var bar = document.querySelectorAll('.slideBar');
 	var li = document.querySelectorAll('.ticker');
 	// console.log(ul)
@@ -54,10 +54,10 @@ const getGraphVal = function(){
 
 		arr.push(tick);
 		arr.push(val);
-		finalArr.push(arr);
+		graphArr.push(arr);
 	}
-	// console.log(finalArr);
-	return finalArr;
+	console.log(graphArr);
+	return graphArr
 }
 
 ///// event for sliders//////
@@ -349,31 +349,61 @@ const addDiv=function(symbol){
 // 	console.log(this.id)
 // })
 
+////////////////////////////////////////
 ///////////// submit button ///////
+//////////////////////////////////
 
 document.getElementById('submit').addEventListener('click', function(){
 	var name = document.getElementById('nameInput').value;
-	console.log(name);
+	// console.log(name);
 	var descript = document.getElementById('etfDescript').value;
-	console.log(descript);
-	var arr = getGraphVal();
+	// console.log(descript);
+	var arr = makePickArr();
 	console.log(arr);
 	var data = {
 		"Name": name,
 		"Description": descript,
 		"etf": arr
 	}
-	url = "http://127.0.0.1:5000/etf"+name
+	url = "http://127.0.0.1:5000/etf/"+name
 	var xhttp = new XMLHttpRequest
 	xhttp.onreadystatechange = function(){
-			if (this.readyState == 4 && this.status == 200){
-				
-			}
+			if (this.readyState == 4 && this.status == 200){};
 		};
 		xhttp.open("POST", url, true);
-		xhttp.setRequestHeader("Content-type","application/x-www-form-urlenco")
+		xhttp.setRequestHeader("Content-type","application/x-www-form-urlenco");
 		xhttp.send(data);
 		
 
+});
+
+
+//////////////// building pickle arr ////////
+
+const makePickArr = function(){
+	
+	
+	var pickArr=[]
+	var bar = document.querySelectorAll('.slideBar');
+	var li = document.querySelectorAll('.ticker');
+	// console.log(ul)
+	// console.log(bar)
+	// var li = docume
+	for (i=0;i<li.length;i++){
+		var arr=[]
+		var tick = li[i].dataset.id;
+		var val =  bar[i].value;
+		var price = li[i].dataset.price;
+		// console.log('==========')
+		// console.log(tick)
+		// console.log(val)
+
+		arr.push(tick);
+		arr.push(val);
+		arr.push(price);
+		
+		pickArr.push(arr);
+	}
+	console.log(pickArr);
+	return pickArr
 }
-})
