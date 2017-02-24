@@ -126,9 +126,9 @@ def create_account():
 			return render_template('login.html',
 								errorMessage='Sorry the username you have provided is already taken')
 
-@app.route("/etf/<etf_name>")
+@app.route("/etf/<etf_name>", methods=['GET', 'POST'])
 def return_etf(etf_name):
-	if request.method = 'GET':
+	if request.method == 'GET':
 		etf = ETF.query.filter_by(ETF_name = str(etf_name)).first()
 		return render_template('singleTheme.html',
 						ETF_name = etf.ETF_name,
@@ -136,20 +136,24 @@ def return_etf(etf_name):
 						author = "KeyNote Staff",
 						ETF_descr = etf.ETF_descr
 						)
-	if request.method = ['POST']:
+	if request.method == ['POST']:
 		client_stuff = request.get_json(force=True)
-		name = etf_name
-		description = client_stuff['Description']
-		etf_array = client_stuff['etf']
-		composition = {}
-		last_price = 0
-		url = 'http://dev.markitondemand.com/Api/v2/Quote/json?symbol='
-		for etf in etf_array:
-			compositon[etf[0]] = etf[1]
-			stock_price = requests.get(url+etf[0])
-			last_price += etf[1] 
-		new_etf = ETF(name,description, composition, last_price)
 		print(client_stuff)
+		if etf_name == client_stuff['Name']
+			name = etf_name
+			description = client_stuff['Description']
+			etf_array = client_stuff['etf']
+			composition = {}
+			full_value = 0
+			for etf in etf_array:
+				full_value += etf[1]
+			for etf in etf_array:
+				compositon[etf[0]] = [etf[2], etf[1]/full_value]
+			last_price = 0
+			new_etf = ETF(name, description, composition, last_price)
+			db.sesison.add(new_etf)
+			db.sesison.commit()
+			print('database got hit!!')
 	else:
 		print('Huston we have a problem...')
 
