@@ -143,5 +143,5 @@ def price_etf(composition):
 # x = make_stock_list("msft")
 # print(x)
 
-x = {'key': [1,2], 'key2': [1,3]}
-print(price_etf(x))
+# x = {'key': [1,2], 'key2': [1,3]}
+# print(price_etf(x))
