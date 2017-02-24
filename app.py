@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from create_db import *
 import requests
-from tools import grab_articles, session_set, make_stock_list, etf_to_JSON, etf_pricer_final, user_to_JSON, price_etf
+from tools import grab_articles, session_set, make_stock_list, etf_to_JSON, etf_pricer_final, user_to_JSON
 import json
 
 app= Flask(__name__)
@@ -70,7 +70,6 @@ def grab_etf(key):
 
 @app.route('/',methods=['GET'])
 def homepage():
-	session.clear()
 	return render_template('login.html')
 
 
@@ -134,12 +133,13 @@ def return_etf(etf_name):
 		return render_template('singleTheme.html',
 						ETF_name = etf.ETF_name,
 						date = str(etf.creation_date),
-						author = etf.ETF_author,
+						author = "KeyNote Staff",
 						ETF_descr = etf.ETF_descr
 						)
 	if request.method == 'POST':
 		client_stuff = json.loads(request.form['data'])
 		print(client_stuff)
+
 		name = client_stuff['Name']
 		description = client_stuff['Description']
 		etf_array = client_stuff['etf']
@@ -168,6 +168,7 @@ def return_etf(etf_name):
 								)
 		else:
 			return render_template('build.html')
+
 	else:
 		print('Huston we have a problem...')
 
