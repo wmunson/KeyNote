@@ -154,6 +154,9 @@ def return_etf(etf_name):
 			db.session.add(new_etf)
 			db.session.commit()
 			etf = ETF.query.filter_by(ETF_name = name).first()
+			new_ref = Reference(session['user_id'],etf.id)
+			db.session.add(new_ref)
+			db.session.commit()
 			print(etf.ETF_name)
 			if etf:
 				return render_template('singleTheme.html', 
