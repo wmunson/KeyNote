@@ -138,6 +138,17 @@ def return_etf(etf_name):
 						)
 	if request.method = ['POST']:
 		client_stuff = request.get_json(force=True)
+		name = etf_name
+		description = client_stuff['Description']
+		etf_array = client_stuff['etf']
+		composition = {}
+		last_price = 0
+		url = 'http://dev.markitondemand.com/Api/v2/Quote/json?symbol='
+		for etf in etf_array:
+			compositon[etf[0]] = etf[1]
+			stock_price = requests.get(url+etf[0])
+			last_price += etf[1] 
+		new_etf = ETF(name,description, composition, last_price)
 		print(client_stuff)
 	else:
 		print('Huston we have a problem...')
