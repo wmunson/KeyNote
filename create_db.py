@@ -2,6 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, date
 from app import db, bcrypt
 from flask_bcrypt import Bcrypt
+from tools import price_etf
 
 class User(db.Model):
 	# Table Schema
@@ -25,7 +26,8 @@ class ETF(db.Model):
 	__tablename__ = 'etf'
 	# Table Schema
 	id = db.Column(db.Integer, primary_key=True)
-	ETF_name = db.Column(db.String(40), unique=True)
+	ETF_name = db.Column(db.String(100), unique=True)
+	ETF_author = db.Column(db.String(100), unique=True)
 	ETF_descr = db.Column(db.String(200))
 	ETF_comp = db.Column(db.PickleType)
 	last_price = db.Column(db.Float)
@@ -77,9 +79,10 @@ pickle = {
 
 etf_example = ETF(
 			'Techie',
+			'KeyNote Staff',
 			"Technology minded stocks with the big boys!",
 			pickle,
-			35.00
+			price_etf(pickle)
 )
 
 ref = Reference(1,1)

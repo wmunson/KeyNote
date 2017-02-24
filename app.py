@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from create_db import *
 import requests
-from tools import grab_articles, session_set, make_stock_list, etf_to_JSON, etf_pricer_final, user_to_JSON
+from tools import grab_articles, session_set, make_stock_list, etf_to_JSON, etf_pricer_final, user_to_JSON, price_etf
 import json
 
 app= Flask(__name__)
@@ -70,6 +70,7 @@ def grab_etf(key):
 
 @app.route('/',methods=['GET'])
 def homepage():
+	session.clear()
 	return render_template('login.html')
 
 
@@ -133,7 +134,7 @@ def return_etf(etf_name):
 		return render_template('singleTheme.html',
 						ETF_name = etf.ETF_name,
 						date = str(etf.creation_date),
-						author = "KeyNote Staff",
+						author = etf.ETF_author,
 						ETF_descr = etf.ETF_descr
 						)
 	if request.method == 'POST':
@@ -149,8 +150,9 @@ def return_etf(etf_name):
 				full_value += int(etf[1])
 			for etf in etf_array:
 				composition[etf[0]] = [etf[2], int(etf[1])/full_value]
-			last_price = 0
-			new_etf = ETF(name, description, composition, last_price)
+			last_price = price_etf(composition)
+			author = session['username']
+			new_etf = ETF(name, author, description, composition, last_price)
 			db.session.add(new_etf)
 			db.session.commit()
 			etf = ETF.query.filter_by(ETF_name = name).first()
@@ -162,7 +164,7 @@ def return_etf(etf_name):
 				return render_template('singleTheme.html', 
 									etf_name = etf.ETF_name,
 									date = str(etf.creation_date),
-									author = session['first_name'] + session['last_name'],
+									author = etf.ETF_author,
 									ETF_descr = etf.ETF_descr
 									)
 			else:
