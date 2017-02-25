@@ -30,6 +30,7 @@ class ETF(db.Model):
 	ETF_author = db.Column(db.String(100))
 	ETF_descr = db.Column(db.String(200))
 	ETF_comp = db.Column(db.PickleType)
+	original_price = db.Column(db.Float)
 	last_price = db.Column(db.Float)
 	creation_date = db.Column(db.Date, default=date.today())
 	ETF = db.relationship("Reference")
@@ -74,7 +75,8 @@ admin = User(
 pickle = {
 	'IBM':[100, 0.3],
 	'MSFT':[40, 0.3],
-	'AAPL':[80, 0.4]}
+	'AAPL':[80, 0.4]
+	}
 
 
 
@@ -83,7 +85,11 @@ etf_example = ETF(
 			'KeyNote Staff',
 			"Technology minded stocks with the big boys!",
 			pickle,
-			price_etf(pickle)
+			price_etf(pickle),
+			price_etf({
+				'IBM':[120, 0.3],
+				'MSFT':[30, 0.3],
+				'AAPL':[95, 0.4]})
 )
 
 ref = Reference(1,1)

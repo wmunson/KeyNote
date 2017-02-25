@@ -6,6 +6,7 @@ from create_db import *
 import requests
 from tools import grab_articles, session_set, make_stock_list, etf_to_JSON, etf_pricer_final, user_to_JSON
 import json
+import time
 
 app= Flask(__name__)
 
@@ -59,6 +60,14 @@ def grab_etf(key):
 	else:
 		return False
 
+
+def recent_etf_price(etf_name):
+	etf = ETF.query.filter_by(ETF_name = etf_name).first()
+	etf_dict = etf.ETF_comp
+	for key, value in etf_dict.items():
+		time.sleep(3)
+		url = 'http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol='+key
+		result = request.get(url).json()
 
 
 
@@ -241,9 +250,10 @@ def log_out():
 	session.clear()
 	return render_template('login.html')
 
-@app.route("/graph")
-def example():
-	return etf_pricer_final('aapl','ibm','msft')
+@app.route("/graph/<etf_name>")
+def example(etf_name):
+	etf = ETF.query.filter_by(ETF_name = etf_name).first()
+	return etf_pricer_final(etf)
 
 @app.route("/manage")
 def return_user_info():
