@@ -154,6 +154,7 @@ def create_etf(etf_info):
 def price_etf(composition):
 	result = 0
 	for key, value in composition.items():
+
 			result += float(value[0]) * float(value[1])
 	return round(result,2)
 

@@ -133,6 +133,8 @@
 
 .views{
 	display:flex;
+	justify-content: center;
+	/*align-items: stretch;*/
 	height:100%;
 	position:relative;
 
@@ -142,9 +144,31 @@
 }
 
 .overviewDiv{
+	display:flex;
+	/*flex-direction: column;*/
+	justify-content:space-between;
 	/*order: 0;*/
-	/*border:dotted;*/
-	/*border-color: green*/
+	border:dotted green;
+	
+}
+
+.ovUlDiv{
+	display:flex;
+	justify-content: center;
+	width:40%;
+
+	border:dashed green;
+}
+
+.overviewUl{
+	border:dashed;
+	width:90%;
+}
+
+.donGraph{
+	border:dashed red;
+	height:90%;
+	width:50%;
 }
 
 .performanceDiv{
@@ -174,6 +198,7 @@
 }
 
 .view{
+	/*display:flex;*/
 	/*z-index: -1;*/
 	height:100%;
 	width:90%;
@@ -181,7 +206,7 @@
 }
 
 .activeBox{
-	display:block;
+	display:flex;
 	/*z-index: 1;*/
 }
 

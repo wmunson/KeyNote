@@ -144,15 +144,22 @@ const queueEvent = function(input){
 ////////// search bar event ////////////
 
 document.getElementById('searchStocks').addEventListener('keyup', function(event){
-	event.preventDefault()
+	console.log('enter')
+	// event.preventDefault()
 	if(event.keyCode == 13){ 
-	// setTimeout(function(){console.log('waiting')},10000);
-	removeLi()
 	var name=this.value;
-	// console.log(name);
-	searchStock(name);
-	
-	// stocksToDom(stocks);
+	setTimeout(function(){
+		console.log('waiting')
+		
+		removeLi()
+		
+
+		// console.log(name);
+		
+		searchStock(name);
+		
+		// stocksToDom(stocks);
+		},5000);
 	}
 });
 
@@ -354,7 +361,7 @@ const addDiv=function(symbol){
 //////////////////////////////////
 
 document.getElementById('submit').addEventListener('click', function(event){
-	event.preventDefault();
+	// event.preventDefault();
 	var name = document.getElementById('nameInput').value;
 	// console.log(name);
 	var descript = document.getElementById('etfDescript').value;
@@ -366,23 +373,24 @@ document.getElementById('submit').addEventListener('click', function(event){
 		"Description": descript,
 		"etf": arr
 	};
-
+	var param = JSON.stringify(data);
+	document.getElementById('data').setAttribute('value',param);
 	document.getElementById('subForm').setAttribute('action','/etf/'+name);
 
-	var param = JSON.stringify(data);
-	url = "http://127.0.0.1:5000/etf/"+name
-	var xhttp = new XMLHttpRequest
-	xhttp.onreadystatechange = function(){
-			if (this.readyState == 4 && this.status == 200){};
-		};
+	
+	// url = "http://127.0.0.1:5000/etf/"+name
+	// var xhttp = new XMLHttpRequest
+	// xhttp.onreadystatechange = function(){
+	// 		if (this.readyState == 4 && this.status == 200){};
+	// 	};
 		
-		console.log(data);
-		console.log(typeof(param));
-		console.log(param);
+	// 	console.log(data);
+	// 	console.log(typeof(param));
+	// 	console.log(param);
 
-	xhttp.open("POST", url, true);
-	xhttp.setRequestHeader("Content-type","application/json");
-	xhttp.send(param);
+	// xhttp.open("POST", url, true);
+	// xhttp.setRequestHeader("Content-type","application/json");
+	// xhttp.send(param);
 		
 
 });

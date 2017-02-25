@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from create_db import *
 import requests
-from tools import grab_articles, session_set, make_stock_list, etf_to_JSON, etf_pricer_final, user_to_JSON, price_etf
+from tools import grab_articles, session_set, make_stock_list, etf_to_JSON, etf_pricer_final, user_to_JSON
 import json
 import time
 
@@ -181,6 +181,7 @@ def return_etf(etf_name):
 		print('Huston we have a problem...')
 
 
+
 @app.route('/example')
 def display_example():
 	example_etf = grab_etf(1)
@@ -201,7 +202,7 @@ def explore_sample():
 	return render_template('singleTheme.html',
 					ETF_name = etf.ETF_name,
 					date = str(etf.creation_date),
-					author = etf.ETF_author,
+					author = "KeyNote Staff",
 					ETF_descr = etf.ETF_descr
 					)
 
@@ -300,8 +301,8 @@ def grab_stock_info(ticker):
 
 @app.route('/overview/<etf_name>', methods=['GET'])
 def grab_composition(etf_name):
-	etf = ETF.query.filter_by(ETF_name = etf_name).first()
-	return json.dumps(etf.ETF_comp)
+    etf = ETF.query.filter_by(ETF_name = etf_name).first()
+    return json.dumps(etf.ETF_comp)
 
 
 if __name__ == "__main__":
