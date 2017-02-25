@@ -35,12 +35,14 @@ class ETF(db.Model):
 	creation_date = db.Column(db.Date, default=date.today())
 	ETF = db.relationship("Reference")
 
-	def __init__(self,ETF_name, ETF_author, ETF_descr, ETF_comp, last_price):
+	def __init__(self,ETF_name, ETF_author, ETF_descr, ETF_comp, original_price, last_price):
 		self.ETF_name = ETF_name
 		self.ETF_author = ETF_author
 		self.ETF_descr = ETF_descr
 		self.ETF_comp=ETF_comp
+		self.original_price = original_price
 		self.last_price = last_price
+
 
 class Reference(db.Model):
 	# Table Schema

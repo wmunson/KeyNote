@@ -167,8 +167,8 @@ def price_etf(composition):
 # print(etf_pricer_final('aapl','ibm','msft'))
 
 
-x = make_stock_list("msft")
-print(x)
+# x = make_stock_list("msft")
+# print(x)
 
 # x = {'key': [1,2], 'key2': [1,3]}
 # print(price_etf(x))
