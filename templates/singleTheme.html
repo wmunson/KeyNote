@@ -48,7 +48,7 @@
 <div class="blockBody">
 	<div class="topRow">
 		<div class="theme">
-			<h3>{{ETF_name}}</h3>
+			<h3 id="etfName">{{ETF_name}}</h3>
 			<ul class="etfInfo">
 				<li>Author: {{author}}</li>
 				<li>Date Created: {{date}}</li>
@@ -85,9 +85,15 @@
 
    
 			<div id="ovDiv" class="overviewDiv view activeBox">
-				<ul>overview screen
-					<li>{{ETF_descr}}</li>
-				</ul>			
+				<div class="ovUlDiv">
+					<ul class="overviewUl" >overview screen
+						<li>{{ETF_descr}}</li>
+
+					</ul>			
+				</div>
+				<div class="donGraph">
+					graph here
+				</div>
 			</div>
 			<div id="peDiv" class="performanceDiv view">
 				<div class="performGraph">perform screen</div>
@@ -95,6 +101,11 @@
 			
 			<div id="neDiv" class="newsDiv view">
 				<ul>news screen</ul>
+				{% for news_article in news_articles %}
+					<li> 
+						<a target="_blank" href="{{news_article[1]}}">{{news_article[0]}}</a>  
+					</li>
+				{% endfor %}
 			</div>
 			
 			<div id="coDiv" class="commentsDiv view">
