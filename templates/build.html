@@ -4,54 +4,15 @@
 <link rel="stylesheet"	href="../static/css/build.css"/>
 {% endblock %}
 
-<!-- Remove block nav before finale-already in base -->
-<!-- {% block nav %}
-<div class="navBar">
-	<nav class="nav">
-		<ul class="navUl">
-			<li class="li home">
-				<form class="f" action ="" method="GET">
-					<input type="submit" value="KeyNote">
-				</form>
-			</li>
-			<li class="li explore">
-				<form class="f" action ="" method="GET">
-					<input type="submit" value="Explore Themes">
-				</form>
-			</li>
-			<li class="li build">
-				<form class="f" action ="" method="GET">
-					<input type="submit" value="Build Theme">
-				</form>
-			</li>
-			<li class="li search">
-				<input id="homeSearch" name="mainSearch" placeholder="Search Themes">
-			</li>
-			<li class="li manageAcc">
-				<form class="f" action ="" method="GET">
-					<input type="submit" value="Manage Account">
-				</form>
-			</li>
-			<li class="li logOut">
-				<form class="f" action ="" method="GET">
-					<input type="submit" value="Log Out">
-				</form>
-			</li>
-		</ul>
-	</nav>
-</div> 
-{% endblock %} -->
-<!-- ====================================== -->
-
-
 {% block body %}
 
 <div class="blockBody">
 	<div class="leftCol">	
 		<div class="inputDiv">
 			<p>Give Your Theme a Name nd Description. Then Search for Stocks to add to The Queue</p>
-			<input id="nameInput" name="etfName" type="text" placeholder="Enter Name">
-			<input id="etfDescript" type="text" placeholder="Enter Description">
+			
+			<input id="nameInput" name="etfName" type="text" placeholder="Enter Name" {% if etf %} value="{{etf.ETF_Name}}" {% enfif %}>
+			<input id="etfDescript" type="text" placeholder="Enter Description" {% if etf %} value="{{etf.ETF_descr}}" {% enfif %}>
 		</div>
 
 		<div class="searchDiv">
@@ -59,24 +20,26 @@
 			
 			<div class="listDiv">
 				<ul id= "stockUl" class="stockList">
-					<!-- <li id="idTest" class="stockTick">
-						<div class="listCon">hellp	
-							<div class=stockDiv>
-								<div class="innDiv">
-									<ul id="hoverUl">
-										<li >price</li>
-										<li>name</li>
-										<li>percent</li>
-									</ul>
-								</div>
-							</div>
-							<input type="submit" class="queueBut" data-id="AAPL">
-						</div>
-					</li> -->
 					
-					<!-- <li id="idTest" class="stockTick">++++++++++++++ -->
-						
-					<!-- </li> -->
+
+						<!-- <li id="idTest" class="stockTick">
+							<div class="listCon">hellp	
+								<div class=stockDiv>
+									<div class="innDiv">
+										<ul id="hoverUl">
+											<li >price</li>
+											<li>name</li>
+											<li>percent</li>
+										</ul>
+									</div>
+								</div>
+								<input type="submit" class="queueBut" data-id="AAPL">
+							</div>
+						</li>
+					 -->
+					
+				
+
 				</ul>
 			</div>
 		</div>
@@ -92,10 +55,16 @@
 			<div class="overviewDiv">
 				<p>Stock Queue</p>
 				<ul id="queueTick" class="queueList">
-					
-					<!-- <li class="ticker">
-						<input type="range" id="sliderBar" min="0" max="100" step="1" value="0">
-					</li> -->
+					{% if stocks %}	
+						{% for stock in stocks %}
+							<li class="ticker">
+							<p>{{stock.STOCK_Symbol}}</p>
+							<p>{{stock.STOCK_LastPrice}}</p>
+								<input type="range" id="sliderBar" min="0" max="100" step="1" value="{{stock.STOCK_Weight}}">
+							</li>
+						{% endfor %}
+				
+					{% endif %}
 				</ul>
 			</div>
 

@@ -79,6 +79,7 @@ def recent_etf_price(etf_name):
 
 @app.route('/',methods=['GET'])
 def homepage():
+	session.clear()
 	return render_template('login.html')
 
 
@@ -137,77 +138,47 @@ def create_account():
 
 @app.route("/etf/<etf_name>", methods=['GET', 'POST'])
 def return_etf(etf_name):
-	if request.method == 'GET':
-		etf = ETF.query.filter_by(ETF_name = str(etf_name)).first()
-		return render_template('singleTheme.html',
-						ETF_name = etf.ETF_name,
-						date = str(etf.creation_date),
-						author = "KeyNote Staff",
-						ETF_descr = etf.ETF_descr
-						)
-	if request.method == 'POST':
-		client_stuff = request.get_json(force=True)
-		print(client_stuff)
-		if etf_name == client_stuff['Name']:
-			name = etf_name
-			description = client_stuff['Description']
-			etf_array = client_stuff['etf']
-			composition = {}
-			full_value = 0
-			for etf in etf_array:
-				full_value += int(etf[1])
-			for etf in etf_array:
-				composition[etf[0]] = [etf[2], int(etf[1])/full_value]
-			last_price = 0
-			new_etf = ETF(name, description, composition, last_price)
-			db.session.add(new_etf)
-			db.session.commit()
-
-			etf = ETF.query.filter_by(ETF_name = name).first()
-			new_ref = Reference(session['user_id'],etf.id)
-			db.session.add(new_ref)
-			db.session.commit()
-			print(etf.ETF_name)
-			if etf:
-				return render_template('singleTheme.html', 
-									etf_name = etf.ETF_name,
-									date = str(etf.creation_date),
-									author = session['first_name'] + session['last_name'],
-									ETF_descr = etf.ETF_descr
-									)
-			else:
-				return render_template('build.html')
-
-		name = client_stuff['Name']
-		description = client_stuff['Description']
-		etf_array = client_stuff['etf']
-		composition = {}
-		full_value = 0
-		for etf in etf_array:
-			full_value += int(etf[1])
-		for etf in etf_array:
-			composition[etf[0]] = [etf[2], int(etf[1])/full_value]
-		last_price = price_etf(composition)
-		author = session['username']
-		new_etf = ETF(name, author, description, composition, last_price)
-		db.session.add(new_etf)
-		db.session.commit()
-		etf = ETF.query.filter_by(ETF_name = name).first()
-		new_ref = Reference(session['user_id'],etf.id)
-		db.session.add(new_ref)
-		db.session.commit()
-		print(etf.ETF_name)
-		if etf:
-			return render_template('singleTheme.html', 
-								ETF_name = etf.ETF_name,
-								date = str(etf.creation_date),
-								author = etf.ETF_author,
-								ETF_descr = etf.ETF_descr
-								)
-		else:
-			return render_template('build.html')
-	else:
-		print('Huston we have a problem...')
+    if request.method == 'GET':
+        etf = ETF.query.filter_by(ETF_name = str(etf_name)).first()
+        return render_template('singleTheme.html',
+                        ETF_name = etf.ETF_name,
+                        date = str(etf.creation_date),
+                        author = etf.ETF_author,
+                        ETF_descr = etf.ETF_descr
+                        )
+    if request.method == 'POST':
+        client_stuff = json.loads(request.form['data'])
+        print(client_stuff)
+        name = client_stuff['Name']
+        description = client_stuff['Description']
+        etf_array = client_stuff['etf']
+        composition = {}
+        full_value = 0
+        for etf in etf_array:
+            full_value += int(etf[1])
+        for etf in etf_array:
+            composition[etf[0]] = [etf[2], int(etf[1])/full_value]
+        last_price = price_etf(composition)
+        author = session['username']
+        new_etf = ETF(name, author, description, composition, last_price)
+        db.session.add(new_etf)
+        db.session.commit()
+        etf = ETF.query.filter_by(ETF_name = name).first()
+        new_ref = Reference(session['user_id'],etf.id)
+        db.session.add(new_ref)
+        db.session.commit()
+        print(etf.ETF_name)
+        if etf:
+            return render_template('singleTheme.html', 
+                                ETF_name = etf.ETF_name,
+                                date = str(etf.creation_date),
+                                author = etf.ETF_author,
+                                ETF_descr = etf.ETF_descr
+                                )
+        else:
+            return render_template('build.html')
+    else:
+        print('Huston we have a problem...')
 
 
 @app.route('/example')
@@ -326,6 +297,11 @@ def grab_stock_info(ticker):
 		else:
 			return json.dumps({'Symbol': stock_info['Symbol'],
 				'void': "Sorry the information is not available."})
+
+@app.route('/overview/<etf_name>', methods=['GET'])
+def grab_composition(etf_name):
+    etf = ETF.query.filter_by(ETF_name = etf_name).first()
+    return json.dumps(etf.ETF_comp)
 
 
 if __name__ == "__main__":

@@ -1,4 +1,5 @@
 
+///////////////////////////////////////
 // Basic Animations for ToggleBar// 
 
 var checkClass = function(event){
@@ -73,6 +74,7 @@ Array.prototype.min = function(){
 
 
 var loadGraphData = function(){
+	vae name = document.getElementById('etfName')
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
@@ -102,19 +104,19 @@ var loadGraphData = function(){
   			c3.generate({
     			bindto: '.performGraph',
     			data: {
-		        x: 'x',
-		        columns: [
-		            date,
-		            etfPrice,
-		            spPrice
+			        x: 'x',
+			        columns: [
+			            date,
+			            etfPrice,
+			            spPrice
 
-		        ],
-		        names: {
-		        		YourTheme: name
-		        },
-		        axes:{
-		        	YourTheme: 'y2'
-		        }
+			        ],
+			        names: {
+			        		YourTheme: name
+			        },
+			        axes:{
+			        	YourTheme: 'y2'
+			        }
 			    },
 			    axis: {
 			      	y: {
@@ -151,12 +153,41 @@ var loadGraphData = function(){
 
 			};	
 	
-	xhttp.open("GET","/graph", true);
+	xhttp.open("GET","/graph/"+name, true);
 	xhttp.send();
 };
 
 loadGraphData()
 
 
+////////////////////////////////////////////////
+/////// Overview graph ///////////////////
 
 
+require.config({
+			baseUrl: '/js',
+			paths: {
+    		d3: "http://d3js.org/d3.v3.min"
+  			}
+		});
+
+{require(["d3", "c3"], function(d3, c3) {
+  	var arr=[['data1',3],['data2',7]]
+  	// getGraphVal();
+	var chart = c3.generate({
+	    bindto: '.donGraph',
+	    data: {
+	        columns: arr,
+	        type : 'donut',
+	        onclick: function (d, i) { console.log("onclick", d, i); },
+	        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+	        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+	    },
+	    donut: {
+	        title: ""
+	    }
+	});
+
+
+});
+}

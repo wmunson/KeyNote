@@ -145,7 +145,7 @@ const queueEvent = function(input){
 
 document.getElementById('searchStocks').addEventListener('keyup', function(event){
 	console.log('enter')
-	event.preventDefault()
+	// event.preventDefault()
 	if(event.keyCode == 13){ 
 	var name=this.value;
 	setTimeout(function(){

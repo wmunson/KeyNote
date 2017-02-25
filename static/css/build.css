@@ -8,7 +8,8 @@
 	display:flex;
 	justify-content: space-between;
 	border:solid;
-	height:100vh;
+	min-height: 100vh;
+	height:100%;
 	z-index: 0;
 
 }
@@ -54,11 +55,15 @@
     /*display: inline-block;*/
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
+    box-sizing: content-box;
 }
 
 #nameInput{
 	width:40%;
+}
+
+#etfDescript{
+	box-sizing: content-box;
 }
 
 .searchDiv{
@@ -90,6 +95,7 @@
 
 
 .listDiv{
+	min-height: 3rem;
 	/*border:solid;*/
 }
 
@@ -233,7 +239,7 @@
 }
 
 #submit{
-	width: 20%;
+	/*width: 20%;*/
     padding: 12px 20px;
     margin: 8px 0;
     /*display: inline-block;*/
