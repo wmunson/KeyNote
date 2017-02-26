@@ -84,7 +84,7 @@ pickle = {
 
 etf_example = ETF(
 			'Techie',
-			'KeyNote Staff',
+			1,
 			"Technology minded stocks with the big boys!",
 			pickle,
 			price_etf(pickle),
