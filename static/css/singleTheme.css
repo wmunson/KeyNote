@@ -159,7 +159,7 @@
 	/*flex-direction: column;*/
 	justify-content:space-between;
 	/*order: 0;*/
-	border:dotted green;
+	/*border:dotted green;*/
 	
 }
 
@@ -168,7 +168,7 @@
 	justify-content: center;
 	width:40%;
 
-	border:dashed green;
+	/*border:dashed green;*/
 }
 
 .overviewUl{
@@ -177,9 +177,10 @@
 }
 
 .donGraph{
-	border:dashed red;
 	height:90%;
 	width:50%;
+	
+	/*border:dashed red;*/
 }
 
 .performanceDiv{
