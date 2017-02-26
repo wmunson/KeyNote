@@ -12,12 +12,15 @@
 	background-color: white;
 	
 	margin:1%;
+	margin-right: 0;
 	width:70%;
 	min-height: 90%;
     padding: 32px;
     border: 1px solid #d8e0e5;
     border-radius: 8px;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    /*box-shadow: 0 3px 5px rgba(0,0,0,0.15);*/
 
 	/*border:dashed blue;*/
 }
@@ -27,9 +30,9 @@
 	flex-direction: column;
 	
 	padding: 32px;
-    border: 1px solid #d8e0e5;
-    border-radius: 8px;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+    /*border: 1px solid #d8e0e5;*/
+    /*border-radius: 8px;*/
+    /*box-shadow: 0 3px 5px rgba(0,0,0,0.15);*/
 	background-color: white;
 	margin:1%;
 	/*border-bottom-size:.2px;*/
@@ -68,12 +71,16 @@
 	display:flex;
 	background-color: white;
 	margin:1%;
+	margin-left: 0;
 	width:20%;
 	min-height: 90%;
     
     padding: 32px;
     border: 1px solid #d8e0e5;
     border-radius: 8px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+
     box-shadow: 0 3px 5px rgba(0,0,0,0.15);
 
 	/*border:dashed;*/
@@ -89,9 +96,9 @@
 	background-color: white;
 	text-align:center;	
 	padding: 32px;
-    border: 1px solid #d8e0e5;
-    border-radius: 8px;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+    /*border: 1px solid #d8e0e5;*/
+    /*border-radius: 8px;*/
+    /*box-shadow: 0 3px 5px rgba(0,0,0,0.15);*/
 	height:90%;
 	width:95%;
 
