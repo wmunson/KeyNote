@@ -5,8 +5,6 @@ import urllib.request
 import requests
 import io
 import json
-from datetime import datetime, date
-
 
 # EXAMPLE URL
 # url = 'http://chart.finance.yahoo.com/table.csv?s=MSFT&a=0&b=7&c=2017&d=1&e=7&f=2017&g=d&ignore=.csv'
@@ -38,17 +36,17 @@ def session_set(user):
 def make_stock_list(ticker):
 	ticker = ticker.upper()
 	print(ticker)
-	d = date.today()
-	month = str(d.month-1)
-	day = str(d.day)
-	year = str(d.year)
 	# url = "http://chart.finance.yahoo.com/table.csv?s="+ticker+"&a=0&b=17&c=2017&d=1&e=17&f=2017&g=d&ignore=.csv"
-	# url = "http://chart.finance.yahoo.com/table.csv?s="+ticker+"&a=0&b=17&c=2007&d=1&e=17&f=2017&g=d&ignore=.csv"
-	url = 'http://chart.finance.yahoo.com/table.csv?s='+ticker+'&a='+month+'&b='+day+'&c=2016&d='+month+'&e='+day+'&f='+year+'&g=d&ignore=.csv'
+	url = "http://chart.finance.yahoo.com/table.csv?s="+ticker+"&a=0&b=17&c=2017&d=1&e=17&f=2017&g=d&ignore=.csv"
 	# url = "http://chart.finance.yahoo.com/table.csv?s=^GSPC&a=0&b=17&c=2017&d=1&e=17&f=2017&g=d&ignore=.csv"
 	# url = "http://chart.finance.yahoo.com/table.csv?s="+ticker+"&a=0&b=7&c=2007&d=1&e=17&f=2017&g=d&ignore=.csv"
 	s=requests.get(url).content
-
+	
+	# ERROR MUST BE TRAPPED
+	# if "404" in str(s):
+	# 	print("error")
+	# 	print(str(s))
+	# else:
 	dataframe = pd.read_csv(io.StringIO(s.decode('utf-8')))
 	price_list = []
 	date_list = []
@@ -62,57 +60,31 @@ def make_stock_list(ticker):
 			"date_list": date_list
 	}
 	return stock_product
-	
-def etf_pricer_final(etf):
-	composition = etf.ETF_comp
-	x=[]
-	for key, value in composition.items():
-		z= [value[1]] + make_stock_list(key)['price_list']
-		x.append(z)
+	# return json.dumps(final_product)
 
-	master_list=[]
-	for i in range(1,len(x[0])):
-		new_list=[]
-		for array in x:
-			new_list.append(array[i]*array[0])
-			print(array[0])
-		master_list.append(sum(new_list))
-
-	print(len(master_list))
+def etf_pricer_final(ticker1,ticker2,ticker3):
+	aapl = make_stock_list(ticker1)['price_list']
+	ibm = make_stock_list(ticker2)['price_list']
+	msft = make_stock_list(ticker3)['price_list']
 	sp = make_stock_list('^GSPC')
-	print(len(sp['date_list']))
+	w_appl = 0.4
+	w_ibm = 0.3
+	w_msft = 0.3
+	etf_price_list = []
+	for i in range(0,len(sp['price_list'])):
+		output = aapl[i]*w_appl + ibm[i]*w_ibm + msft[i]*w_msft
+		etf_price_list.append(output)
 	final_product={
-			'Name':etf.ETF_name,
+			'Name':'Techie',
 			'date_list': sp['date_list'],
 			'SandP': sp['price_list'],
-			'etf': master_list
+			'etf': etf_price_list
 
 	}
+	print(len(etf_price_list))
+	print(len(sp['price_list']))
+	print(len(sp['date_list']))
 	return json.dumps(final_product)
-
-# def etf_pricer_final(composition):
-# 	for key,index in composition.items():
-# 		key['company'] = make_stock_list(key)['price_list']
-
-# 	sp = make_stock_list('^GSPC')
-# 	w_appl = 0.4
-# 	w_ibm = 0.3
-# 	w_msft = 0.3
-# 	etf_price_list = []
-# 	for i in range(0,len(sp['price_list'])):
-# 		output = aapl[i]*w_appl + ibm[i]*w_ibm + msft[i]*w_msft
-# 		etf_price_list.append(output)
-# 	final_product={
-# 			'Name':'Techie',
-# 			'date_list': sp['date_list'],
-# 			'SandP': sp['price_list'],
-# 			'etf': etf_price_list
-
-# 	}
-# 	print(len(etf_price_list))
-# 	print(len(sp['price_list']))
-# 	print(len(sp['date_list']))
-# 	return json.dumps(final_product)
 
 
 def etf_to_JSON(etf):
@@ -159,12 +131,6 @@ def price_etf(composition):
 	return round(result,2)
 
 
-def etf_comp_into_array(etf_comp):
-	new_list = []
-	for key, value in etf_comp.items():
-		x = [key,value[1]]
-		new_list.append(x)
-	return new_list
 
 
 
@@ -178,12 +144,3 @@ def etf_comp_into_array(etf_comp):
 
 # x = {'key': [1,2], 'key2': [1,3]}
 # print(price_etf(x))
-
-
-pickle = {
-	'IBM':[100, 0.3],
-	'MSFT':[40, 0.3],
-	'AAPL':[80, 0.4]
-	}
-
-print(etf_comp_into_array(pickle))
