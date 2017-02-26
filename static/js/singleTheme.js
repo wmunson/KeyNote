@@ -59,7 +59,7 @@ var setArray=function(val, title){
 	for (i=0; i<val.length; i++){
 		newArr.push(val[i])
 	}
-	console.log('newArr:'+ newArr)
+	// console.log('newArr:'+ newArr)
 	return newArr
 }
 
@@ -75,7 +75,7 @@ Array.prototype.min = function(){
 
 var loadGraphData = function(){
 	var name = document.getElementById('etfName').innerHTML;
-	console.log(name);
+	// console.log(name);
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
@@ -86,12 +86,12 @@ var loadGraphData = function(){
 		var priceMax= data['etf'].max()
 		var priceMin= data['etf'].min()
 		var name = data['Name'].toString()
-		console.log('name:'+name)	
-		console.log(data['etf'])	
-		console.log(etfPrice.toString())	
-		console.log(spPrice.toString())	
-		console.log(typeof(name))	
-		console.log(typeof(etfPrice[0]))	
+		// console.log('name:'+name)	
+		// console.log(data['etf'])	
+		// console.log(etfPrice.toString())	
+		// console.log(spPrice.toString())	
+		// console.log(typeof(name))	
+		// console.log(typeof(etfPrice[0]))	
 		
 		require.config({
 			baseUrl: '/js',
@@ -174,11 +174,12 @@ require.config({
 
 {require(["d3", "c3"], function(d3, c3) {
   	var arr=makeDonArr();
+  	var title = document.getElementById('etfName').innerHTML;
   	// getGraphVal();
 	var chart = c3.generate({
 	    bindto: '.donGraph',
 	    data: {
-	        columns: arr,
+	        columns: [1,2],
 	        type : 'donut',
 	        onclick: function (d, i) { console.log("onclick", d, i); },
 	        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
@@ -197,7 +198,12 @@ require.config({
 /////// making donut graph array /////
 
 const makeDonArr = function(){
-	var data = document.get getElementById('hidden').value;
-	console.log(data);
+	var data = document.getElementById('hidden').innerHTML;
+	var list = JSON.parse(data);
+	console.log(list);
+	arr = [];
+	for (i=0;i<list.length;i++){
 
+	}
 };
+
