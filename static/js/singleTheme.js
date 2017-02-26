@@ -201,9 +201,9 @@ const makeDonArr = function(){
 	var data = document.getElementById('hidden').innerHTML;
 	var list = JSON.parse(data);
 	console.log(list);
-	arr = [];
-	for (i=0;i<list.length;i++){
+	// arr = [];
+	// for (i=0;i<list.length;i++){
 
-	}
+	// }
 };
 
