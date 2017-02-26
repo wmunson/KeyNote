@@ -4,46 +4,6 @@
 <link rel="stylesheet"	href="../static/css/singleTheme.css"/>
 {% endblock %}
 
-<!-- Remove block nav before finale-already in base -->
-<!-- {% block nav %}
-<div class="navBar">
-	<nav class="nav">
-		<ul class="navUl">
-			<li class="li home">
-				<form class="f" action ="" method="GET">
-					<input type="submit" value="KeyNote">
-				</form>
-			</li>
-			<li class="li explore">
-				<form class="f" action ="" method="GET">
-					<input type="submit" value="Explore Themes">
-				</form>
-			</li>
-			<li class="li build">
-				<form class="f" action ="" method="GET">
-					<input type="submit" value="Build Theme">
-				</form>
-			</li>
-			<li class="li search">
-				<input id="homeSearch" name="mainSearch" placeholder="Search Themes">
-			</li>
-			<li class="li manageAcc">
-				<form class="f" action ="" method="GET">
-					<input type="submit" value="Manage Account">
-				</form>
-			</li>
-			<li class="li logOut">
-				<form class="f" action ="" method="GET">
-					<input type="submit" value="Log Out">
-				</form>
-			</li>
-		</ul>
-	</nav>
-</div> 
-{% endblock %}
- --><!-- ====================================== -->
-
-
 {% block body %}
 <div class="blockBody">
 	<div class="topRow">
@@ -115,10 +75,11 @@
 		</div>
 	</div>
 </div>
+{% if etf_pickle %}
+	<div id='hidden' type="hidden">{{etf_pickle}}
+	</div>
+{% endif %}
 {% endblock %}
-
-
-
 
 
 {% block javascript %}
