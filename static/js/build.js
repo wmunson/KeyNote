@@ -1,4 +1,6 @@
 
+
+
 ///////////////////////////////////////////////
 /////////pie chart///////////////////////////
 /////////////////////////////////////////////
@@ -68,6 +70,14 @@ const slideEvent = function(slide){
 	graph(arr);
 	})	
 }
+
+//// event for remove button ////
+const deleteEvent = function(but,ul,li){
+	but.addEventListener('click',function(){
+	ul.removeChild(li)
+	})	
+}
+
 //////////////////////////////////////////////
 /////search stocks functions///////////////
 ////////////////////////////////////////////
@@ -115,10 +125,17 @@ const queueEvent = function(input){
 		if(checkPrice!=undefined){
 			var ul = document.getElementById('queueTick');
 			
+			var delBut = document.createElement('input');
+			delBut.setAttribute('class','delBut');
+			delBut.setAttribute('value','Remove');
+			delBut.setAttribute('type','submit');
+			
+
 			var li = document.createElement('li');
 			li.setAttribute('class','ticker')
 			li.setAttribute('data-id',checkTick)
 			li.setAttribute('data-price',checkPrice)
+			
 
 			var slide = document.createElement('input');
 			slide.setAttribute('type','range');
@@ -129,9 +146,12 @@ const queueEvent = function(input){
 			slide.setAttribute('value',0);
 			slideEvent(slide);
 
+			deleteEvent(delBut, ul, li)
+
 			li.appendChild(tick);
 			li.appendChild(price);
 			li.appendChild(slide);
+			li.appendChild(delBut);
 			ul.appendChild(li);
 			
 			var target = e.target
@@ -151,10 +171,11 @@ document.getElementById('searchStocks').addEventListener('keyup', function(event
 	if(event.keyCode == 13){ 
 	document.querySelector('.load-wrapp').classList.remove('hidden');
 	var name=this.value;
+	removeLi()
 	setTimeout(function(){
 		console.log('waiting')
 		
-		removeLi()
+		
 		
 
 		// console.log(name);
@@ -165,7 +186,7 @@ document.getElementById('searchStocks').addEventListener('keyup', function(event
 		},5000);
 	
 	}
-	
+
 });
 
 
@@ -429,4 +450,22 @@ const makePickArr = function(){
 	}
 	console.log(pickArr);
 	return pickArr
+}
+
+if (document.querySelector('.ticker')){
+	var input = document.querySelectorAll('.slideBar');
+	var li = document.querySelectorAll('.ticker')
+	var mainArr = []
+	for (i=0;i<input.length;i++){
+		var arr = [];
+		slideEvent(input[i]);
+		console.log(li[i]);
+		arr.push(li[i].dataset.id)
+		arr.push(input[i].value)
+		console.log(arr)
+		mainArr.push(arr)
+	}
+
+	graph(mainArr)
+	// slideEvent();
 }

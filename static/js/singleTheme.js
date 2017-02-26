@@ -209,10 +209,26 @@ const makeDonArr = function(){
 };
 
 ///////////////////////////////////////
+///////// modify button ///////////////
+////////////          //////////////
+
+document.getElementById('modInput').addEventListener('click',function(event){
+	// event.preventDefault()
+	var name = document.getElementById('etfName').innerHTML;
+	console.log(name);
+	document.getElementById('modify').setAttribute('action','/build/'+name);
+});
+
+
+
+///////////////////////////////////////
 ////////// save button //////////////
 //////////            /////////////////
 
 document.getElementById('saveInput').addEventListener('click',function(){
 	var name = document.getElementById('etfName').innerHTML;
 	document.getElementById('save').setAttribute('action','/save/'+name);
-})
+});
+
+
+
