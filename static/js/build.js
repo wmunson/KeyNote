@@ -106,11 +106,11 @@ const queueEvent = function(input){
 		// console.log(e.target.dataset.id)
 		var checkPrice=e.target.dataset.price
 		var checkTick=e.target.dataset.id
-		console.log(checkTick.typeOf)
+		// console.log(checkTick.typeOf)
 		var tick = document.createTextNode(e.target.dataset.id);
 		var price = document.createTextNode(e.target.dataset.price);
-		console.log(tick)
-		console.log(price)
+		// console.log(tick)
+		// console.log(price)
 
 		if(checkPrice!=undefined){
 			var ul = document.getElementById('queueTick');
