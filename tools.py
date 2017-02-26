@@ -159,6 +159,12 @@ def price_etf(composition):
 	return round(result,2)
 
 
+def etf_comp_into_array(etf_comp):
+	new_list = []
+	for key, value in etf_comp.items():
+		x = [key,value[1]]
+		new_list.append(x)
+	return new_list
 
 
 
@@ -172,3 +178,12 @@ def price_etf(composition):
 
 # x = {'key': [1,2], 'key2': [1,3]}
 # print(price_etf(x))
+
+
+pickle = {
+	'IBM':[100, 0.3],
+	'MSFT':[40, 0.3],
+	'AAPL':[80, 0.4]
+	}
+
+print(etf_comp_into_array(pickle))
