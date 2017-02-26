@@ -149,7 +149,6 @@ def return_etf(etf_name):
 	if request.method == 'GET':
 		etf = ETF.query.filter_by(ETF_name = etf_name).first()
 		print(etf.ETF_author)		
-		# print(session['user_id'])
 		check = get_author(etf)
 		if session['username'] == check:
 			return render_template('singleTheme.html',
@@ -157,8 +156,7 @@ def return_etf(etf_name):
 							date = str(etf.creation_date),
 							author = check,
 							ETF_descr = etf.ETF_descr,
-							etf_pickle= etf_comp_into_array(etf.ETF_comp),
-							not_owner = "not owner"
+							etf_pickle= etf_comp_into_array(etf.ETF_comp)
 							)
 		else:
 			return render_template('singleTheme.html',
@@ -166,7 +164,8 @@ def return_etf(etf_name):
 							date = str(etf.creation_date),
 							author = etf.ETF_author,
 							ETF_descr = etf.ETF_descr,
-							etf_pickle= etf_comp_into_array(etf.ETF_comp)
+							etf_pickle= etf_comp_into_array(etf.ETF_comp),
+							not_owner = 'not owner'
 							)
 	if request.method == 'POST':
 		client_stuff = json.loads(request.form['data'])
