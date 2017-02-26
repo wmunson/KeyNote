@@ -35,6 +35,7 @@ def login_check(username,prov_password):
 	if bcrypt.check_password_hash(user.password,prov_password):
 		session_set(user)
 		etfs = grab_etfs(user.id)
+		print('we got etfs')
 		return etfs
 	else:
 		return False
@@ -91,6 +92,7 @@ def authentication():
 		username = request.form['username']
 		password = request.form['password']
 		etfs = login_check(username,password)
+		session_set(User.query.filter_by(username=username).first())
 		if etfs == False:
 			return render_template('login.html',
 				errorMessage="Sorry, your login credentials were incorrect.")
@@ -146,8 +148,8 @@ def create_account():
 def return_etf(etf_name):
 	if request.method == 'GET':
 		etf = ETF.query.filter_by(ETF_name = etf_name).first()
-		print(etf.ETF_author)
-		print(session['user_id'])
+		print(etf.ETF_author)		
+		# print(session['user_id'])
 		check = get_author(etf)
 		if session['username'] == check:
 			return render_template('singleTheme.html',
@@ -192,7 +194,7 @@ def return_etf(etf_name):
 			return render_template('singleTheme.html', 
 								ETF_name = etf.ETF_name,
 								date = str(etf.creation_date),
-								author = etf.ETF_author,
+								author = author,
 								ETF_descr = etf.ETF_descr,
 								etf_pickle= etf_comp_into_array(etf.ETF_comp)
 								)
@@ -256,6 +258,7 @@ def grab_the_ETF():
 @app.route('/logout')
 def log_out():
 	session.clear()
+	print(session['username'])
 	return render_template('login.html')
 
 @app.route("/graph/<etf_name>")
