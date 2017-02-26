@@ -11,6 +11,7 @@ from datetime import datetime, date
 # EXAMPLE URL
 # url = 'http://chart.finance.yahoo.com/table.csv?s=MSFT&a=0&b=7&c=2017&d=1&e=7&f=2017&g=d&ignore=.csv'
 #
+# 
 
 
 def user_to_JSON(user):
