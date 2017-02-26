@@ -108,6 +108,10 @@ def authentication():
 		else:
 			return render_template('login.html')
 
+@app.route('/pie/<etf_name>')
+def return_pie_material():
+
+
 @app.route('/register', methods=['GET','POST'])
 def create_account():
 	if request.method == 'GET':
@@ -173,7 +177,8 @@ def return_etf(etf_name):
 								ETF_name = etf.ETF_name,
 								date = str(etf.creation_date),
 								author = etf.ETF_author,
-								ETF_descr = etf.ETF_descr
+								ETF_descr = etf.ETF_descr,
+								etf_pickle= json.dumps(etf.ETF_comp)
 								)
 		else:
 			return render_template('build.html')
