@@ -9,8 +9,9 @@
 <div class="blockBody">
 	<div class="leftCol">	
 		<div class="inputDiv">
-			<p>Give Your Theme a Name nd Description. Then Search for Stocks to add to The Queue</p>
-			
+			{% if message %}
+			<p>{{message}}</p>
+			{% endif %}
 			<input id="nameInput" name="etfName" type="text" placeholder="Enter Name" {% if etf %} value="{{etf.ETF_Name}}" {% endif %}>
 			<input id="etfDescript" type="text" placeholder="Enter Description" {% if etf %} value="{{etf.ETF_descr}}" {% endif %}>
 		</div>
@@ -64,14 +65,13 @@
 				<p>Stock Queue</p>
 				<ul id="queueTick" class="queueList">
 					{% if stocks %}	
-						{% for stock in stocks %}
+						{% for key, value in stocks %}
 							<li class="ticker">
-							<p>{{stock.STOCK_Symbol}}</p>
-							<p>{{stock.STOCK_LastPrice}}</p>
-								<input type="range" id="sliderBar" min="0" max="100" step="1" value="{{stock.STOCK_Weight}}">
+							<p>{{key}}</p>
+							<p>{{value[0]}}</p>
+								<input type="range" id="sliderBar" min="0" max="100" step="1" value="{{value[1]}}">
 							</li>
 						{% endfor %}
-				
 					{% endif %}
 				</ul>
 			</div>

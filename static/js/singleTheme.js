@@ -216,3 +216,13 @@ document.getElementById('saveInput').addEventListener('click',function(){
 	var name = document.getElementById('etfName').innerHTML;
 	document.getElementById('save').setAttribute('action','/save/'+name);
 })
+
+///////////////////////////////////////
+///////// modify button ///////////////
+////////////          //////////////
+
+document.getElementById('modInput').addEventListener('click',function(){
+	var name = document.getElementById('etfName').innerHTML;
+	document.getElementById('modify').setAttribute('action','/build/'+name);
+})
+
