@@ -145,12 +145,15 @@ def create_account():
 @app.route("/etf/<etf_name>", methods=['GET', 'POST'])
 def return_etf(etf_name):
 	if request.method == 'GET':
-		etf = ETF.query.filter_by(ETF_name = str(etf_name)).first()
-		if session['username'] == get_author(etf):
+		etf = ETF.query.filter_by(ETF_name = etf_name).first()
+		print(etf.ETF_author)
+		print(session['user_id'])
+		check = get_author(etf)
+		if session['username'] == check:
 			return render_template('singleTheme.html',
 							ETF_name = etf.ETF_name,
 							date = str(etf.creation_date),
-							author = etf.ETF_author,
+							author = check,
 							ETF_descr = etf.ETF_descr,
 							etf_pickle= etf_comp_into_array(etf.ETF_comp),
 							not_owner = "not owner"
