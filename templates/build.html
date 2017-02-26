@@ -65,11 +65,11 @@
 				<p>Stock Queue</p>
 				<ul id="queueTick" class="queueList">
 					{% if stocks %}	
-						{% for key, value in stocks %}
-							<li class="ticker">
+						{% for key, value in stocks.items() %}
+							<li class="ticker" data-id={{key}} data-price={{value[0]}}>
 							<p>{{key}}</p>
 							<p>{{value[0]}}</p>
-								<input type="range" id="sliderBar" min="0" max="100" step="1" value="{{value[1]}}">
+								<input type="range" class="slideBar" min="0" max="100" step="1" value={{value[1]*100}}>
 							</li>
 						{% endfor %}
 					{% endif %}

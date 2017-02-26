@@ -251,10 +251,10 @@ def show_build_page():
 @app.route('/build/<etf_name>')
 def build_build_page(etf_name):
 	chosen_etf = ETF.query.filter_by(ETF_name=etf_name).first()
-	composition= etf.ETF_comp
+	composition= chosen_etf.ETF_comp
 	return render_template('build.html',
 			stocks = composition,
-			message='Modify ' + etf.ETF_name + ' as you see fit! Be sure to provide a new name and description.'
+			message='Modify ' + chosen_etf.ETF_name + ' as you see fit! Be sure to provide a new name and description.'
 		)
 	
 
