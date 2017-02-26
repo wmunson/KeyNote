@@ -23,7 +23,9 @@ bcrypt = Bcrypt(app)
 
 
 
-
+def get_author(etf):
+	user = User.query.filter_by(id = etf.ETF_author).first()
+	return user.username
 
 
 def login_check(username,prov_password):
@@ -144,13 +146,23 @@ def create_account():
 def return_etf(etf_name):
 	if request.method == 'GET':
 		etf = ETF.query.filter_by(ETF_name = str(etf_name)).first()
-		return render_template('singleTheme.html',
-						ETF_name = etf.ETF_name,
-						date = str(etf.creation_date),
-						author = etf.ETF_author,
-						ETF_descr = etf.ETF_descr,
-						etf_pickle= etf_comp_into_array(etf.ETF_comp)
-						)
+		if session['username'] == get_author(etf):
+			return render_template('singleTheme.html',
+							ETF_name = etf.ETF_name,
+							date = str(etf.creation_date),
+							author = etf.ETF_author,
+							ETF_descr = etf.ETF_descr,
+							etf_pickle= etf_comp_into_array(etf.ETF_comp),
+							not_owner = "not owner"
+							)
+		else:
+			return render_template('singleTheme.html',
+							ETF_name = etf.ETF_name,
+							date = str(etf.creation_date),
+							author = etf.ETF_author,
+							ETF_descr = etf.ETF_descr,
+							etf_pickle= etf_comp_into_array(etf.ETF_comp)
+							)
 	if request.method == 'POST':
 		client_stuff = json.loads(request.form['data'])
 		print(client_stuff)
@@ -165,7 +177,7 @@ def return_etf(etf_name):
 			composition[etf[0]] = [etf[2], int(etf[1])/full_value]
 		last_price = price_etf(composition)
 		author = session['username']
-		new_etf = ETF(name, author, description, composition, last_price, last_price)
+		new_etf = ETF(name, session['user_id'], description, composition, last_price, last_price)
 		db.session.add(new_etf)
 		db.session.commit()
 		etf = ETF.query.filter_by(ETF_name = name).first()
@@ -208,7 +220,7 @@ def save_to_profile(etf_name):
 	etf = ETF.query.filter_by(ETF_name=etf_name).first()
 	new_ref = Reference(session['user_id'],etf.id)
 	db.session.add(new_ref)
-	db.commit()
+	db.session.commit()
 	news = grab_articles()
 	etfs = grab_etfs(session['user_id'])
 	return render_template('home.html',
