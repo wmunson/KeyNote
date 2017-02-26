@@ -164,7 +164,10 @@ def etf_comp_into_array(etf_comp):
 	for key, value in etf_comp.items():
 		x = [key,value[1]]
 		new_list.append(x)
-	return new_list
+	final_product = {'result': new_list}
+	print(new_list)
+	print(final_product)
+	return json.dumps(final_product)
 
 
 
@@ -180,10 +183,10 @@ def etf_comp_into_array(etf_comp):
 # print(price_etf(x))
 
 
-pickle = {
-	'IBM':[100, 0.3],
-	'MSFT':[40, 0.3],
-	'AAPL':[80, 0.4]
-	}
+# pickle = {
+# 	'IBM':[100, 0.3],
+# 	'MSFT':[40, 0.3],
+# 	'AAPL':[80, 0.4]
+# 	}
 
-print(etf_comp_into_array(pickle))
+# print(etf_comp_into_array(pickle))
