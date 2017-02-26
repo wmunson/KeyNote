@@ -13,6 +13,7 @@ require.config({
 		});
 
 const graph = function(arr){require(["d3", "c3"], function(d3, c3) {
+  	var title = document.getElementById('nameInput').value;
   	// var arr=[['data1',3],['data2',7]]
   	// getGraphVal();
 	var chart = c3.generate({
@@ -25,7 +26,7 @@ const graph = function(arr){require(["d3", "c3"], function(d3, c3) {
 	        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
 	    },
 	    donut: {
-	        title: ""
+	        title: title
 	    }
 	});
 
@@ -105,11 +106,11 @@ const queueEvent = function(input){
 		// console.log(e.target.dataset.id)
 		var checkPrice=e.target.dataset.price
 		var checkTick=e.target.dataset.id
-		console.log(checkTick.typeOf)
+		// console.log(checkTick.typeOf)
 		var tick = document.createTextNode(e.target.dataset.id);
 		var price = document.createTextNode(e.target.dataset.price);
-		console.log(tick)
-		console.log(price)
+		// console.log(tick)
+		// console.log(price)
 
 		if(checkPrice!=undefined){
 			var ul = document.getElementById('queueTick');
