@@ -1,4 +1,6 @@
 
+
+
 ///////////////////////////////////////////////
 /////////pie chart///////////////////////////
 /////////////////////////////////////////////
@@ -448,4 +450,22 @@ const makePickArr = function(){
 	}
 	console.log(pickArr);
 	return pickArr
+}
+
+if (document.querySelector('.ticker')){
+	var input = document.querySelectorAll('.slideBar');
+	var li = document.querySelectorAll('.ticker')
+	var mainArr = []
+	for (i=0;i<input.length;i++){
+		var arr = [];
+		slideEvent(input[i]);
+		console.log(li[i]);
+		arr.push(li[i].dataset.id)
+		arr.push(input[i].value)
+		console.log(arr)
+		mainArr.push(arr)
+	}
+
+	graph(mainArr)
+	// slideEvent();
 }
