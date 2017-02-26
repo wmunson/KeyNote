@@ -54,9 +54,20 @@
 	
 }
 
-.buttons form{
+.button{
 	text-align:center;
+	
+}
 
+.inputs{
+	background-color: white;
+	border: 1px solid #d8e0e5;
+    border-radius: 8px;
+}
+
+.inputs:hover{
+	text-decoration:underline;
+	background-color: #3cb0fd;
 }
 
 .bottomRow{

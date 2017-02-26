@@ -208,7 +208,7 @@ def save_to_profile(etf_name):
 	etf = ETF.query.filter_by(ETF_name=etf_name).first()
 	new_ref = Reference(session['user_id'],etf.id)
 	db.session.add(new_ref)
-	db.commit()
+	db.session.commit()
 	news = grab_articles()
 	etfs = grab_etfs(session['user_id'])
 	return render_template('home.html',
