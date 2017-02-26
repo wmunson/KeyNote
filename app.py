@@ -146,6 +146,8 @@ def create_account():
 def return_etf(etf_name):
 	if request.method == 'GET':
 		etf = ETF.query.filter_by(ETF_name = str(etf_name)).first()
+		print(etf.ETF_author)
+		print(session['user_id'])
 		if session['username'] == get_author(etf):
 			return render_template('singleTheme.html',
 							ETF_name = etf.ETF_name,
