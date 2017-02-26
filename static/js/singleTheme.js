@@ -179,14 +179,14 @@ require.config({
 	var chart = c3.generate({
 	    bindto: '.donGraph',
 	    data: {
-	        columns: [1,2],
+	        columns: arr,
 	        type : 'donut',
 	        onclick: function (d, i) { console.log("onclick", d, i); },
 	        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
 	        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
 	    },
 	    donut: {
-	        title: ""
+	        title: title
 	    }
 	});
 
@@ -200,10 +200,19 @@ require.config({
 const makeDonArr = function(){
 	var data = document.getElementById('hidden').innerHTML;
 	var list = JSON.parse(data);
-	console.log(list);
+	console.log(list['result']);
 	// arr = [];
 	// for (i=0;i<list.length;i++){
 
 	// }
+	return list['result'];
 };
 
+///////////////////////////////////////
+////////// save button //////////////
+//////////            /////////////////
+
+document.getElementById('saveInput').addEventListener('click',function(){
+	var name = document.getElementById('etfName').innerHTML;
+	document.getElementById('save').setAttribute('action','/save/'+name);
+})
