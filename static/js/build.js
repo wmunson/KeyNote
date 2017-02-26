@@ -146,8 +146,10 @@ const queueEvent = function(input){
 
 document.getElementById('searchStocks').addEventListener('keyup', function(event){
 	console.log('enter')
+	
 	// event.preventDefault()
 	if(event.keyCode == 13){ 
+	document.querySelector('.load-wrapp').classList.remove('hidden');
 	var name=this.value;
 	setTimeout(function(){
 		console.log('waiting')
@@ -158,10 +160,12 @@ document.getElementById('searchStocks').addEventListener('keyup', function(event
 		// console.log(name);
 		
 		searchStock(name);
-		
+		document.querySelector('.load-wrapp').classList.add('hidden');
 		// stocksToDom(stocks);
 		},5000);
+	
 	}
+	
 });
 
 
