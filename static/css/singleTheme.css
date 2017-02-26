@@ -133,7 +133,7 @@
 
 .views{
 	display:flex;
-	justify-content: center;
+	justify-content: flex-start;
 	/*align-items: stretch;*/
 	height:100%;
 	position:relative;
@@ -173,15 +173,16 @@
 
 .performanceDiv{
 	display:flex;
-	justify-content: center;
+	justify-content: flex-start;
 	/*order: -1;*/
 	/*border:dotted;*/
 	/*border-color: brown;*/
 }
 
 .performGraph{
-	width:100%;
+	width:90%;
 	margin:1%;
+	margin-left: 0;
 }
 
 

@@ -98,7 +98,7 @@ def etf_pricer_final(etf):
 #     w_appl = 0.4
 #     w_ibm = 0.3
 #     w_msft = 0.3
-  etf_price_list = []
+#     etf_price_list = []
 #     for i in range(0,len(sp['price_list'])):
 #         output = aapl[i]*w_appl + ibm[i]*w_ibm + msft[i]*w_msft
 #         etf_price_list.append(output)
