@@ -248,6 +248,16 @@ def explore_sample():
 def show_build_page():
 	return render_template('build.html')
 
+@app.route('/build/<etf_name>')
+def build_build_page(etf_name):
+	chosen_etf = ETF.query.filter_by(ETF_name=etf_name).first()
+	composition= etf.ETF_comp
+	return render_template('build.html',
+			stocks = composition,
+			message='Modify ' + etf.ETF_name + ' as you see fit! Be sure to provide a new name and description.'
+		)
+	
+
 @app.route('/customize/<key>')
 def grab_the_ETF():
 	chosen_etf = ETF.query.filter_by(id=key).first()
