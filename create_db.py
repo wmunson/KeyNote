@@ -27,7 +27,7 @@ class ETF(db.Model):
 	# Table Schema
 	id = db.Column(db.Integer, primary_key=True)
 	ETF_name = db.Column(db.String(100), unique=True)
-	ETF_author = db.Column(db.String(100))
+	ETF_author = db.Column(db.Integer)
 	ETF_descr = db.Column(db.String(200))
 	ETF_comp = db.Column(db.PickleType)
 	original_price = db.Column(db.Float)
