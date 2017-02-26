@@ -17,14 +17,16 @@
 		</div>
 
 		<div class="buttons">
-			<form id="save" action="" method="POST">
-				<input type="submit" value="Save">
+			{% if not_owner %}
+			<form class="button" id="save" action="" method="GET">
+				<input class="inputs" id="saveInput" type="submit" value="Save">
 			</form>
-			<form id="modify" action="" method="POST">
-				<input type="submit" value="Modify">
+			{% endif %}
+			<form class ="button" id="modify" action="" method="POST">
+				<input class="inputs" type="submit" value="Modify">
 			</form>
-			<form id="share" action="" method="POST">
-				<input type="submit" value="Share">
+			<form class="button" id="share" action="" method="POST">
+				<input class="inputs" type="submit" value="Share">
 			</form>
 		</div>		
 	</div>
