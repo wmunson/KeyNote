@@ -11,8 +11,8 @@
 		<div class="inputDiv">
 			<p>Give Your Theme a Name nd Description. Then Search for Stocks to add to The Queue</p>
 			
-			<input id="nameInput" name="etfName" type="text" placeholder="Enter Name" {% if etf %} value="{{etf.ETF_Name}}" {% enfif %}>
-			<input id="etfDescript" type="text" placeholder="Enter Description" {% if etf %} value="{{etf.ETF_descr}}" {% enfif %}>
+			<input id="nameInput" name="etfName" type="text" placeholder="Enter Name" {% if etf %} value="{{etf.ETF_Name}}" {% endif %}>
+			<input id="etfDescript" type="text" placeholder="Enter Description" {% if etf %} value="{{etf.ETF_descr}}" {% endif %}>
 		</div>
 
 		<div class="searchDiv">

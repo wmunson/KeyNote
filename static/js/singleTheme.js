@@ -74,7 +74,8 @@ Array.prototype.min = function(){
 
 
 var loadGraphData = function(){
-	vae name = document.getElementById('etfName')
+	var name = document.getElementById('etfName').innerHTML;
+	console.log(name);
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
@@ -172,7 +173,7 @@ require.config({
 		});
 
 {require(["d3", "c3"], function(d3, c3) {
-  	var arr=[['data1',3],['data2',7]]
+  	var arr=makeDonArr();
   	// getGraphVal();
 	var chart = c3.generate({
 	    bindto: '.donGraph',
@@ -191,3 +192,12 @@ require.config({
 
 });
 }
+
+
+/////// making donut graph array /////
+
+const makeDonArr = function(){
+	var data = document.get getElementById('hidden').value;
+	console.log(data);
+
+};
