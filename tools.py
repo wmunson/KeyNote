@@ -13,6 +13,16 @@ from datetime import datetime, date
 #
 # 
 
+# def session_set(user):
+#     session['logged-in'] = True
+#     session['user_id'] = user.id
+#     session['username'] = user.username
+#     session['password'] = user.password
+#     session['first_name'] = user.first_name
+#     session['last_name'] = user.last_name
+#     session['email'] = user.email
+#     session['user_created'] = user.date_created
+
 
 def user_to_JSON(user):
     user_dict = {
@@ -25,17 +35,6 @@ def user_to_JSON(user):
     return json.dumps(user_dict)
 
 
-def session_set(user):
-    session['logged-in'] = True
-    session['user_id'] = user.id
-    session['username'] = user.username
-    session['password'] = user.password
-    session['first_name'] = user.first_name
-    session['last_name'] = user.last_name
-    session['email'] = user.email
-    session['user_created'] = user.date_created
-
-
 def make_stock_list(ticker):
     ticker = ticker.upper()
     print(ticker)
@@ -43,13 +42,8 @@ def make_stock_list(ticker):
     month = str(d.month-1)
     day = str(d.day)
     year = str(d.year)
-    # url = "http://chart.finance.yahoo.com/table.csv?s="+ticker+"&a=0&b=17&c=2017&d=1&e=17&f=2017&g=d&ignore=.csv"
-    # url = "http://chart.finance.yahoo.com/table.csv?s="+ticker+"&a=0&b=17&c=2007&d=1&e=17&f=2017&g=d&ignore=.csv"
     url = 'http://chart.finance.yahoo.com/table.csv?s='+ticker+'&a='+month+'&b='+day+'&c=2016&d='+month+'&e='+day+'&f='+year+'&g=d&ignore=.csv'
-    # url = "http://chart.finance.yahoo.com/table.csv?s=^GSPC&a=0&b=17&c=2017&d=1&e=17&f=2017&g=d&ignore=.csv"
-    # url = "http://chart.finance.yahoo.com/table.csv?s="+ticker+"&a=0&b=7&c=2007&d=1&e=17&f=2017&g=d&ignore=.csv"
     s=requests.get(url).content
-
     dataframe = pd.read_csv(io.StringIO(s.decode('utf-8')))
     price_list = []
     date_list = []
@@ -76,12 +70,8 @@ def etf_pricer_final(etf):
         new_list=[]
         for array in x:
             new_list.append(array[i]*array[0])
-            print(array[0])
         master_list.append(sum(new_list))
-
-    print(len(master_list))
     sp = make_stock_list('^GSPC')
-    print(len(sp['date_list']))
     final_product={
             'Name':etf.ETF_name,
             'date_list': sp['date_list'],
