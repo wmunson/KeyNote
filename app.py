@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from create_db import *
 import requests
-from tools import grab_articles, session_set, make_stock_list, etf_to_JSON, etf_pricer_final, user_to_JSON, etf_comp_into_array
+from tools import grab_articles, make_stock_list, etf_to_JSON, etf_pricer_final, user_to_JSON, etf_comp_into_array
 import json
 import time
 
@@ -31,14 +31,14 @@ def get_author(etf):
 def login_check(username,prov_password):
 	print(username)
 	user = User.query.filter_by(username=username).first()
-	# Check if the password given is the password in the DB
-	if bcrypt.check_password_hash(user.password,prov_password):
+	if user:
+		bcrypt.check_password_hash(user.password,prov_password)
 		session_set(user)
 		etfs = grab_etfs(user.id)
 		print('we got etfs')
-		return etfs
+		return user
 	else:
-		return False
+		return 'nope'
 
 def grab_etfs(user_id):
 	key = user_id
@@ -72,7 +72,17 @@ def recent_etf_price(etf_name):
 		url = 'http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol='+key
 		result = request.get(url).json()
 
-
+def session_set(user):
+    session['logged-in'] = True
+    session['user_id'] = user.id
+    session['username'] = user.username
+    print('username is ' + user.username)
+    session['password'] = user.password
+    session['first_name'] = user.first_name
+    session['last_name'] = user.last_name
+    session['email'] = user.email
+    session['user_created'] = user.date_created
+    print('SESSION SET')
 
 
 
@@ -82,7 +92,6 @@ def recent_etf_price(etf_name):
 
 @app.route('/',methods=['GET'])
 def homepage():
-	session.clear()
 	return render_template('login.html')
 
 
@@ -91,13 +100,14 @@ def authentication():
 	if request.method == 'POST':
 		username = request.form['username']
 		password = request.form['password']
-		etfs = login_check(username,password)
-		session_set(User.query.filter_by(username=username).first())
-		if etfs == False:
+		user = login_check(username,password)
+		if user == 'nope':
 			return render_template('login.html',
 				errorMessage="Sorry, your login credentials were incorrect.")
 		else:
+			session_set(User.query.filter_by(username=username).first())
 			news = grab_articles()
+			etfs = grab_etfs(user.id)
 			return render_template("home.html",
 				first_name = session['first_name'],
 				etfs = etfs,
@@ -116,12 +126,60 @@ def authentication():
 def return_pie_material():
 	pass
 
+
+@app.route('/result', methods=['GET', 'POST'])
+def searching():
+	if request.method == 'GET':
+		news = grab_articles()
+		etfs = grab_etfs(session['user_id'])
+		return render_template('home.html',
+				first_name = session['first_name'],
+				etfs = etfs,
+				news_articles = news
+				)
+	else:
+		etf_obj_list = ETF.query.all()
+		etf_name_list = []
+		for etf_obj in etf_obj_list:
+			etf_name_list.append(etf_obj.ETF_name)
+		if request.form['mainSearch'] in etf_name_list:
+			print('here')
+			etf = ETF.query.filter_by(ETF_name = request.form['mainSearch']).first()
+			check = get_author(etf)
+			username = User.query.filter_by(username = check).first().username
+			if username == check:
+				print('here')
+				return render_template('singleTheme.html',
+									ETF_name = etf.ETF_name,
+									date = str(etf.creation_date),
+									author = check,
+									ETF_descr = etf.ETF_descr,
+									etf_pickle= etf_comp_into_array(etf.ETF_comp),
+									not_owner = 'not owner'
+									)
+			else:
+				render_template('singleTheme.html',
+									ETF_name = etf.ETF_name,
+									date = str(etf.creation_date),
+									author = check,
+									ETF_descr = etf.ETF_descr,
+									etf_pickle= etf_comp_into_array(etf.ETF_comp)
+									)
+		else:
+			news = grab_articles()
+			etfs = grab_etfs(session['user_id'])
+			return render_template('home.html',
+				first_name = session['first_name'],
+				etfs = etfs,
+				news_articles = news,
+				message = 'Your search was unable to found. Try ' + str(etf_name_list) + '.'
+				)
+
 @app.route('/register', methods=['GET','POST'])
 def create_account():
 	if request.method == 'GET':
 		return render_template('login.html')
 	else:
-		session.clear()
 		new_username = request.form['usernameSignUp']
 		check = User.query.filter_by(username = new_username).first()
 		if check == None:
@@ -147,8 +205,7 @@ def create_account():
 @app.route("/etf/<etf_name>", methods=['GET', 'POST'])
 def return_etf(etf_name):
 	if request.method == 'GET':
-		etf = ETF.query.filter_by(ETF_name = etf_name).first()
-		print(etf.ETF_author)		
+		etf = ETF.query.filter_by(ETF_name = etf_name).first()		
 		check = get_author(etf)
 		if session['username'] == check:
 			return render_template('singleTheme.html',
@@ -233,7 +290,7 @@ def save_to_profile(etf_name):
 
 @app.route('/sample', methods=['GET'])
 def explore_sample():
-	session.clear()
+	# session.clear()
 	etf =ETF.query.first()
 	return render_template('singleTheme.html',
 					ETF_name = etf.ETF_name,
@@ -266,7 +323,15 @@ def grab_the_ETF():
 @app.route('/logout')
 def log_out():
 	session.clear()
-	print(session['username'])
+	# session['user_id'] = 0
+	# session['username'] = ''
+	# print('username is blank')
+	# session['password'] = ''
+	# session['first_name'] = ''
+	# session['last_name'] = ''
+	# session['email'] = ''
+	# session['user_created'] = ''
+	print('SESSION SET TO NOTHING')
 	return render_template('login.html')
 
 @app.route("/graph/<etf_name>")
@@ -312,8 +377,7 @@ def search():
 			'results': etf_obj_list
 	}
 	return json.dumps(etf_dict)
-	# return render_template('search.html',
-	# 		etfs = etf_results)
+
 
 @app.route('/stock/<string>', methods=['GET'])
 def grab_stock_list(string):
@@ -325,9 +389,6 @@ def grab_stock_list(string):
 		final_product = []
 		for stock_obj in stock_list:
 			if stock_obj['Name'] and stock_obj['Name'] != ' ':
-				print(stock_obj)
-				print(stock_obj['Name'])
-				print(type(stock_obj['Name']))
 				final_product.append(stock_obj)
 			else:
 				pass
