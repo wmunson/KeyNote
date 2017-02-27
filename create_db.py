@@ -3,6 +3,11 @@ from datetime import datetime, date
 from app import db, bcrypt
 from flask_bcrypt import Bcrypt
 from tools import price_etf
+import requests
+import time
+
+
+
 
 class User(db.Model):
 	# Table Schema
@@ -58,59 +63,81 @@ class Reference(db.Model):
 
 print("Database has been created!!")
 
-
 db.drop_all()
 db.create_all()
+
+
 
 admin_password = bcrypt.generate_password_hash("admin")
 
 admin = User(
 			'admin',
 			admin_password,
-			'Mister',
-			'admin',
-			'admin@bread.com'
+			'KeyNote Staff',
+			'Boss',
+			'admin@keynote.com'
 )
 
+
+def get_price(ticker):
+	mc_url = "http://dev.markitondemand.com/Api/v2/Quote/json?symbol="+ticker
+	result = requests.get(mc_url).json()
+	return result['LastPrice']
 
 # [quantity, weight]
-pickle = {
-	'IBM':[100, 0.3],
-	'MSFT':[40, 0.3],
-	'AAPL':[80, 0.4]
-	}
+pharma = {'UNH': [163.06, 0.2],
+		  'GILD': [69.94, 0.2],
+		  'DGX': [97.31, 0.2],
+		  'ABBV': [62.09, 0.2],
+		   'ABC': [92.16, 0.2]
+    }
+	
 
 
 
-etf_example = ETF(
-			'Techie',
+pharma_example = ETF(
+			'Healthy',
 			1,
-			"Technology minded stocks with the big boys!",
-			pickle,
-			price_etf(pickle),
-			price_etf({
-				'IBM':[120, 0.3],
-				'MSFT':[30, 0.3],
-				'AAPL':[95, 0.4]})
+			"Pharmaceutical Companies with a high return on capital and high yield should keep our pockets healthy!",
+			pharma,
+			price_etf(pharma),
+			price_etf(pharma)
 )
 
+
+
+financials = {'PSA': [228.41, 0.2], 'HRB': [20.05, 0.2], 'HCP': [32.64, 0.2], 'AMT': [112.89, 0.2], 'ICE': [58.3, 0.2]}
+
+
+
+financials_example = ETF(
+			'Financials',
+			1,
+			"Using return on capital and high yield as metrics, Financials enjoys all the benefits of the financial industry from storage companies to REIT's.",
+			pharma,
+			price_etf(financials),
+			price_etf(financials)
+)
+
+
 ref = Reference(1,1)
+ref2 = Reference(1,2)
 
 
 db.session.add(admin)
 
-db.session.add(etf_example)
+db.session.add(pharma_example)
+
+db.session.add(financials_example)
 
 db.session.add(ref)
+db.session.add(ref2)
 
 db.session.commit()
 
 
 print("Database seeded!")
 
-# query = ETF.query.filter_by(ETF_name = "Techie").first()
-
-# print(query.ETF_comp)
 
 	
 
