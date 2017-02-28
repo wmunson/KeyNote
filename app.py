@@ -207,7 +207,7 @@ def return_etf(etf_name):
 	if request.method == 'GET':
 		etf = ETF.query.filter_by(ETF_name = etf_name).first()		
 		check = get_author(etf)
-		if session['username'] == check:
+		if check:
 			return render_template('singleTheme.html',
 							ETF_name = etf.ETF_name,
 							date = str(etf.creation_date),
@@ -302,7 +302,11 @@ def explore_sample():
 
 @app.route('/build')
 def show_build_page():
-	return render_template('build.html')
+	return render_template('build.html',
+		message="""
+						Welcome to the Build Page
+				Please provide the information outlined below:
+		""")
 
 @app.route('/build/<etf_name>')
 def build_build_page(etf_name):
