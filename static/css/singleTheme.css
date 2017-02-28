@@ -172,8 +172,9 @@
 }
 
 .overviewUl{
-	border:dashed;
 	width:90%;
+	
+	/*border:dashed;*/
 }
 
 .donGraph{
