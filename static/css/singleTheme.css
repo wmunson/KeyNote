@@ -97,7 +97,7 @@
 
 	flex-direction: row;
 	align-items: center;
-	background-color: gray;
+	background-color: black;
 	
 	border-radius: 8px;
 	
@@ -119,17 +119,22 @@
 	margin-top:.1%;
 	margin-bottom: .1%;
 	padding:auto;
-	background-color: white;
+	background-color: black;
 	cursor:pointer;
 	height: 100%;
 	padding:1em;
 	border-color: black;
-	border-radius: 8px
+	border-radius: 8px;
+	font-weight: bold;
+	font-size:1.2rem;
+	color:white;
 }
 
 .tab:hover{
 	text-decoration:underline;
-	background-color: #3cb0fd;
+	/*background-color: white;*/
+	/*color:black;*/
+	border-color: white;
 }
 
 .activeTab{
@@ -138,7 +143,9 @@
 	border-bottom: solid;
 	border-color: white;
 	margin-bottom: -5px;
-	text-decoration: underline;
+	background-color: white;
+	color:black;
+	/*text-decoration: underline;*/
 }
 
 

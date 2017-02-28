@@ -48,30 +48,44 @@
    
 			<div id="ovDiv" class="overviewDiv view activeBox">
 				<div class="ovUlDiv">
-					<ul class="overviewUl" >overview screen
+					<ul class="overviewUl Desctipt" >
 						<li>{{ETF_descr}}</li>
+					</ul>
+					<ul class="stockUl">
 
-					</ul>			
+						{% for key, value in etf_dict.items %}
+
+							<li>Symbol: {{key}}, 
+							Theme Weight: {{value[1]}}
+							Price: {{value[0]}}
+						{% endfor %}
+					</ul> 
+
 				</div>
 				<div class="donGraph">
-					graph here
+					
 				</div>
 			</div>
 			<div id="peDiv" class="performanceDiv view">
-				<div class="performGraph">perform screen</div>
+				<div class="performGraph">
+					
+				</div>
 			</div>
 			
 			<div id="neDiv" class="newsDiv view">
-				<ul>news screen</ul>
+				<ul>
 				{% for news_article in news_articles %}
 					<li> 
 						<a target="_blank" href="{{news_article[1]}}">{{news_article[0]}}</a>  
 					</li>
 				{% endfor %}
+				</ul>
 			</div>
 			
 			<div id="coDiv" class="commentsDiv view">
-				<ul>comments screen</ul>
+				<ul>
+					
+				</ul>
 			</div>
 		
 		</div>

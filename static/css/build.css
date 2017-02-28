@@ -6,7 +6,7 @@
 
 .blockBody{
 	display:flex;
-	justify-content: space-between;
+	justify-content: center;
 	border:solid;
 	min-height: 100vh;
 	height:100%;
@@ -19,10 +19,14 @@
 	flex-direction:column;
 	width:70%;
 	margin:1%;
+	margin-right: 0;
 	background-color: white;
 	align-items: center
 	border: 1px solid #d8e0e5;
     border-radius: 8px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
     z-index: 0;
 	/*border:dashed red;*/
 	
@@ -241,10 +245,13 @@
 	flex-direction: column;
 	flex-wrap: wrap;
 	margin:1%;
+	margin-left: 0;
 	width:25%;
 	background-color: white;
 	border: 1px solid #d8e0e5;
     border-radius: 8px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     z-index: 0;
 	/*border:dashed blue;*/
 	
@@ -254,7 +261,7 @@
 	align-self: center;
 	width:95%;
 	height:40%;
-	margin:2%;
+	margin:3%;
     /*padding: 32px;*/
     border: 1px solid #d8e0e5;
     border-radius: 8px;
@@ -267,7 +274,7 @@
 .stockQueue{
 	display:flex;
 	flex-direction:column;
-	margin:2%;
+	margin:3%;
 
     padding: 32px;
     border: 1px solid #d8e0e5;
