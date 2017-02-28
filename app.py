@@ -207,23 +207,27 @@ def return_etf(etf_name):
 	if request.method == 'GET':
 		etf = ETF.query.filter_by(ETF_name = etf_name).first()		
 		check = get_author(etf)
-		if check:
-			return render_template('singleTheme.html',
-							ETF_name = etf.ETF_name,
-							date = str(etf.creation_date),
-							author = check,
-							ETF_descr = etf.ETF_descr,
-							etf_pickle= etf_comp_into_array(etf.ETF_comp)
-							)
-		else:
-			return render_template('singleTheme.html',
-							ETF_name = etf.ETF_name,
-							date = str(etf.creation_date),
-							author = etf.ETF_author,
-							ETF_descr = etf.ETF_descr,
-							etf_pickle= etf_comp_into_array(etf.ETF_comp),
-							not_owner = 'not owner'
-							)
+		user = User.query.filter_by(id=etf.ETF_author).first()
+		if user:
+			if check == user.username:
+				return render_template('singleTheme.html',
+								ETF_name = etf.ETF_name,
+								date = str(etf.creation_date),
+								author = check,
+								ETF_descr = etf.ETF_descr,
+								etf_pickle= etf_comp_into_array(etf.ETF_comp),
+								etf_dict = etf.ETF_comp
+								)
+			else:
+				return render_template('singleTheme.html',
+								ETF_name = etf.ETF_name,
+								date = str(etf.creation_date),
+								author = etf.ETF_author,
+								ETF_descr = etf.ETF_descr,
+								etf_pickle= etf_comp_into_array(etf.ETF_comp),
+								etf_dict = etf.ETF_comp,
+								not_owner = 'not owner'
+								)
 	if request.method == 'POST':
 		client_stuff = json.loads(request.form['data'])
 		print(client_stuff)
