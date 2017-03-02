@@ -316,40 +316,40 @@ const addDiv=function(symbol){
 				const ul = document.createElement('ul');
 				ul.setAttribute("id",'hoverUl');
 
-				var lSym = document.createElement('li');
+				var lSym = document.createElement('p');
 				lSym.innerHTML=data['Symbol'];
-				ul.appendChild(lSym)
+				divInn.appendChild(lSym)
 
 				var ltime = document.createElement('li');
-				ltime.innerHTML=data['Timestamp'];
+				ltime.innerHTML='Time: '+data['Timestamp'];
 				ul.appendChild(ltime);
 
 				var lLP = document.createElement('li');
-				lLP.innerHTML="$"+data['LastPrice'];
+				lLP.innerHTML="Last Price: $"+Number(data['LastPrice']).toFixed(2);
 				ul.appendChild(lLP)
 
 				var lCP = document.createElement('li');
-				lCP.innerHTML="%"+data['ChangePercent'];
+				lCP.innerHTML='Change: '+Number(data['ChangePercent']).toFixed(2)+'%';
 				ul.appendChild(lCP)
 
 				var lMC = document.createElement('li');
-				lMC.innerHTML=data['MarketCap'];
+				lMC.innerHTML='Market Cap: '+data['MarketCap'];
 				ul.appendChild(lMC)
 
 				var lvol = document.createElement('li');
-				lvol.innerHTML=data['Volume'];
+				lvol.innerHTML='Volume: '+data['Volume'];
 				ul.appendChild(lvol)
 
 				var lhigh = document.createElement('li');
-				lhigh.innerHTML="$"+data['High'];
+				lhigh.innerHTML="High: $"+data['High'];
 				ul.appendChild(lhigh)
 
 				var llow = document.createElement('li');
-				llow.innerHTML="$"+data['Low'];
+				llow.innerHTML="Low: $"+data['Low'];
 				ul.appendChild(llow)
 
 				var lopen = document.createElement('li');
-				lopen.innerHTML="$"+data['Open'];
+				lopen.innerHTML="Open: $"+data['Open'];
 				ul.appendChild(lopen)
 
 				divInn.appendChild(ul);

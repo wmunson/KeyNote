@@ -1,20 +1,40 @@
 body{
 	/*background: #0A7774;*/
-	background: linear-gradient(-70deg, #335C67,#26434B);
+	background-color: #D9E1E3;
 	/*background-image: url("/images/login_back.jpg");*/
 	/*background-repeat:no-repeat;*/
 	/*background-repeat-y:no-repeat;*/
-	
+	display:flex;
+	align-items: stretch;
+	justify-content:center;
 }
 
 
 .container{
 	display:flex;
-	/*border:dashed;*/
 	/*border-color: black;*/
+	background: linear-gradient(-70deg, #335C67,#26434B); 
 	height:100vh;
+	width:90%;
 	align-items: center;
 	flex-wrap:wrap;
+	align-self: flex-grow;
+	/*border:dashed black;*/
+}
+
+.buf{
+	height:100vh;
+	width:3rem;
+	/*border:dashed pink;*/
+	/*align-self:flex-grow;*/
+}
+
+.leftBuf{
+	align-self: flex-start;
+}
+
+.rightBuf{
+
 }
 
 .image{

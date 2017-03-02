@@ -51,6 +51,7 @@
 		<div class="welcome">
 			<h3>Welcome Back, {{first_name}}</h3>
 			<h4 style={color: red;}> {{message}} </h4>
+			
 			<div class="graphSP">
 				
 
@@ -61,13 +62,14 @@
 		<div class="newsDiv">
 			<h5 class = "titles"> News Articles </h5>
 			<ul class="newsList">
-			{% for news_article in news_articles %}
-				<li> 
-					<a target="_blank" href="{{news_article[1]}}">{{news_article[0]}}</a>  
-				</li>
-			{% endfor %}
+				{% for news_article in news_articles %}
+					<li> 
+						<a target="_blank" href="{{news_article[1]}}">{{news_article[0]}}</a>  
+					</li>
+				{% endfor %}
 
 			</ul>
+			<a href="https://newsapi.org/">NewsAPI</a>
 		</div>		
 	</div>
 	
@@ -77,16 +79,19 @@
 			<ul class="etfList">
 				{% for etf in etfs %}
 					<li class="etf">
-						<a href="http://127.0.0.1:5000/etf/{{etf.ETF_name}}">{{etf.ETF_name}}</a>
+						<a href="http://127.0.0.1:5000/etf/{{etf.ETF_name}}">{{etf.ETF_name}}
+						</a>
 						<div id="alex">
-							$ {{etf.last_price}}
+							 {{etf.last_price}}
 						</div>
 					</li>
 				{% endfor %}
+
       		</ul>
     	</div>
 	</div>
 </div>
+
 {% endblock %}
 
 

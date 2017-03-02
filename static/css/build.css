@@ -199,10 +199,11 @@
 
 .innDiv{
 	display:none;
-	height:15rem;
-	width:70%;
+	height:17rem;
+	width:20rem;
 	z-index:10;
 	border: solid;
+	border:solid black;
     border-style:outset;
     border-radius: 8px;
     cursor: pointer;
@@ -212,6 +213,19 @@
 	/*border:dashed yellow;*/
 }
 
+.innDiv li{
+	list-style: none;
+}
+
+/*.innDiv li:nth-child(odd){
+	background-color: #C9E4E3;
+}*/
+
+.innDiv p{
+	text-align: center;
+	font-weight: bold;
+	border-bottom:solid black;
+} 
 
 
 #hoverUl{

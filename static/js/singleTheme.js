@@ -213,7 +213,6 @@ const makeDonArr = function(){
 ////////////          //////////////
 
 document.getElementById('modInput').addEventListener('click',function(event){
-	// event.preventDefault()
 	var name = document.getElementById('etfName').innerHTML;
 	console.log(name);
 	document.getElementById('modify').setAttribute('action','/build/'+name);
