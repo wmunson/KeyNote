@@ -172,10 +172,16 @@
 
 .ovUlDiv{
 	display:flex;
-	justify-content: center;
+	flex-direction: column;
+	justify-content: flex-start;
 	width:40%;
 
 	/*border:dashed green;*/
+}
+
+.ovUlDiv p{
+	margin-left: 1rem;
+	text-decoration: underline;
 }
 
 .overviewUl{
