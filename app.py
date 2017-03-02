@@ -155,7 +155,8 @@ def searching():
 									author = check,
 									ETF_descr = etf.ETF_descr,
 									etf_pickle= etf_comp_into_array(etf.ETF_comp),
-									not_owner = 'not owner'
+									not_owner = 'not owner',
+									etf_dict = etf.ETF_comp
 									)
 			else:
 				render_template('singleTheme.html',
@@ -163,7 +164,8 @@ def searching():
 									date = str(etf.creation_date),
 									author = check,
 									ETF_descr = etf.ETF_descr,
-									etf_pickle= etf_comp_into_array(etf.ETF_comp)
+									etf_pickle= etf_comp_into_array(etf.ETF_comp),
+									etf_dict = etf.ETF_comp
 									)
 		else:
 			news = grab_articles()
@@ -256,7 +258,8 @@ def return_etf(etf_name):
 								date = str(etf.creation_date),
 								author = author,
 								ETF_descr = etf.ETF_descr,
-								etf_pickle= etf_comp_into_array(etf.ETF_comp)
+								etf_pickle= etf_comp_into_array(etf.ETF_comp),
+								etf_dict = etf.ETF_comp
 								)
 		else:
 			return render_template('build.html')
