@@ -10,7 +10,7 @@
 	<div class="leftCol">	
 		<div class="inputDiv">
 			{% if message %}
-			<p>{{message}}</p>
+			<h3>{{message}}</h3>
 			{% endif %}
 			<input id="nameInput" name="etfName" type="text" placeholder="Enter Name" {% if etf %} value="{{etf.ETF_Name}}" {% endif %}>
 			<input id="etfDescript" type="text" placeholder="Enter Description" {% if etf %} value="{{etf.ETF_descr}}" {% endif %}>
@@ -62,13 +62,13 @@
 
 		<div class="stockQueue">
 			<div class="overviewDiv">
-				<p>Stock Queue</p>
+				<h4>Stock Queue</h4>
 				<ul id="queueTick" class="queueList">
 					{% if stocks %}	
 						{% for key, value in stocks.items() %}
 							<li class="ticker" data-id={{key}} data-price={{value[0]}}>
-							<p>{{key}}</p>
-							<p>{{value[0]}}</p>
+							<p>{{key}} ${{value[0]}}</p>
+							
 								<input type="range" class="slideBar" min="0" max="100" step="1" value={{value[1]*100}}>
 							</li>
 						{% endfor %}

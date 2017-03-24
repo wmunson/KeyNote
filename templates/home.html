@@ -60,16 +60,22 @@
 
 		</div>
 		<div class="newsDiv">
-			<h5 class = "titles"> News Articles </h5>
+			<h3 class = "titles"> News Articles </h3>
 			<ul class="newsList">
 				{% for news_article in news_articles %}
 					<li> 
-						<a target="_blank" href="{{news_article[1]}}">{{news_article[0]}}</a>  
+						<div class="imageContainer">
+							<image class = "newsImage" src = "{{news_article[2]}}"> </image>
+						</div>
+						<div class="newsInformation">
+							<a target="_blank" href="{{news_article[1]}}">{{news_article[0]}}</a>  
+							<span> <h4>Description</h4> {{news_article[3]}} </span>
+						</div>
 					</li>
 				{% endfor %}
 
 			</ul>
-			<a href="https://newsapi.org/">NewsAPI</a>
+			<p> News brought to you by: <a href="https://newsapi.org/">NewsAPI.org</a> </p>
 		</div>		
 	</div>
 	
@@ -77,12 +83,13 @@
 		<div class="accountInfo">
 			<h4 class="accountTitle titles">Account Summary</h4>
 			<ul class="etfList">
+				<h5>ETFs</h5>
 				{% for etf in etfs %}
 					<li class="etf">
-						<a href="http://127.0.0.1:5000/etf/{{etf.ETF_name}}">{{etf.ETF_name}}
+						<a href="http://127.0.0.1:3000/etf/{{etf.ETF_name}}">{{etf.ETF_name}}
 						</a>
 						<div id="alex">
-							 {{etf.last_price}}
+							${{etf.last_price}}
 						</div>
 					</li>
 				{% endfor %}

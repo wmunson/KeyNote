@@ -119,6 +119,7 @@ const queueEvent = function(input){
 		// console.log(checkTick.typeOf)
 		var tick = document.createTextNode(e.target.dataset.id);
 		var price = document.createTextNode(e.target.dataset.price);
+		var sym = document.createTextNode(' $')
 		// console.log(tick)
 		// console.log(price)
 
@@ -132,9 +133,16 @@ const queueEvent = function(input){
 			
 
 			var li = document.createElement('li');
-			li.setAttribute('class','ticker')
-			li.setAttribute('data-id',checkTick)
-			li.setAttribute('data-price',checkPrice)
+			li.setAttribute('class','ticker');
+			li.setAttribute('data-id',checkTick);
+			li.setAttribute('data-price',checkPrice);
+			
+			var p1 = document.createElement('p');
+			p1.appendChild(tick)
+			p1.appendChild(sym)
+			p1.appendChild(price)
+			li.appendChild(p1)
+			
 			
 
 			var slide = document.createElement('input');
@@ -148,8 +156,8 @@ const queueEvent = function(input){
 
 			deleteEvent(delBut, ul, li)
 
-			li.appendChild(tick);
-			li.appendChild(price);
+			// li.appendChild(tick);
+			// li.appendChild(price);
 			li.appendChild(slide);
 			li.appendChild(delBut);
 			ul.appendChild(li);

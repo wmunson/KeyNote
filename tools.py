@@ -127,6 +127,8 @@ def grab_articles():
         news_obj = []
         news_obj.append(news_article['title'])
         news_obj.append(news_article['url']) 
+        news_obj.append(news_article['urlToImage'])
+        news_obj.append(news_article['description'])
         outbound_news_list.append(news_obj)
     return outbound_news_list
 

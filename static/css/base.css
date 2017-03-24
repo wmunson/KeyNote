@@ -1,6 +1,6 @@
 body{
-	background-color: #335C67;
-	background: linear-gradient(-70deg, #335C67,#26434B);
+	background-color: white;
+	/*background: linear-gradient(-70deg, #335C67,#26434B);*/
 	z-index:0;
 }
 .container{
@@ -111,8 +111,7 @@ body{
 }
 
 .fInput:hover{
-	background-color: white;
-	color:black;
+	text-decoration: underline;
 }
 
 .search input{

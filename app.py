@@ -174,7 +174,7 @@ def searching():
 				first_name = session['first_name'],
 				etfs = etfs,
 				news_articles = news,
-				message = 'Your search was unable to found. Try ' + str(etf_name_list) + '.'
+				message = 'Your search was unable to found. Try ' + '"'+str(etf_name_list[0])+ '"'+ ' or ' + '"'+str(etf_name_list[1]) + '"'+'.'
 				)
 
 @app.route('/register', methods=['GET','POST'])
@@ -298,12 +298,13 @@ def save_to_profile(etf_name):
 @app.route('/sample', methods=['GET'])
 def explore_sample():
 	# session.clear()
-	etf =ETF.query.first()
+	etf =ETF.query.filter_by(id = 1).first()
 	return render_template('singleTheme.html',
 					ETF_name = etf.ETF_name,
 					date = str(etf.creation_date),
 					author = "KeyNote Staff",
-					ETF_descr = etf.ETF_descr
+					ETF_descr = etf.ETF_descr,
+					etf_dict = etf.ETF_comp
 					)
 
 
@@ -425,7 +426,7 @@ def grab_composition(etf_name):
 
 
 if __name__ == "__main__":
-	app.run(debug=True)
+	app.run(debug=True, port=3000)
 
 {
   "Status": "Failure|APP_SPECIFIC_ERROR",
