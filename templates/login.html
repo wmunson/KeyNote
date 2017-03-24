@@ -21,8 +21,10 @@
 			<div class="subCon subDiv" >	
 				<div class = "welcome">
 					<div class = "message">
-						<h3>Welcome to KeyNote!</h3>
+						<h2>Welcome to KeyNote!</h2>
 						<div class="text">
+							<h4>About</h4>
+							<p> KeyNote is a way for investors to construct their own ETFs based on the themes and ideas they are interested in. </p>
 							<p>If you would like to see what KeyNote is about, click the "Explore" button below. Otherwise, Sign Up and get started!</p>
 						</div>
 						<form action = "/sample" method = "GET">
@@ -34,8 +36,8 @@
 					<div id="changer1" class = "loginDiv box active">
 						
 							<form class="loginForm" action="/login" method="POST">
-								<input name="username" class ="user" type="text" placeholder="Username">
-								<input name="password" class ="pass" type="password" placeholder="Password">
+								<input name="username" class ="user" type="text" placeholder="Username" required>
+								<input name="password" class ="pass" type="password" placeholder="Password" required>
 								<input class="goBut botton" type ="submit" value="Go!">
 							</form>
 							
@@ -48,11 +50,11 @@
 					<div id="changer2" class ="signUpDiv box">
 						
 							<form class="signupForm" action="/register" method="POST">
-								<input name="usernameSignUp" class ="user" type="text" placeholder="Username">
-								<input name="passwordSignUp" class ="pass" type="password" placeholder="Password">
-								<input name="firstname" class ="pass" type="text" placeholder="First Name">
-								<input name="lastname" class ="pass" type="text" placeholder="Last Name">
-								<input name="email" class ="pass" type="text" placeholder="Email">
+								<input name="usernameSignUp" class ="user" type="text" placeholder="Username" required>
+								<input name="passwordSignUp" class ="pass" type="password" placeholder="Password" required>
+								<input name="firstname" class ="pass" type="text" placeholder="First Name" required>
+								<input name="lastname" class ="pass" type="text" placeholder="Last Name" required>
+								<input name="email" class ="pass" type="email" placeholder="Email" required>
 								<input class="goBut botton" type ="submit" value="Go!">
 							</form>
 							

@@ -17,16 +17,12 @@
 .leftCol{
 	display:flex;
 	flex-direction:column;
-	width:70%;
-	margin:1%;
+	width:55%;
 	margin-right: 0;
 	background-color: white;
-	align-items: center
+	align-items: center;
 	border: 1px solid #d8e0e5;
-    border-radius: 8px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-
+	min-height:100%;
     z-index: 0;
 	/*border:dashed red;*/
 	
@@ -39,13 +35,14 @@
 	display:flex;
 	flex-direction:column;
 	width:70%;
-	margin:1%;
+	margin-left:1em;
 	margin-top:4%;
+
 
     padding: 32px;
     border: 1px solid #d8e0e5;
-    border-radius: 8px;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+    /*border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);*/
 
 	/*border:dashed green;*/
 	
@@ -74,14 +71,15 @@
 	display:flex;
 	flex-direction:column;
 	margin:1%;
+	margin-left:1em;
 	width:90%;
-	align-self: center;
-	margin: 0 auto 75px;
-    padding: 32px;
+	/*align-self: center;*/
+	/*margin: 0 auto 75px;*/
+    padding: 30px;
     border: 1px solid #d8e0e5;
-    border-radius: 8px;
+    /*border-radius: 8px;
     box-shadow: 0 3px 5px rgba(0,0,0,0.15);
-
+*/
 	/*border:dashed gray;*/
 		
 }
@@ -175,7 +173,7 @@
 }
 
 .stockTick:nth-child(odd){
-	background-color: #C9E4E3;
+	background-color: #F3F1F0;
 }
 
 .listCon{
@@ -200,21 +198,23 @@
 .innDiv{
 	display:none;
 	height:17rem;
-	width:20rem;
+	width:23rem;
 	z-index:10;
 	border: solid;
-	border:solid black;
+	/*border:solid black;
     border-style:outset;
-    border-radius: 8px;
+    border-radius: 8px;*/
     cursor: pointer;
 	font:10px;
+	/*opacity:0.9;*/
 	
 	background-color: white;
 	/*border:dashed yellow;*/
 }
 
 .innDiv li{
-	list-style: none;
+	list-style: square;
+	margin:0;
 }
 
 /*.innDiv li:nth-child(odd){
@@ -230,13 +230,17 @@
 
 #hoverUl{
 	width:90%;
-	border: red;
+	/*border: red;*/
+	margin:0;
 }
 
 #hoverUl li{
-	margin:1%;
-	width:60%;
-	border:green;
+	/*display:inline;*/
+	margin:0;
+	width:95%;
+	padding:0;
+	border-bottom: solid .1em;
+	/*border:green;*/
 }
 
 .remove{
@@ -258,14 +262,14 @@
 	display:flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-	margin:1%;
 	margin-left: 0;
 	width:25%;
+	min-height:100%;
 	background-color: white;
 	border: 1px solid #d8e0e5;
-    border-radius: 8px;
+/*    border-radius: 8px;
     border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    border-bottom-left-radius: 0;*/
     z-index: 0;
 	/*border:dashed blue;*/
 	
@@ -278,8 +282,8 @@
 	margin:3%;
     /*padding: 32px;*/
     border: 1px solid #d8e0e5;
-    border-radius: 8px;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+/*    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);*/
 	z-index: 0;
 	/*border:dashed red;*/
 
@@ -292,11 +296,35 @@
 
     padding: 32px;
     border: 1px solid #d8e0e5;
-    border-radius: 8px;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+/*    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);*/
 
 	/*border:dashed;*/
 	/*border-color:green;*/
+}
+
+.overviewDiv{
+	overflow-y: auto;
+}
+.queueList{
+	list-style: none;
+
+}
+.delBut{
+	margin:4%;
+	padding: 12px 20px;
+	height:3em;
+    /*margin: 8px 0;*/
+    /*display: inline-block;*/
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    align-self: flex-end;
+    cursor: pointer;
+}
+.delBut:hover{
+	text-decoration:underline;
+	background-color: #3cb0fd;
 }
 
 .submitDiv{

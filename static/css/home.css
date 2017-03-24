@@ -1,6 +1,8 @@
 .blockBody{
 	display:flex;
 	height:100%;
+	margin:auto;
+	width:80%;
 	
 	/*border:dashed red;*/
 }
@@ -10,16 +12,16 @@
 	display:flex;
 	flex-direction:column;
 	background-color: white;
-	
-	margin:1%;
+	justify-content: flex-start;
+	/*margin:1%;*/
 	margin-right: 0;
 	width:70%;
-	min-height: 90%;
+	min-height: 100%;
     padding: 32px;
     border: 1px solid #d8e0e5;
-    border-radius: 8px;
+/*    border-radius: 8px;
     border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
+    border-top-right-radius: 0;*/
     /*box-shadow: 0 3px 5px rgba(0,0,0,0.15);*/
 
 	/*border:dashed blue;*/
@@ -28,7 +30,6 @@
 .welcome{
 	display:flex;
 	flex-direction: column;
-	
 	padding: 32px;
     /*border: 1px solid #d8e0e5;*/
     /*border-radius: 8px;*/
@@ -42,7 +43,7 @@
 }
 
 .graphSP{
-	height:10rem;
+	height:3rem;
 
 	/*border:dashed gray;*/
 }
@@ -50,36 +51,72 @@
 .newsDiv{
 	padding: 32px;
     border: 1px solid #d8e0e5;
-    border-radius: 8px;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+    /*border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);*/
 	background-color: white;
 	margin:1%;
 	
 	/*border:solid black;*/
 }
 
+.newsList{
+
+	list-style: none;
+
+}
+
 .newsDiv li{
 	padding:.1rem;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	
 }
 
 .newsDiv li:nth-child(odd){
-	background-color: #C9E4E3;
+	background-color: #EFECEC;
 }
 
+.newsDiv li:nth-child(even){
+	background-color: #F3F1F0;
+} 
+
+ .imageContainer{
+
+
+ }
+
+
+.newsImage{
+	height:6rem;
+	width:10rem;
+
+}
+
+.newsInformation{
+
+	margin-left: 0.5rem;
+}
+
+.newsInformation span{
+	font-size: 0.7em;
+
+
+}
 
 .rightCol{
 	display:flex;
 	background-color: white;
-	margin:1%;
+	/*margin:1%;*/
 	margin-left: 0;
 	width:20%;
-	min-height: 90%;
+	min-height: 100%;
     
     padding: 32px;
     border: 1px solid #d8e0e5;
-    border-radius: 8px;
+/*    border-radius: 8px;
     border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
+    border-top-left-radius: 0;*/
 
     box-shadow: 0 3px 5px rgba(0,0,0,0.15);
 
@@ -108,7 +145,7 @@
 	
 .accountTitle{
 	display:flex;
-	height:3rem;
+	height:2rem;
 	width:90%;
 	text-align:center;
 	align-self: center;
@@ -149,7 +186,7 @@
 }
 
 .etf:nth-child(odd){
-	background-color: #C9E4E3;
+	background-color: #F3F1F0;
 }
 
 

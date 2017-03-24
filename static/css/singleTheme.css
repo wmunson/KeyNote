@@ -1,5 +1,6 @@
 
 
+
 .blockBody{
 	display:flex;
 	flex-direction: column;
@@ -14,11 +15,13 @@
 	display:flex;
 	width:80%;
 	height:16rem;
-	justify-content:space-between;
+	/*justify-content:space-between;*/
 	background-color: white;
-	border: 1px solid #d8e0e5;
-    border-radius: 8px;
+	/*border: 1px solid #d8e0e5;*/
+	border: 1px solid grey;
+    /*border-radius: 8px;*/
     margin:1%;
+
 
 	/*border:dashed pink;*/
 }
@@ -26,29 +29,40 @@
 .theme{
 	display:flex;
 	flex-direction: column;
-
-	
+	width: 80%;
+	min-height: 5em;
 	background-color: white;
 	margin:1%;
 	padding: 32px;
-    border: 1px solid #d8e0e5;
-    border-radius: 8px;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+    /*border: 1px solid #d8e0e5;*/
+    border: 1px solid grey;
+    /*border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);*/
 	
 	/*border:dashed gray;*/
 }
 
+.etfInfo{
+	list-style: square;
+	display: flex;
+	justify-content: space-around;
+
+	
+}
+
 .buttons{
 	display:flex;
-	flex-direction: column;
+	/*flex-direction: column;*/
 	justify-content: space-around;
 	align-self: center;
-	height:60%;
+	align-items: center;
+	height:5em;
 	margin:1%;
 	padding: 32px;
-    border: 1px solid #d8e0e5;
-    border-radius: 8px;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+    border: 1px solid grey;
+    width:20%;
+    /*border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);*/
 
 	/*border:dashed red;*/
 	
@@ -73,11 +87,11 @@
 .bottomRow{
 	display:flex;
 	flex-direction: column;
-	width:95%;
+	width:80%;
 	margin: 1%;
 	background-color: white;
-	border: 1px solid #d8e0e5;
-    border-radius: 8px;
+	border: 1px solid grey;
+  /*  border-radius: 8px;*/
 
 	/*border:dashed red;*/
 }
@@ -85,7 +99,7 @@
 .toggleBar{
 	background-color: gray;
 	border: 1px solid #d8e0e5;
-    border-radius: 8px;
+    /*border-radius: 8px;*/
 }
 
 .toggleList{
@@ -99,7 +113,7 @@
 	align-items: center;
 	background-color: black;
 	
-	border-radius: 8px;
+	/*border-radius: 8px;*/
 	
 	/*border:solid gray;*/
 }
@@ -238,4 +252,8 @@
 }
 
 
+#hidden{
 
+	display:none;
+
+}
