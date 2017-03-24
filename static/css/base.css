@@ -81,19 +81,30 @@ body{
 	width: 100%;
     background-color: black;
     color: white;
-    text-decoration: bold;
+    /*text-decoration: bold;*/
     padding: 14px 20px;
     margin: 0;
     border: solid;
     border-color: black;
+    /*border-bottom:white;*/
     border-radius: 8px;
     cursor: pointer;
 	font-weight: bold;
 	font-size:1.5rem;
+
+	
 }
+.fInput:hover{
+  visibility: visible;
+  transform: underline scaleX(10);
+  text-decoration: underline;
+}
+/*.fInput:hover{
+	text-decoration: underline;
+}*/
 
 .home {
-	background-color: #AB9B83;
+	/*background-color:black;*/
 	border:none;
 	list-style: none;
 	/*border-radius: 8px*/
@@ -101,18 +112,15 @@ body{
 
 .fhInput{
 	border:none;
-	background-color: #AB9B83;
+	background-color: black;
 	font-weight: bold;
 	font-size: 2rem;
 	text-decoration: underline;
-	font-family: Impact, Charcoal, sans-serif;
-
+	/*font-family: Impact, Charcoal, sans-serif;*/
 	cursor: pointer;
 }
 
-.fInput:hover{
-	text-decoration: underline;
-}
+
 
 .search input{
 	/*width: 100%;*/

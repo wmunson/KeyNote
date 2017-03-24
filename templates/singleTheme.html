@@ -8,11 +8,11 @@
 <div class="blockBody">
 	<div class="topRow">
 		<div class="theme">
-			<h3 id="etfName">{{ETF_name}}</h3>
+			<h2> <span style="text-decoration:underline;">Theme Name: </span><span id="etfName" style="font-weight:bold;">{{ETF_name}}</span> </h2>
 			<ul class="etfInfo">
-				<li>Author: {{author}}</li>
-				<li>Date Created: {{date}}</li>
-				<li>Change: {{change}}</li>
+				<li><span style="font-weight:bold;"> Author:</span> {{author}}</li>
+				<li><span style="font-weight:bold;"> Date Created:</span> {{date}}</li>
+				<li><span style="font-weight:bold;"> Change:</span> {{change}} 0.00%</li>
 			</ul>
 		</div>
 
@@ -57,9 +57,9 @@
 
 						{% for key, value in etf_dict.items() %}
 
-							<li>Symbol: {{key}}, 
-							Theme Weight: {{value[1]}}
-							Price: {{value[0]}}
+							<li><span style="font-weight:bold;"> Symbol: </span><a href="">{{key}}</a>, 
+							<span style="font-weight:bold;"> Theme Weight: </span>{{value[1]*100}}%
+							<span style="font-weight:bold;"> Price: </span>${{value[0]}}
 						{% endfor %}
 					</ul> 
 

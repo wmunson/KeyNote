@@ -349,6 +349,8 @@ def log_out():
 @app.route("/graph/<etf_name>")
 def example(etf_name):
 	etf = ETF.query.filter_by(ETF_name = etf_name).first()
+	print(etf)
+	print(etf.ETF_comp)
 	return etf_pricer_final(etf)
 
 @app.route("/manage")
