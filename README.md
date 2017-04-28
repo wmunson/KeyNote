@@ -9,31 +9,14 @@ ________________________________________________________________________________
 **Tehcnologies:**
 
 -Server side - Python, Flask.
+
 -Front end - HTML, CSS, JavaScript.
+
 -Database - SQLite3, using SQLALchemy.
 
 *A further breakdown of the packages used can be found in the requirements.txt
 
 _______________________________________________________________________________________________________________________________
-
-**Usage:**
-
-To run the application you need to create a virtual environment, download/install requirements.txt, then run app.py
-
--app.py invokes the Flask app and the db ORM, it also contains the routes for the server.
-
--config.py hadles the configurations.
-
--constituents.csv was used to price the starting Themes that are seeded to test the validity of using Joel Greenblatt's Magic Formula.
-
--creat_db.py creates and seeds the db. *Note: This file is run everytime the app.py is run.*
-
--tools.py handles all the data manipulation and processing.
-
--Templates folder contains all HTML templates
-
--Static contains all CSS and JS files. Files are named by their corresponding. HTML file.
-______________________________________________________________________________________________________________________________
 
 **APIs:**
 
@@ -46,6 +29,27 @@ ________________________________________________________________________________
 -NewsAPI.org - Provided financial news aritcles.
 
 ______________________________________________________________________________________________________________________________
+
+**Usage:**
+
+To run the application you need to create a virtual environment, download/install requirements.txt, then run app.py
+
+-app.py invokes the Flask app and the db ORM, it also contains the routes for the server.
+
+-config.py handles the configurations.
+
+-constituents.csv was used to price the starting Themes that are seeded to test the validity of using Joel Greenblatt's Magic Formula.
+
+-creat_db.py creates and seeds the db. *Note: This file is run everytime the app.py is run.*
+
+-tools.py handles all the data manipulation and processing.
+
+-Templates folder contains all HTML templates
+
+-Static contains all CSS and JS files. Files are named by their corresponding. HTML file.
+______________________________________________________________________________________________________________________________
+
+
 
 **Notes:**
 
